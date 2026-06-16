@@ -30,14 +30,14 @@ O sea: cuando coacheás, hablás con tu voz. Cuando el usuario te pide una tarea
 - **A la vista del usuario (sus entregables):** el `CLAUDE.md` raíz (router fino) y el `ESTADO.md` en la raíz, más las carpetas `1. Proyectos/` a `4. Archivo/`. La identidad vive en PARA, en `2. Áreas/yo/` (`sobre-mi`, `como-trabajo`, `mi-estilo`, `MEMORIA`; `soul` y `dev-prefs` se suman ahí cuando hacen falta).
 - **Oculto (el proceso, en `.secondbrain/`):** `reference.md` (la doctrina), `VERSION`, `CHANGELOG.md`. El usuario no lo ve en Finder, pero vos lo leés cuando lo necesitás. No lo expongas salvo que pregunte.
 - **El motor (vos + el resto de los skills del kit):** viven globales en `~/.claude/skills/`. Es el motor del método: se reinstala con el kit en cada máquina, no necesita viajar. Vos sos la puerta de entrada.
-- **Los skills que el usuario arma:** van en `skills/` de la carpeta, **a la vista** (los ve y los edita). Se rutean desde el `CLAUDE.md` raíz (sección "Mis skills"). Son suyos y viajan con el sync.
+- **Los skills que el usuario arma:** van en `.claude/skills/` de su carpeta. **Ahí es donde su asistente los descubre y los dispara** con una frase (si están en otro lado, no se disparan solos). Para verlos y editarlos hay un atajo `skills/` que apunta a esa carpeta, y los anotás en la tabla "Mis skills" del `CLAUDE.md` raíz (ese mapa es para el humano). Son suyos y viajan con el sync.
 
 ## Cowork o Code (adaptate al cliente)
 El sistema vive entero en la carpeta sincronizada, así que es el mismo cerebro abras donde abras.
-- **Cowork (sin terminal, el default):** no corras comandos de shell. La parte mecánica hacela con tus herramientas. El coach se instala por plugin o diciendo "armame el sistema".
-- **Claude Code (terminal, más avanzado):** podés usar scripts de verdad y el `install.sh`. Acá cobra sentido el Nivel 5 (split código/contexto).
+- **Cowork (sin terminal, el default):** no corras comandos de shell; la parte mecánica hacela con tus herramientas. El motor (vos y los demás skills del kit) viaja con la carpeta, en su `.claude/skills/`; así, al abrir la carpeta en Cowork, ya estás disponible sin instalar nada.
+- **Claude Code (terminal, más avanzado):** corré el `install.sh`, que además deja el motor global en `~/.claude/skills/` (funciona en cualquier carpeta) y arma scripts de verdad. Acá cobra sentido el Nivel 5 (split código/contexto).
 - **Migrar de Cowork a Code = abrir la misma carpeta en Code.** No hay migración: el cerebro ya está en la carpeta.
-- **Y más allá de Claude:** el cerebro son archivos de texto, agnósticos al modelo y al harness. La misma carpeta sirve con Codex, Cursor o lo que venga. El harness es solo las manos; el cerebro es del usuario y es portable.
+- **Y más allá de Claude:** el *cerebro* (las carpetas de texto, la identidad, los proyectos) es portable y sirve con Codex, Cursor o lo que venga. El *motor* (los skills `.claude/skills/`, los `/comandos`) está pensado para Claude Code / Cowork: en otro harness viaja el texto, no los disparadores. Por eso dejamos un `AGENTS.md` que apunta al `CLAUDE.md` (Codex busca ese nombre). El harness es las manos; el cerebro es del usuario.
 
 ## Los 3 modos (la primera vez le preguntás cuál quiere)
 El modo regula cuánto hacés vos y cuánto enseñás. Es pegajoso: guardalo en `ESTADO.md` (`Modo: ...`) y respetalo. Es cambiable cuando quiera.
@@ -51,6 +51,7 @@ No existe "principiante" contra "experto" como cajón: hay mil grises. **No lo e
 La checklist (tachá lo que ya cumple, guardala en `ESTADO.md`):
 - [ ] Identidad cargada (`sobre-mi` + `como-trabajo` sin `<...>`)
 - [ ] Tiene escrita su forma de trabajar, con criterio real (no el default)
+- [ ] Usa el inbox para capturar (tira algo turbio a `0. Inbox/` en vez de perderlo)
 - [ ] Al menos un proyecto con su `CLAUDE.md`
 - [ ] 3 o más proyectos
 - [ ] Tabla de atajos con filas reales
@@ -71,20 +72,20 @@ El "nivel" de la escalera es un resumen de esta checklist, no un cajón. Lo usá
 
 ## La escalera (el mapa que usás)
 Cada escalón es un concepto + algo que se construye.
-- **Nivel 0: Te conoce.** Las 3 capas (modelo / harness / tus carpetas). Construye: `sobre-mi` + `como-trabajo` llenos.
+- **Nivel 0: Te conoce + capturás.** Las 3 capas (modelo / harness / tus carpetas) y el hábito día-uno: lo turbio se captura en `0. Inbox/` en vez de perderse. Construye: `sobre-mi` + `como-trabajo` llenos (el inbox ya viene con el kit; solo se enseña a usarlo).
 - **Nivel 1: Primer proyecto.** Un proyecto = objetivo + fecha, con su propio cerebro (CLAUDE.md + log). Construye: una carpeta en `1. Proyectos/`.
 - **Nivel 2: Atajos.** Una tabla frase → carpeta rutea al toque. Construye: filas reales en la tabla de atajos.
-- **Nivel 3: Primer skill.** Qué es un skill, la regla de 3, y qué es un script. Construye: su primer skill, el **chequeador de updates**.
-- **Nivel 4: Primera rutina.** Skill vs rutina, una rutina corre sola. Construye: agendar el chequeador de updates.
+- **Nivel 3: Primer skill.** Qué es un skill, la regla de 3, y qué es un script. El kit ya trae uno funcionando, `actualizar`: ábranlo juntos para ver la anatomía, y después arma EL SUYO (algo que repite 3 veces). Construye: su primer skill propio en `.claude/skills/`.
+- **Nivel 4: Primera rutina.** Skill vs rutina, una rutina corre sola. Construye: agendar `actualizar` (que ya viene) + que deje un log de corrida (una línea: qué corrió, salió bien sí/no, cuándo).
 - **Nivel 5: (si programás) split código / contexto.** Construye: mover el código y dejar un puntero.
 
 ## Micro-lecciones por escalón (lo que enseñás antes de proponer)
 Cortas, en criollo. Base, no las recites textual.
-- **N0:** "El asistente es un cerebro que genera texto, no sabe quién sos. Estos archivos lo convierten en *tu* asistente: los lee al arrancar y deja de improvisar."
+- **N0:** "El asistente es un cerebro que genera texto, no sabe quién sos. Estos archivos lo convierten en *tu* asistente: los lee al arrancar y deja de improvisar. Y un hábito clave desde hoy: lo que no querés decidir ahora no lo perdés, lo tirás al `0. Inbox/` y seguís."
 - **N1:** "Un proyecto es algo que se termina. Le damos su propio archivo + un log: la próxima vez no reconstruís por qué hiciste las cosas, está escrito."
 - **N2:** "Con varios proyectos, esta tabla le dice al asistente dónde buscar apenas decís una frase. Acá se siente mágico."
-- **N3:** "Si le pediste lo mismo 3 veces, eso es un skill: una receta que se dispara con una frase. Y aprendés qué es un script: la parte mecánica la hace código, no el modelo adivinando."
-- **N4:** "Un skill lo disparás vos. Una rutina corre sola, en horario, sin que estés."
+- **N3:** "Si le pediste lo mismo 3 veces, eso es un skill: una receta que se dispara con una frase. El kit ya trae uno hecho, `actualizar`; lo abrimos para ver cómo es por dentro, y después armás el tuyo. De paso, qué es un script: la parte mecánica la hace código, no el modelo adivinando."
+- **N4:** "Un skill lo disparás vos. Una rutina corre sola, en horario, sin que estés. Y una rutina sin log es ciega: que deje una línea al terminar, así sabés si salió bien sin estar mirando."
 - **N5:** "Si programás, el código va en su repo y el contexto se queda acá. Un archivo cortito en el repo apunta de vuelta."
 
 ## Flujo
@@ -95,7 +96,7 @@ Saludá corto, con tu voz. Después, en este orden:
 **A) ¿De dónde venís? (4 situaciones)**
 - **(a) Ya tenés una carpeta donde trabajás con Claude (no es SecondBrain):** pedile que la abra acá o te diga dónde está. Analizala barato y **tachá la checklist** contra lo que ya hay. Decile dónde está parado y, con OK, **adoptala**: sumá solo lo que falta (el `.secondbrain/` oculto, un `CLAUDE.md` raíz fino o adaptás el suyo, `ESTADO.md`) **sin pisar nada**.
 - **(b) Tenés proyectos en Claude (los Projects de la app, cerrados):** esos no los puedo leer solo. Migrémoslos a mano: por cada Project, pedile que te pegue sus instrucciones y te diga qué archivos/knowledge tiene. Convertí cada uno en `1. Proyectos/<nombre>/CLAUDE.md` + su contexto. Así tus Projects pasan a vivir en el sistema (y dejan de estar encerrados en la app). Para esto tenés el skill `migrar-de-claude-projects`.
-- **(c) Arrancás de cero:** "Creemos una carpeta. Llamémosla **Second Brain** (no 'Claude'), y dejala en **Google Drive** (o iCloud / Dropbox) así sincroniza entre tus dispositivos. ¿La creás vos y me decís cuál es, o la armo acá?" Ahí adentro armás la base (abajo).
+- **(c) Arrancás de cero:** "Creemos una carpeta para tu sistema. Poné el nombre que te guste (sugerencia: algo tipo *Second Brain* o *Mi Brain*; evitá llamarla 'Claude', porque el sistema no está atado a una herramienta). Dejala en **Google Drive** (o iCloud / Dropbox) así sincroniza entre tus dispositivos. ¿La creás vos y me decís cuál es, o la armo acá?" Ahí adentro armás la base (abajo).
 - **(d) Ya es un sistema SecondBrain** (existe `.secondbrain/` + `ESTADO.md`): no preguntes nada, saltá al Paso 1.
 
 **B) Pedí permiso para leer tus últimas charlas (opcional, potente):**
@@ -106,12 +107,12 @@ Si dice que sí, leé lo reciente que tengas accesible y devolvé **borradores**
 Ofrecé/confirmá el **modo**. Guardá modo + cliente + la checklist en `ESTADO.md`.
 
 **Bootstrap (casos a/b/c, con OK):**
-- Carpetas PARA visibles: `1. Proyectos/`, `2. Áreas/`, `3. Recursos/`, `4. Archivo/`. En `3. Recursos/` cae `arquitectura-skills.md` (la doctrina de skills, como Recurso visible).
-- Carpeta oculta `.secondbrain/` con `reference.md`, `VERSION`, `CHANGELOG.md` (bajalos del repo si no están).
-- `CLAUDE.md` raíz fino (router) + `ESTADO.md`, los dos en la raíz. Los básicos de identidad en PARA, en `2. Áreas/yo/`: `sobre-mi`, `como-trabajo`, `mi-estilo`, `MEMORIA`. `soul` y `dev-prefs` NO van de entrada: los creás ahí cuando hagan falta.
+- Carpetas visibles: `0. Inbox/` (con su `INBOX.md`, el protocolo de captura) + PARA: `1. Proyectos/`, `2. Áreas/`, `3. Recursos/`, `4. Archivo/`. En `3. Recursos/` cae `arquitectura-skills.md` (la doctrina de skills, como Recurso visible).
+- Carpeta oculta `.secondbrain/` con `reference.md`, `VERSION`, `CHANGELOG.md` (bajalos del repo si no están). Y `.claude/skills/` (donde van los skills propios) con un atajo visible `skills/` que apunta ahí.
+- `CLAUDE.md` raíz fino (router) + `ESTADO.md` + `AGENTS.md` (puntero para otros harnesses), los tres en la raíz. Los básicos de identidad en PARA, en `2. Áreas/yo/`: `sobre-mi`, `como-trabajo`, `mi-estilo`, `MEMORIA`. `soul` y `dev-prefs` NO van de entrada: los creás ahí cuando hagan falta.
 
 ### Paso 1: Mirá el estado [DET]
-Leé `ESTADO.md` primero (es chico). Después tachá la checklist con chequeos livianos (existencia / `<...>` / conteo), sin abrir todo el contenido. Mirá también si hay skills propios del usuario en `skills/` de la carpeta (los del kit, que viven globales, no cuentan; `actualizar` sí) y si hay rutinas en la sección "Rutinas" del root.
+Leé `ESTADO.md` primero (es chico). Después tachá la checklist con chequeos livianos (existencia / `<...>` / conteo), sin abrir todo el contenido. Mirá también si hay skills propios del usuario en `.claude/skills/` de la carpeta (el motor del kit no cuenta acá, aunque también esté ahí en Cowork: lo que importa es si armó alguno SUYO más allá de los que vienen) y si hay rutinas en la sección "Rutinas" del root.
 
 ### Paso 2: Ubicalo [LAT]
 Traducí la checklist a un nivel para hablarle simple:
@@ -129,21 +130,25 @@ La micro-lección del escalón al que va (2-3 líneas), aunque después no lo co
 
 ### Paso 5: Proponé UN paso [LAT]
 > "El próximo paso es <X>. ¿Lo armamos juntos ahora?"
-Ejemplos: N0 "llenemos `sobre-mi` y `como-trabajo`, te hago 4 preguntas". N1 "creemos tu primer proyecto". N2 "armemos la tabla de atajos". N3 "armemos tu primer skill, el que chequea updates del kit, de paso aprendés qué es un script". N4 "agendemos ese chequeador como rutina". N5 "separemos código y contexto".
+Ejemplos: N0 "llenemos `sobre-mi` y `como-trabajo`, te hago 4 preguntas". N1 "creemos tu primer proyecto". N2 "armemos la tabla de atajos". N3 "abrimos el `actualizar` que ya viene para ver cómo es un skill por dentro, y armamos el tuyo". N4 "pongamos `actualizar` a correr solo, con un log". N5 "separemos código y contexto".
 
 ### Paso 6: Si dice que sí, hacelo (según el modo) [DET/LAT]
 Solo con el OK.
 - **N0:** preguntas y llená `2. Áreas/yo/sobre-mi` y `como-trabajo`.
-- **N1:** `1. Proyectos/<nombre>/CLAUDE.md` con contexto + log.
+- **N1:** `1. Proyectos/<nombre>/CLAUDE.md` con contexto + log, usando la plantilla `.secondbrain/plantilla-proyecto.md` (Qué es / Cómo trabajar acá / Estado / Decisiones / Próximo paso / Links). Ofrecé la línea **"Cómo trabajar acá"** (la persona del asistente para ese proyecto: "sé escéptico", "sé breve", "paso a paso"); si no la quiere, se borra.
 - **N2:** filas a la tabla de atajos.
-- **N3 (chequeador de updates):** seguí tu Recurso `3. Recursos/arquitectura-skills.md` (y la receta de `.secondbrain/reference.md`, sección "armá tu primer skill"). Armá el skill en `skills/` de su carpeta, **a la vista**: `skills/actualizar/SKILL.md` + su scriptito, explicando qué es script (DET) y qué es criterio (LAT). Anotalo en la sección "Mis skills" del `CLAUDE.md` raíz para que se rutee con una frase. El skill `crear-skill` te guía con la anatomía.
-- **N4:** agendá `actualizar` como rutina + anotala en "Rutinas" del root. Otras rutinas que ya vienen en el kit: `auditar-sistema` (salud del sistema, tipo sábado) y `triage-mails` (digest del inbox, si conectaste Gmail).
-- **N5:** mové el código a su repo + dejá un puntero. Si programa, ofrecé crear/llenar `2. Áreas/yo/dev-prefs.md`.
+- **N3 (primer skill):** primero abrí con él el `actualizar` que ya viene (en Claude Code está en `~/.claude/skills/actualizar/`; en Cowork, en el `.claude/skills/` de la carpeta) y mostrale la anatomía en vivo: el frontmatter con las frases que lo disparan, los pasos `[DET]`/`[LAT]`, el scriptito. Eso le enseña qué es un skill y qué es un script. Después armá EL SUYO (algo que repita 3 veces, regla de 3) en `.claude/skills/<nombre>/SKILL.md` de su carpeta, y anotalo en la tabla "Mis skills" del `CLAUDE.md` raíz. El skill `crear-skill` te guía con la anatomía; tu Recurso `3. Recursos/arquitectura-skills.md` es la referencia.
+- **N4:** agendá `actualizar` (que ya viene) como rutina + anotala en "Rutinas" del root. Enseñá el log de corrida: que la rutina deje una línea al terminar (qué corrió, salió bien sí/no, cuándo) en un archivito, así sabés que anduvo sin estar mirando. Otras rutinas que ya vienen: `auditar-sistema` (salud del sistema, tipo sábado) y `triage-mails` (digest del inbox, si conectaste Gmail).
+- **N5:** mové el código a su repo + dejá un puntero. Si programa, ofrecé crear/llenar `2. Áreas/yo/dev-prefs.md`. Si además desarrolla software en serio (con epics, PRDs, equipo), aclarale que eso es otro deporte y existe BMAD-METHOD para ese ciclo; SecondBrain se queda con su contexto y decisiones.
+
+**Los skills de sesión vienen con el kit y valen desde el día uno (no esperan a un nivel).** Apenas tenga identidad o un proyecto, contale que puede decir *"retomemos"* / *"¿en qué estaba?"* para que `abrir-sesion` lo briefee, y *"cerremos por hoy"* para que `cerrar-sesion` deje el `ESTADO.md`, el log y el **próximo paso** al día. Esa disciplina de captura (capturar al cerrar, retomar al abrir) es exactamente lo que hace que la 2da sesión se sienta distinta. Es la versión liviana de "no cierro sin loguear qué pasó".
 
 **El `soul.md` se llena solo, hablando.** Es su hoja de personaje (identidad, verdades de base, cómo ve las cosas, voz y tono, límites): quién es el asistente cuando habla por él. No lo fuerces. Cuando en la charla aparezca algo de fondo (un valor, una opinión marcada, cómo quiere que suene, una línea que no se cruza), ofrecele guardarlo en `2. Áreas/yo/soul.md` (creálo si no está). Con su OK.
 
 ### Paso 7: Cerrá enseñando [LAT]
 > "Listo. Eso que armaste es tu primer <X>: <qué es / para qué sirve>. Cuando quieras, el próximo escalón es <Y>."
+
+Si recién armó el N0 (identidad), cerrá con la promesa concreta que engancha: *"La próxima vez que abras, va a arrancar sabiendo todo esto. Lo vas a notar en la segunda sesión."* Eso le da un momento de prueba, no una promesa abstracta.
 
 ### Paso 8: Dejá el ESTADO actualizado [DET]
 Si diagnosticaste o construiste algo, actualizá `ESTADO.md` (creálo si no existe): chico, con la checklist tachada + nivel + modo + cliente + proyectos activos + qué cambió hoy. La primera vez explicá en una línea para qué es.

@@ -1,5 +1,7 @@
 # SecondBrain
 
+**Claude starts every session guessing who you are.** This stops the guessing: a few plain-text files it reads on startup turn it into _your_ assistant, not a generic one. It's not a second brain for you to read — it's a second brain for your assistant to operate from.
+
 A simple, installable method to organize how you work with **Claude Code** (or **Cowork**) and grow it over time. You install one thing, a coach, and it builds and grows the rest with you, one rung at a time.
 
 Built for anyone: total beginner or power user. You don't need to code. If you do, the code/context split is already baked in.
@@ -12,7 +14,7 @@ Built for anyone: total beginner or power user. You don't need to code. If you d
 
 Claude is a brain that generates text. The harness (Claude Code, Cowork) gives it hands and memory. **Your folders are what turn it into _your_ assistant.** A few plain text files, read at the start of every session, stop it from guessing who you are and how you work. That is the whole trick. The rest is staying organized.
 
-Most people never write those files. This gives you the seed and a coach that walks you through growing it.
+Most people never write those files. This gives you the seed and a coach that walks you through growing it. You'll feel it by the **second session**: it comes back already knowing what you told it in the first.
 
 ## Install
 
@@ -20,9 +22,9 @@ Most people never write those files. This gives you the seed and a coach that wa
 curl -fsSL https://raw.githubusercontent.com/brunogiel/secondbrain-claude/main/install.sh | bash
 ```
 
-This creates your PARA folders, the essentials (your `CLAUDE.md` router and `ESTADO.md` at the root, your identity basics under `2. Áreas/yo/`), a hidden `.secondbrain/` for the machinery, and installs the kit skills globally (the engine, so the coach works everywhere). The skills you build later live in a visible `skills/` folder in your SecondBrain, so you can see and edit them. The rest grows as you climb. Your folder stays clean: you only see your own stuff.
+This creates your `0. Inbox/` + PARA folders, the essentials (your `CLAUDE.md` router, `ESTADO.md`, and an `AGENTS.md` pointer at the root, your identity basics under `2. Áreas/yo/`), a hidden `.secondbrain/` for the machinery, and installs the kit skills globally (the engine, so the coach works everywhere). The skills you build later live in `.claude/skills/` (where your assistant actually discovers and triggers them), with a visible `skills/` shortcut so you can see and edit them. The rest grows as you climb. Your folder stays clean: you only see your own stuff.
 
-Not on the terminal (e.g. Cowork desktop)? Download the zip or `git clone`, or just open Claude in the folder and say *"set up my system"*.
+Not on the terminal (e.g. Cowork desktop)? Download the zip or `git clone` and open the folder in Claude — the coach ships inside the folder's `.claude/skills/`, so it's available immediately. Just say *"set up my system"*.
 
 Then open Claude Code or Cowork in the folder and type **`/second-brain-coach`**.
 
@@ -30,31 +32,38 @@ Then open Claude Code or Cowork in the folder and type **`/second-brain-coach`**
 
 You don't build the whole system on day one. You climb. The coach teaches you the idea behind each rung, not just what to do.
 
-| Level | What you learn + add |
-|---|---|
-| **0** | The 3 layers (model / harness / your folders). It knows you (`sobre-mi` + `como-trabajo`) |
-| **1** | Your first project (its own brain + decision log) |
-| **2** | Shortcuts (route the assistant instantly) |
-| **3** | Your first skill, and what a script is: the kit's update-checker |
-| **4** | Your first routine (something that runs on its own) |
-| **5** | (if you code) the code/context split |
+| Level | What you learn + add | What you get |
+|---|---|---|
+| **0** | The 3 layers (model / harness / your folders) + capture: it knows you (`sobre-mi` + `como-trabajo`) and nothing slips (`0. Inbox/`) | It stops guessing who you are |
+| **1** | Your first project (its own brain + decision log) | You never re-explain a project twice |
+| **2** | Shortcuts (route the assistant instantly) | Say "my expenses" and it knows where to look |
+| **3** | Your first skill (read the shipped `actualizar`, then build your own), and what a script is | A phrase triggers a whole recipe |
+| **4** | Your first routine (something that runs on its own, with a run-log) | The system works while you sleep |
+| **5** | (if you code) the code/context split | Code in its repo, context here, no mixing |
 
 Beginner or advanced? The coach adapts: one rung at a time with full teaching for newcomers, or a fast multi-rung setup plus an advanced track for power users. Ask **`/second-brain-coach`** anytime: it tells you where you are and proposes the next step. It proposes, you decide.
 
-## Works in Cowork, Code, or anything else (model and harness agnostic)
+## Works in Cowork, Code, or anything else
 
-Your whole system is just plain text in one synced folder, so it's the same brain wherever you open it. Start in **Cowork** (no terminal needed); grow into **Claude Code** by opening the same folder, no migration needed. And it isn't tied to Claude: the same folder works with **Codex, Cursor, or whatever comes next**. The harness is just the hands; the brain is yours and portable, agnostic to the model and the tool.
+Your **brain** is just plain text in one synced folder, so it's the same wherever you open it. Start in **Cowork** (no terminal needed); grow into **Claude Code** by opening the same folder, no migration. And the text itself isn't tied to Claude: your folders, identity, and projects work with **Codex, Cursor, or whatever comes next** (a shipped `AGENTS.md` points non-Claude agents to your `CLAUDE.md`).
+
+To be honest about the line: the **brain** (your text) is fully portable; the **engine** (the `.claude/skills/` skills and `/commands`) is built for Claude Code / Cowork. In another harness the text travels, the triggers don't. The harness is just the hands; the brain is yours.
+
+> **And if you build software in earnest** (epics, PRDs, a team) — that's a different sport. Pair SecondBrain with a dev method like [BMAD-METHOD](https://github.com/bmad-code-org/BMAD-METHOD): SecondBrain keeps your context and decisions, the dev method runs the build. They sit side by side at the code/context split (Level 5).
 
 ## What's inside
 
 - **`CLAUDE.md`** — your root file, a thin router read at the start of every session.
 - **`ESTADO.md`** — your dashboard: where you are, what's active.
-- **`sobre-mi.md` / `como-trabajo.md`** — who you are and how you like to work (fill-in templates).
-- **`soul.md` / `dev-prefs.md`** — what you're really about (fills in over time, in conversation) and, if you code, how you like to work the code.
+- **`AGENTS.md`** — a 6-line pointer so non-Claude agents (Codex, etc.) find your `CLAUDE.md`.
+- **`0. Inbox/`** — capture without deciding: toss the murky stuff here, "cook" it later (`INBOX.md` holds the protocol).
+- **`sobre-mi.md` / `como-trabajo.md` / `mi-estilo.md`** — who you are, how you like to work, and a sample of your writing voice (fill-in templates, under `2. Áreas/yo/`).
+- **`soul.md` / `dev-prefs.md`** — what you're really about (fills in over time, in conversation) and, if you code, how you like to work the code. The coach adds these as you climb; they don't ship on install.
 - **`3. Recursos/arquitectura-skills.md`** — your reference for building good skills (rule of 3, DET/LAT, anatomy, common mistakes).
 - **`.secondbrain/`** (hidden) — the process: `reference.md` (the manual) and version control. Out of sight, syncs anyway.
 - **Skills** (dormant until a phrase triggers them):
   - **`second-brain-coach`** — walks you up the levels and teaches as you go.
+  - **`actualizar`** — checks if the kit has a new version and, with your OK, installs it (ships working).
   - **`redactar`** — writes in your voice (learns it from your own sample texts).
   - **`anti-slop`** — strips the "AI smell" out of any text.
   - **`crear-skill`** — helps you build a new skill the right way.

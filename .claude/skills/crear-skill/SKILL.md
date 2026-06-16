@@ -1,8 +1,8 @@
 ---
 name: crear-skill
 description: >
-  Te ayuda a armar un skill nuevo bien hecho, siguiendo la anatomía que funciona.
-  Usalo cuando digas "creá un skill", "armame un skill", "quiero un skill para X",
+  Arma un skill nuevo bien hecho siguiendo la anatomía que funciona.
+  Usalo cuando el usuario diga "creá un skill", "armame un skill", "quiero un skill para X",
   "convertí esto en skill", "esto lo hago siempre, hagámoslo skill".
 ---
 
@@ -20,7 +20,8 @@ Preguntá: ¿ya hiciste esta tarea 3 veces? Si no, avisá que es prematuro y ofr
 3. **[LAT]** Separá los pasos en DET (mecánico, se clava o lo hace un script) y LAT (criterio). Marcá cada uno.
 4. **[LAT]** Qué archivos lee y escribe (para no pisar nada por accidente).
 5. **[LAT]** Cómo se ve un buen resultado: qué devuelve + 2 o 3 señales de que salió bien.
-6. **[DET]** Escribí el `SKILL.md` en `skills/<nombre>/SKILL.md` **de la carpeta del usuario**, a la vista (los ve y los edita; los del kit, en cambio, viven globales y ocultos). Después anotalo en la sección "Mis skills" del `CLAUDE.md` raíz para que se rutee con una frase.
+6. **[LAT] (eval-first, recomendado)** Antes de escribir las instrucciones, anotá 2-3 casos concretos de prueba con su resultado esperado ("si digo X, debería hacer Y"). Es la práctica #1 de la doctrina oficial de skills: te asegura que resolvés un problema real, no uno imaginario, y te deja con qué chequearlo después. Ofrecelo; si dice que no, seguí.
+7. **[DET]** Escribí el `SKILL.md` en `.claude/skills/<nombre>/SKILL.md` **de la carpeta del usuario** (ahí es donde el asistente lo descubre y lo dispara con su frase; el atajo `skills/` apunta a la misma carpeta para verlo y editarlo). Después anotalo en la sección "Mis skills" del `CLAUDE.md` raíz, que es el mapa para el humano.
 
 ## Errores que le hacés esquivar (de reference, sección 5)
 - Clonar un skill cambiando un dato: parametrizá, que tome el dato como entrada.

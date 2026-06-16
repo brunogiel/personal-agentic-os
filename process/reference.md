@@ -35,13 +35,27 @@ Regla práctica: si dudás entre Proyecto y Área, preguntate *¿esto se termina
 
 ---
 
+## 2b. El inbox: capturar sin decidir
+
+Antes de PARA hay un paso que casi todos se saltan: **capturar**. PARA te dice dónde va algo *cuando ya sabés qué es*. Pero la mayoría de las cosas llegan turbias: una idea suelta, un link para leer, una decisión que no está madura. Si te obligás a clasificarlas en el momento, frenás; y lo que no clasificás, lo perdés.
+
+Por eso `0. Inbox/` va **adelante de todo**: es la bandeja donde tirás algo y seguís. Un archivo por cosa, una línea alcanza (`AAAA-MM-DD-de-que-va.md`). Sin esfuerzo: la gracia es que sea sin fricción.
+
+Cada tanto (no a diario) **cocinás** el inbox: a cada item le das destino → ✅ resolver (se vuelve proyecto/tarea/nota y sale), 🔄 sigue turbio (lo dejás, anotando qué falta para decidir), 🗑 descartar (a `4. Archivo/inbox-cocidos/`, no se borra). 
+
+La distinción clave: **capturar no es archivar.** Si algo ya es claro y accionable, va directo a su lugar. El inbox es para lo que todavía no. Frases que mandan algo acá: *"dejalo para después"*, *"metelo al inbox"*, *"no lo quiero decidir ahora"*.
+
+---
+
 ## 3. Cada proyecto tiene su propio cerebro
 
-Adentro de cada proyecto va un `CLAUDE.md` con dos cosas:
+Adentro de cada proyecto va un `CLAUDE.md` (hay una plantilla en `.secondbrain/plantilla-proyecto.md`) con:
 - **Contexto:** qué es, quién participa, qué estado tiene, qué links importan.
+- **Cómo trabajar acá (opcional):** la "persona" del asistente para ESTE proyecto. Mismo modelo, distinto compañero: un proyecto de plata quiere uno escéptico que verifique números; uno de escritura, uno que no te corrija el tono. Dos líneas alcanzan ("sé escéptico", "sé breve", "paso a paso").
 - **Log de decisiones:** una línea con fecha cada vez que decidís algo importante. ("2026-06-01: elegimos X en vez de Y porque Z").
+- **Próximo paso:** una línea de qué sigue y con qué contexto — el "handoff" a tu yo futuro.
 
-El log es oro: la próxima vez que abrís el proyecto (vos o el asistente), no tenés que reconstruir por qué hiciste las cosas. Está escrito.
+El log es oro: la próxima vez que abrís el proyecto (vos o el asistente), no tenés que reconstruir por qué hiciste las cosas. Está escrito. Y no hace falta que lo lleves a mano: los skills `cerrar-sesion` (deja el log y el próximo paso al día al terminar) y `abrir-sesion` (te briefea al retomar) automatizan ese ciclo. El modelo es stateless; este archivo no.
 
 ---
 
@@ -50,6 +64,8 @@ El log es oro: la próxima vez que abrís el proyecto (vos o el asistente), no t
 `MEMORIA.md` es donde el asistente acumula hechos que valen para todo, no para un proyecto. ("Soy alérgico a X", "Mi tono en mails es informal", "Prefiero que me preguntes antes de asumir").
 
 Guardá lo que **no** se deduce solo de tus archivos. No guardes lo que ya está escrito en otro lado (eso es duplicar). Si algo resultó ser falso, borralo.
+
+**Por qué importa capturar:** el modelo arranca de cero cada vez (es *stateless*), tus archivos no. Cada cosa que anotás, la próxima sesión ya la sabe. Por eso el sistema se vuelve más *vos* con el uso: no porque el asistente sea más inteligente, sino porque tu memoria es más rica. El que captura, gana.
 
 ---
 
@@ -107,18 +123,22 @@ No te asustes con la palabra. Tu primer script va a ser de tres líneas (mirá l
 
 ---
 
-## 8. Armá tu primer skill, paso a paso: el chequeador de updates
+## 8. Tu primer skill: leé el que ya viene, después armá el tuyo
 
-Tu primer skill conviene que sea uno **útil y chico**: uno que chequee si este kit (SecondBrain) tiene mejoras nuevas, así las bajás. De paso, armarlo te enseña qué es un skill y qué es un script.
+El kit ya trae un skill funcionando, **`actualizar`** (vive en `~/.claude/skills/actualizar/`): chequea si SecondBrain tiene mejoras y, con tu OK, las baja. No hace falta que lo armes: **ábrilo para ver cómo es un skill por dentro** (el frontmatter con las frases que lo disparan, los pasos `[DET]`/`[LAT]`, su scriptito `check-update.sh`). Ese es tu ejemplo de referencia.
 
-**Qué tiene que hacer:**
+Después armá **el tuyo**: algo que repitas de verdad (regla de 3). Va en `.claude/skills/<nombre>/SKILL.md` de tu carpeta. El skill `crear-skill` te guía.
+
+Abajo, la anatomía del `actualizar` como modelo de lo que tiene que tener cualquier skill:
+
+**Qué hace (el patrón a copiar):**
 1. **[DET]** Leer la versión publicada del kit (el archivo `VERSION` del repo) y compararla con la tuya (`.secondbrain/VERSION`).
 2. **[LAT]** Si hay una nueva, contarte qué cambió (del `CHANGELOG`) y preguntarte: *"¿te la instalo?"*.
 3. **[DET]** Si decís que sí, bajar lo nuevo.
 
 Fijate cómo el paso 1 y el 3 son mecánicos (script) y el 2 es criterio (el asistente decide cómo contártelo y espera tu OK). Eso es DET vs LAT en vivo.
 
-**El `SKILL.md` mínimo** (en `skills/actualizar/SKILL.md`, a la vista en tu carpeta):
+**El `SKILL.md` mínimo** (así viene `actualizar`; los tuyos van en `.claude/skills/<nombre>/SKILL.md`):
 
 ```
 ---
@@ -144,9 +164,9 @@ description: >
 - Nada se bajó sin tu OK.
 ```
 
-El "script" (el paso DET de comparar versiones) en Claude Code es un comando que baja el `VERSION` del repo y lo compara. En Cowork, el asistente hace ese chequeo con sus herramientas. La receta es la misma.
+El "script" (el paso DET de comparar versiones) en Claude Code es el `check-update.sh` que viene con el skill. En Cowork, el asistente hace ese chequeo con sus herramientas. La receta es la misma.
 
-Cuando lo termines, ese es tu Nivel 3. Y el próximo escalón sale solo: ponerlo a correr automático (Nivel 4, sección 10).
+Cuando armás el tuyo siguiendo este molde, ese es tu Nivel 3. Y el próximo escalón sale solo: poner `actualizar` a correr automático (Nivel 4, sección 10).
 
 ---
 
@@ -161,10 +181,12 @@ Empezás con skills. Los agentes vienen después, cuando una tarea ya no necesit
 
 ## 10. Rutinas: poner algo a correr solo
 
-Una **rutina** es un skill (o una tarea) que corre en horario, sin que estés. La primera buena rutina es la del chequeador de updates: que mire los lunes si el kit tiene mejoras.
+Una **rutina** es un skill (o una tarea) que corre en horario, sin que estés. La primera buena rutina es poner `actualizar` (que ya viene) a correr los lunes: que mire si el kit tiene mejoras.
 
 - **En Claude Code / Cowork:** se agenda con la función de tareas programadas del cliente (pedile al asistente "agendá esto para los lunes a las 9").
 - **Anotala** en la sección "Rutinas" de tu `CLAUDE.md` raíz, así sabés qué tenés corriendo (y el coach lo detecta).
+
+**Una rutina sin log es ciega.** Como corre sin que estés, si falla no te enterás. La regla mínima: que al terminar deje **una línea de registro** en un archivito (por ejemplo `<la rutina>/last_run.txt`): *qué corrió, salió bien sí/no, cuándo, y un número clave si aplica*. Con eso, de un vistazo sabés si el sistema viene funcionando mientras dormís. No hace falta más que eso para empezar; lo elaborado (histórico, semáforo de salud) es de la sección 16, posgrado.
 
 Bonus: una rutina arranca en contexto limpio, hace lo suyo y termina. No te infla las sesiones donde estás laburando. Son baratas por diseño.
 
@@ -187,6 +209,8 @@ Una sola regla: **el código vive en su repo, el contexto vive en este sistema.*
 - Contexto, decisiones, notas → tu carpeta de Proyecto acá.
 - En el repo, un `CLAUDE.md` corto apunta de vuelta a este sistema, así el asistente sabe dónde está todo.
 
+Y si el desarrollo es en serio (epics, PRDs, un equipo), eso es un deporte aparte: hay métodos dedicados al ciclo de desarrollo agéntico, como [BMAD-METHOD](https://github.com/bmad-code-org/BMAD-METHOD). No compiten con esto: SecondBrain se queda con tu contexto y decisiones; el método de dev maneja la construcción dentro del repo. Conviven en este mismo split.
+
 Si no programás, esta sección no te toca.
 
 ---
@@ -194,6 +218,8 @@ Si no programás, esta sección no te toca.
 ## 13. Liviano para correr (que no te queme el plan)
 
 Tu sistema tiene que andar barato, sobre todo si estás en el plan de $20. La idea de fondo: **el sistema crece a lo ancho, no a lo alto.** Más archivitos chicos, no archivos gordos que se leen siempre. Bien ruteado, tener 50 archivitos sale MÁS barato que 3 enormes, porque cada sesión lee solo la rebanada que toca.
+
+Y no es solo plata: **el contexto inflado también rinde peor.** El asistente trabaja en su "memoria de trabajo" (la ventana de contexto, su RAM); cuando la llenás de cosas que no tocan, recuerda y razona peor (a esto se le dice *context rot*). Por eso el `CLAUDE.md` raíz es **RAM curada**: un mapa fino, no un volcado. No lo engordes — lo barato y lo que rinde van de la mano.
 
 Las 3 capas de costo:
 1. **Lo que se lee SIEMPRE** = el `CLAUDE.md` raíz. Tiene que ser un mapa fino (punteros + atajos), no contenido. Nunca lo engordes.
@@ -207,11 +233,14 @@ El truco del status: `ESTADO.md` es un archivo chico (nivel + proyectos activos 
 ## 14. Topología: proceso oculto, entregables a la vista
 
 Para que tu carpeta se vea limpia, el sistema separa lo tuyo de su maquinaria:
-- **A la vista (lo tuyo):** tus carpetas PARA, tu identidad (`sobre-mi`, `como-trabajo`), tu progreso (`ESTADO.md`), y el `CLAUDE.md` raíz (router fino).
-- **Oculto (el proceso):** la carpeta `.secondbrain/` con esta doctrina (`reference.md`), los templates y el control de versión. Empieza con punto, así no se ve en Finder. Igual sincroniza por Drive/iCloud.
-- **El motor (el coach y los skills del kit):** globales y ocultos en `~/.claude/skills/`. Los skills que armás vos van a la vista, en `skills/` de tu carpeta. El coach es la puerta de entrada.
+- **A la vista (lo tuyo):** tus carpetas PARA + `0. Inbox/`, tu identidad (`sobre-mi`, `como-trabajo`), tu progreso (`ESTADO.md`), y el `CLAUDE.md` raíz (router fino).
+- **Oculto (el proceso):** la carpeta `.secondbrain/` con esta doctrina (`reference.md`) y el control de versión. Empieza con punto, así no se ve en Finder. Igual sincroniza por Drive/iCloud.
+- **El motor (el coach y los skills del kit):** en Claude Code, globales en `~/.claude/skills/` (funcionan en cualquier carpeta); en Cowork viajan con la carpeta, en su `.claude/skills/`.
+- **Tus skills:** en `.claude/skills/` de tu carpeta. **Esto importa: es el único lugar donde tu asistente los descubre y los dispara solos con una frase.** Para verlos sin pelear con la carpeta oculta, hay un atajo `skills/` que apunta ahí, y los anotás en la tabla "Mis skills" de tu `CLAUDE.md` (ese mapa es para vos; el disparo lo hace el frontmatter).
 
 Vos solo ves lo que hacés. El proceso trabaja de fondo.
+
+> **Disparo ≠ ruteo.** Que un skill se dispare solo cuando decís su frase depende de que esté en `.claude/skills/` (ahí lee el harness el frontmatter). La tabla "Mis skills" del `CLAUDE.md` es otra cosa: es el mapa humano, para que vos sepas qué tenés. Las dos conviven; no son lo mismo.
 
 ---
 
@@ -229,8 +258,9 @@ Si ya venís usando asistentes y la escalera te quedó chica, esto es el mapa de
 
 - **Orquestadores con estado:** una receta que coordina varias y arrastra contexto entre pasos. Para procesos de varios pasos que se repiten.
 - **Agentes que corren solos:** procesos que arrancan por horario o evento, sin vos. Para tareas que ya no te necesitan presente.
-- **Multi-agente:** varios asistentes en paralelo, cada uno con su parte, y uno que junta. Para trabajo grande que no entra en una sola cabeza.
+- **Multi-agente:** varios asistentes en paralelo, cada uno con su parte, y uno que junta. Para trabajo grande que no entra en una sola cabeza. Un caso concreto y potente: **varias personas sobre la misma decisión** — un pedido corre 4 lentes (el que defiende, el abogado del diablo que hace el pre-mortem, el que verifica los números, el que mira el equipo) y después sintetiza. Un solo lente sesga; cuatro te dan una decisión más honesta. (Si querés algo así ya hecho, mirá tu skill `council`.)
 - **Evals:** medir si una receta hace bien su trabajo, de forma repetible, en vez de "parece que anduvo". Para cuando algo importa y lo corrés seguido.
+- **Auto-mejora de skills:** el cierre de la dupla `eval` + `actualizar`. El asistente propone un cambio a un `SKILL.md`, corre la eval como rúbrica (¿mejoró sí/no?), y **con tu OK** lo aplica o lo descarta, dejando una línea de log de qué probó. Es el patrón "autoresearch": mejorás algo medible a fuerza de iterar, sin que el modelo cambie. Respeta "propone, vos decidís": nunca pisa un skill solo.
 
 Regla de oro acá: no metas esto hasta que la escalera 0 a 5 te quede realmente corta. Es posgrado. La mayoría no lo necesita.
 
@@ -240,7 +270,9 @@ Regla de oro acá: no metas esto hasta que la escalera 0 a 5 te quede realmente 
 
 Dos cosas que, cuando las entendés, te cambian lo que podés hacer. No son del día uno, pero tampoco son posgrado: valen la pena.
 
-**Conectar herramientas (MCP).** Por default tu asistente toca archivos. Con MCP (un estándar para enchufarle herramientas) le das acceso a tus apps: Gmail, tu calendario, una base de datos, lo que sea. Recién ahí puede leer tu inbox, agendar, consultar tus datos. Ejemplo concreto: conectás Gmail por MCP y entonces sí podés tener una rutina que te arma el digest de los mails de la mañana. El MCP es la diferencia entre un asistente que solo ordena tus carpetas y uno que opera tu mundo. Cómo se conecta depende del cliente (Claude Code, Cowork): pedile a tu asistente que te guíe para enchufar el que necesites.
+**Conectar herramientas (MCP).** Por default tu asistente toca archivos. Con MCP (un estándar para enchufarle herramientas) le das acceso a tus apps: Gmail, tu calendario, una base de datos, lo que sea. Recién ahí puede leer tu inbox, agendar, consultar tus datos. Ejemplo concreto: conectás Gmail por MCP y entonces sí podés tener una rutina que te arma el digest de los mails de la mañana. El MCP es la diferencia entre un asistente que solo ordena tus carpetas y uno que opera tu mundo. Una forma de pensarlo: **el MCP es la plomería (le da acceso a la herramienta); el skill es el cerebro (sabe cómo usarla).** Cómo se conecta depende del cliente (Claude Code, Cowork): pedile a tu asistente que te guíe para enchufar el que necesites.
+
+> **Ojo con el combo riesgoso.** Cuando le das a la vez (1) acceso a datos privados, (2) la posibilidad de leer contenido de afuera que no controlás (un mail, una web) y (3) capacidad de mandar cosas para afuera (responder mails, postear), abrís la puerta a que un contenido malicioso le "dicte" acciones. No es para asustarte: es para que, antes de automatizar algo que mezcle las tres, lo revises y, si hay dudas, lo dejes con tu OK en el medio.
 
 **Subagentes.** Un subagente es otro asistente que lanzás para una parte del laburo, en paralelo, con su propio contexto limpio. Sirve para cosas grandes: revisar 20 archivos a la vez, investigar varios temas en simultáneo, o separar un trabajo en pedazos que corren juntos y después se juntan. La regla: usalo cuando una tarea es grande o tiene partes independientes. Para lo chico y secuencial, no hace falta, suma ruido.
 
@@ -249,11 +281,11 @@ Las dos se combinan con lo de antes: una rutina (sección 10) que conecta una he
 ---
 
 ## La escalera (tu índice de crecimiento)
-- **Nivel 0:** el asistente te conoce (`sobre-mi` + `como-trabajo`).
+- **Nivel 0:** el asistente te conoce (`sobre-mi` + `como-trabajo`) y capturás en `0. Inbox/` (sección 2b).
 - **Nivel 1:** tu primer proyecto con su `CLAUDE.md`.
 - **Nivel 2:** la tabla de atajos en tu `CLAUDE.md` raíz.
-- **Nivel 3:** tu primer skill (el chequeador de updates, sección 8).
-- **Nivel 4:** tu primera rutina (poné el chequeador a correr solo, sección 10).
+- **Nivel 3:** tu primer skill propio (leyendo el `actualizar` de ejemplo, sección 8).
+- **Nivel 4:** tu primera rutina (poné `actualizar` a correr solo, con log, sección 10).
 - **Nivel 5:** (si programás) el split código / contexto.
 - **Más allá:** track avanzado (sección 16), opt-in.
 

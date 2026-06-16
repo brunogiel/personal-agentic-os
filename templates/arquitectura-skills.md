@@ -20,7 +20,8 @@ Marcá cada paso `[DET]` o `[LAT]`. El error del principiante es tratar todo com
 
 ## Anatomía mínima de un skill que funciona
 Un `SKILL.md` en una carpeta, con:
-- **Descripción con frases reales** que lo disparan (no "hace reportes", sino "cargá la factura", "subí el resumen"). Eso es lo que hace que se dispare solo.
+- **Descripción con frases reales** que lo disparan (no "hace reportes", sino "cargá la factura", "subí el resumen"). Eso es lo que hace que se dispare solo. Escribila en **tercera persona** ("Arma un reporte… Usalo cuando el usuario diga…"), no en segunda ("te ayuda a…"): es lo que recomienda la doctrina oficial de skills, porque la descripción se inyecta en el system prompt y el punto de vista mezclado confunde el disparo.
+- **Nombre** en minúscula-con-guiones, idealmente en gerundio (`armando-reportes`, `redactando`), sin las palabras `claude` ni `anthropic` (están reservadas).
 - **Contexto en 2 líneas:** qué hace y para quién, en términos de tu trabajo.
 - **Cuándo SÍ y cuándo NO** usarlo.
 - **Pasos marcados `[DET]` o `[LAT]`.**
@@ -41,13 +42,15 @@ Un `SKILL.md` en una carpeta, con:
 Empezás con skills. Lo demás viene después, cuando una tarea ya no te necesita ahí.
 
 ## Dónde viven
-Los skills que armás vos van **a la vista** y se rutean desde tu `CLAUDE.md` raíz (sección "Mis skills"). Dos casos:
-- **Generales** (sirven a varios proyectos): en `skills/` en la raíz de tu SB.
-- **De un proyecto puntual**: adentro de ese proyecto, en `1. Proyectos/<proyecto>/skills/`.
+Clave: tu asistente **descubre y dispara** los skills mirando la carpeta `.claude/skills/`. Si un skill no está ahí, su frase no lo despierta sola. Por eso:
+- **Generales** (sirven a varios proyectos): en `.claude/skills/` en la raíz de tu SB.
+- **De un proyecto puntual**: adentro de ese proyecto, en `1. Proyectos/<proyecto>/.claude/skills/`.
 
-No van en `3. Recursos/`: ahí va material de referencia (como este mismo archivo), no las capacidades. Los skills son infraestructura del agente, por eso viven en su propia carpeta, no dentro de PARA.
+Para verlos y editarlos sin pelear con la carpeta oculta, hay un atajo `skills/` que apunta a `.claude/skills/`, y los anotás en la tabla "Mis skills" de tu `CLAUDE.md` (ese mapa es para vos, el humano; el disparo lo hace el frontmatter).
 
-Los del kit (el motor del coach) son aparte: viven globales y ocultos en `~/.claude/skills/`.
+No van en `3. Recursos/`: ahí va material de referencia (como este mismo archivo), no las capacidades. Los skills son infraestructura del agente, por eso viven en `.claude/skills/`, no dentro de PARA.
+
+Los del kit (el motor del coach) son aparte: viven globales en `~/.claude/skills/`, así funcionan en cualquier carpeta.
 
 ## Checklist antes de dar por hecho un skill
 - [ ] ¿Se dispara con frases reales tuyas?
@@ -55,3 +58,4 @@ Los del kit (el motor del coach) son aparte: viven globales y ocultos en `~/.cla
 - [ ] ¿Dice qué archivos toca?
 - [ ] ¿Tiene 2-3 señales de éxito?
 - [ ] ¿Lo mecánico lo hace un script, no el modelo adivinando?
+- [ ] ¿El `SKILL.md` es corto y enfocado? Si crece mucho, lo pesado (ejemplos largos, tablas, referencia) va a un archivo aparte en la misma carpeta que el skill lee solo cuando hace falta (divulgación progresiva, un nivel de profundidad — no archivos que apuntan a archivos que apuntan a archivos).

@@ -19,7 +19,9 @@
 3. Si el pedido es de un proyecto, leé SOLO `1. Proyectos/<ese proyecto>/CLAUDE.md`, no todo el árbol.
 4. Datos personales o de cómo trabajo: `2. Áreas/yo/sobre-mi.md` y `2. Áreas/yo/como-trabajo.md`.
 5. La doctrina (cómo crece el sistema, skills, convenciones) vive en `.secondbrain/reference.md`. Leela solo cuando la necesites.
-6. Si una frase mía matchea un skill de `skills/`, leé su `SKILL.md` y seguilo.
+6. Tus skills (y los míos, el motor) viven en `.claude/skills/` y se disparan solos con una frase. La tabla "Mis skills" de abajo es el mapa para vos.
+7. Si te tiro algo turbio para después ("metelo al inbox", "no lo quiero decidir ahora"), va a `0. Inbox/` (mirá su `INBOX.md`).
+8. Si digo "retomemos" / "¿en qué estaba?", corré `abrir-sesion`. Si digo "cerremos por hoy", corré `cerrar-sesion` (deja el `ESTADO.md`, el log y el próximo paso al día, para que la próxima sesión arranque sabiendo).
 
 ## Quién soy
 - **Nombre:** <...>
@@ -28,6 +30,7 @@
 
 ## Mi sistema (PARA)
 Una pregunta para ordenar cualquier cosa: *¿esto qué es?*
+- **0. Inbox/** : captura sin decidir. Lo turbio cae acá y se "cocina" después (ver `0. Inbox/INBOX.md`).
 - **1. Proyectos/** : tiene objetivo y fecha (se termina).
 - **2. Áreas/** : responsabilidad que no termina (salud, finanzas, tu rol).
 - **3. Recursos/** : referencia que sirve a varios proyectos.
@@ -43,13 +46,13 @@ Cuando tengas varios proyectos, esta tabla rutea al asistente apenas decís algo
 | `<tu frase típica>` | `<tu carpeta>` |
 
 ## Mis skills (los ves, son tuyos)
-Los skills que vas armando viven en `skills/` (a la vista, los podés abrir y editar). Cuando decís una frase que matchea uno, tu asistente lee su `SKILL.md` y lo sigue. Anotalos acá para que sepa rutearlos.
+Los skills que vas armando viven en `.claude/skills/` (ahí los descubre y los dispara tu asistente con una frase). Hay un atajo visible `skills/` que apunta a esa carpeta, para abrirlos y editarlos. Esta tabla es tu mapa: anotá cada skill con la frase que lo dispara.
 | Si digo… | Skill |
 |---|---|
-| *(ejemplo)* "¿hay updates?" | `skills/actualizar/` |
-| `<tu frase>` | `skills/<tu skill>/` |
+| *(ejemplo)* "¿hay updates?" | `actualizar` |
+| `<tu frase>` | `<tu skill>` |
 
-> Los skills del kit (el coach, redactar, etc.) son aparte: son el motor, viven globales y los invocás por nombre (ej. `/second-brain-coach`).
+> Dos cosas distintas: **el disparo automático** lo hace el frontmatter del `SKILL.md` (por eso vive en `.claude/skills/`); **esta tabla** es para que vos (humano) sepas qué tenés y lo encuentres. Los skills del kit (coach, redactar, etc.) son el motor: viven globales y los invocás por nombre (ej. `/second-brain-coach`).
 
 ## Rutinas (lo que corre solo)
 Tareas que se ejecutan en horario, sin que estés. (Vacío hasta que armes la primera; el coach te ayuda.)

@@ -1,8 +1,8 @@
 ---
 name: migrar-de-claude-projects
 description: >
-  Te ayuda a traer tus proyectos de Claude (los Projects de la app, cerrados) al sistema.
-  Usalo cuando digas "migrá mis proyectos de claude", "traé mis projects", "importá mis
+  Trae los proyectos de Claude del usuario (los Projects de la app, cerrados) al sistema.
+  Usalo cuando el usuario diga "migrá mis proyectos de claude", "traé mis projects", "importá mis
   proyectos de la app", "pasá mis proyectos de claude.ai acá".
 ---
 
