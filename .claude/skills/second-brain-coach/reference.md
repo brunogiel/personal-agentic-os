@@ -234,7 +234,7 @@ El truco del status: `ESTADO.md` es un archivo chico (nivel + proyectos activos 
 
 La regla, en **2 baldes** (así tu carpeta se ve limpia y sabés qué es qué):
 
-1. **👁 TU BRAIN (esta carpeta) — solo lo tuyo.** Tu contexto: las carpetas PARA + `0. Inbox/`, tu identidad (`2. Áreas/yo/`), tu progreso (`ESTADO.md` + `ESCALERA.md`), el `CLAUDE.md` raíz (router) + `AGENTS.md`. Y **`skills/`: los skills que usás** (redactar, anti-slop, triage, auditar, crear-skill, evaluar-skill + los que armes vos). Los ves, los abrís, aprendés cómo están. No vienen todos de una: el coach te los va sumando a medida que avanzás. **Nada del método ensucia tu carpeta.**
+1. **👁 TU BRAIN (esta carpeta) — solo lo tuyo.** Tu contexto: las carpetas PARA + `0. Inbox/`, tu identidad (`2. Áreas/yo/`), tu progreso (`ESTADO.md` + `ESCALERA.md`), el `CLAUDE.md` raíz (router) + `AGENTS.md`. Y **`skills/`: los skills que usás** (redactar, anti-slop, triage, auditar, crear-skill, evaluar-skill, ppt-builder, council + los que armes vos). Los ves, los abrís, aprendés cómo están. No vienen todos de una: el coach te los va sumando a medida que avanzás. **Nada del método ensucia tu carpeta.**
 
 2. **🔒 EL MÉTODO (global, `~/.claude/skills/`) — se instala como una app.** El coach lleva sus piezas adentro de su propia carpeta (`~/.claude/skills/second-brain-coach/`): esta doctrina (`reference.md`), la `plantilla-proyecto.md`, los `ejemplos.md`, el **catálogo** `skills-disponibles/` (las fuentes de los skills de uso), y el control de versión. Más `actualizar` y `migrar`. Se usa por nombre (`/second-brain-coach`); no vive en tu carpeta.
 
@@ -258,8 +258,8 @@ Cuando ya tenés varios skills y una rutina, el sistema da para más. Ojo: esto 
 
 **Nivel 5 — Orquestar.** Un orquestador es una receta que NO hace el trabajo: coordina a otros skills (o a subagentes) y junta los resultados.
 - **Orquestador con estado:** llama a varios en orden y arrastra contexto entre pasos. Para procesos de varios pasos que se repiten.
-- **Multi-agente:** varios asistentes en paralelo, cada uno con su parte, y uno que junta. Para trabajo grande que no entra en una sola cabeza. Caso potente: **varias miradas sobre la misma decisión** — un pedido corre 4 lentes (el que defiende, el abogado del diablo que hace el pre-mortem, el que verifica los números, el que mira el equipo) y después sintetiza. Un lente sesga; cuatro dan una decisión más honesta. (Ya hecho: tu skill `council`.)
-- **Cómo se aprende:** igual que un skill — usás uno de ejemplo (el de PPT, que arma una presentación coordinando varios skills/subagentes) para ver el patrón, y después armás el tuyo. El "cómo se arma" está en `arquitectura-skills.md`.
+- **Multi-agente:** varios asistentes en paralelo, cada uno con su parte, y uno que junta. Para trabajo grande que no entra en una sola cabeza. Caso potente: **varias miradas sobre la misma decisión** — un pedido corre 4 lentes (el que defiende, el abogado del diablo que hace el pre-mortem, el que verifica los números, el que mira el equipo) y después sintetiza. Un lente sesga; cinco dan una decisión más honesta. (Ya viene en el catálogo como ejemplo: el skill `council`, 5 lentes + peer-review anónimo + síntesis.)
+- **Cómo se aprende:** igual que un skill — usás uno de ejemplo (`ppt-builder` para el orquestador con estado, `council` para el multi-agente) para ver el patrón, y después armás el tuyo. El "cómo se arma" está en `arquitectura-skills.md`.
 
 **Nivel 6 — Mantener.** Un sistema que no se revisa se pudre callado. Dos herramientas del kit:
 - **`auditar-sistema`:** el chequeo de salud (tipo sábado) — archivos huérfanos, skills que dejaron de cumplir, rutinas que fallan mudas.

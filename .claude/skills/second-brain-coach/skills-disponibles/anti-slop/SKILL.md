@@ -11,7 +11,7 @@ description: >
 
 Una pasada de higiene. No reescribís el mensaje ni la voz: sacás los tics que delatan que lo escribió una máquina. **Una sola pasada, sin loops.**
 
-## Las 4 reglas
+## Las 5 reglas
 
 ### 1. "No es X, es Y" (el tell número uno)
 El patrón "no es X, es Y" / "no se trata de X sino de Y" / "menos X, más Y" es la muletilla más común de los LLM. Borrá la mitad negada y dejá solo la afirmación directa.
@@ -46,7 +46,7 @@ Si suena forzado, simplificá.
 - **No sobre-corrijas.** No evites una palabra útil solo porque está en una lista. Si es la palabra exacta, va.
 
 ## Qué lee y escribe
-- **Lee:** el texto que te pasan y, si existe, `2. Áreas/yo/mi-estilo.md` (para no pisar la jerga ni la voz del usuario).
+- **Lee:** el texto que te pasan; si existe, `2. Áreas/yo/mi-estilo.md` (para no pisar la jerga ni la voz del usuario); y, si existe, `3. Recursos/anti-slop-writing.md` (la doctrina completa con listas negras y ejemplos antes/después). Sin la doctrina igual funcionás con las reglas de acá; con ella afinás mejor.
 - **Escribe:** nada a archivos. Devolvés el texto limpio + el diff en el chat.
 
 ## Flujo

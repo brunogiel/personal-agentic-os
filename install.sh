@@ -30,7 +30,7 @@ YO_FILES=("sobre-mi.md" "como-trabajo.md" "mi-estilo.md" "MEMORIA.md")
 SKILLS_DIR="${HOME}/.claude/skills"
 COACH_DIR="${SKILLS_DIR}/second-brain-coach"          # el coach + sus piezas bundled
 SKILLS_MOTOR=("second-brain-coach" "actualizar" "migrar-de-claude-projects")
-SKILLS_USO=("redactar" "anti-slop" "crear-skill" "evaluar-skill" "auditar-sistema" "triage" "ppt-builder")  # catálogo
+SKILLS_USO=("redactar" "anti-slop" "crear-skill" "evaluar-skill" "auditar-sistema" "triage" "ppt-builder" "council")  # catálogo
 
 echo ""
 echo "🧠  SecondBrain — armando tu sistema..."
@@ -59,6 +59,7 @@ echo "  ↓ bajando archivos..."
 for f in "${ROOT_FILES[@]}"; do fetch "templates/${f}" "root/${f}"; done
 for f in "${YO_FILES[@]}";   do fetch "templates/${f}" "yo/${f}";   done
 fetch "templates/arquitectura-skills.md" "recursos/arquitectura-skills.md"
+fetch "templates/anti-slop-writing.md"   "recursos/anti-slop-writing.md"
 fetch "templates/INBOX.md"               "inbox/INBOX.md"
 # el método: motor
 for s in "${SKILLS_MOTOR[@]}"; do fetch ".claude/skills/${s}/SKILL.md" "motor/${s}/SKILL.md"; done
@@ -84,6 +85,7 @@ place() {  # place <archivo-en-tmp> <destino>  — no pisa si ya existe
 for f in "${ROOT_FILES[@]}"; do place "root/${f}" "$f"; done
 for f in "${YO_FILES[@]}";   do place "yo/${f}" "${YO_DIR}/${f}"; done
 place "recursos/arquitectura-skills.md" "3. Recursos/arquitectura-skills.md"
+place "recursos/anti-slop-writing.md"   "3. Recursos/anti-slop-writing.md"
 place "inbox/INBOX.md"                  "0. Inbox/INBOX.md"
 mkdir -p "skills"   # tus skills de uso, a la vista (vacía; el coach la llena)
 echo "  ✓ carpeta visible skills/ (vacía; el coach te suma skills, ruteados por tu CLAUDE.md)"

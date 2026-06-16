@@ -22,7 +22,7 @@ Most people never write those files. This gives you the seed and a coach that wa
 curl -fsSL https://raw.githubusercontent.com/brunogiel/secondbrain-claude/main/install.sh | bash
 ```
 
-This creates, **in your folder**, only your own stuff: your `0. Inbox/` + PARA folders and the essentials (`CLAUDE.md` router, `ESTADO.md`, `ESCALERA.md`, `AGENTS.md`, your identity under `2. Áreas/yo/`). The **method itself installs globally**, like an app — the coach (carrying its doctrine, templates, examples, and the catalog of use-skills bundled inside its own folder), plus `actualizar`/`migrar` — invisibly in `~/.claude/skills/`, so `/second-brain-coach` works without cluttering your folder. The **skills you actually use** (redactar, anti-slop, triage, auditar, crear-skill, evaluar-skill) are NOT dumped on you: the coach adds each one to a plain, visible `skills/` folder as you climb, so you see it, open it, and learn how it's built. They fire through the **"Mis skills" table in your `CLAUDE.md`** (a phrase → a skill) — which is why they work the same in **Claude Code, Cowork, and Codex** (all three read your `CLAUDE.md`; Codex via `AGENTS.md`), no Claude-only folder needed. Your folder stays clean: you only see your own stuff.
+This creates, **in your folder**, only your own stuff: your `0. Inbox/` + PARA folders and the essentials (`CLAUDE.md` router, `ESTADO.md`, `ESCALERA.md`, `AGENTS.md`, your identity under `2. Áreas/yo/`). The **method itself installs globally**, like an app — the coach (carrying its doctrine, templates, examples, and the catalog of use-skills bundled inside its own folder), plus `actualizar`/`migrar` — invisibly in `~/.claude/skills/`, so `/second-brain-coach` works without cluttering your folder. The **skills you actually use** (redactar, anti-slop, triage, auditar, crear-skill, evaluar-skill, ppt-builder, council) are NOT dumped on you: the coach adds each one to a plain, visible `skills/` folder as you climb, so you see it, open it, and learn how it's built. They fire through the **"Mis skills" table in your `CLAUDE.md`** (a phrase → a skill) — which is why they work the same in **Claude Code, Cowork, and Codex** (all three read your `CLAUDE.md`; Codex via `AGENTS.md`), no Claude-only folder needed. Your folder stays clean: you only see your own stuff.
 
 Not on the terminal (e.g. Cowork desktop)? Download the zip or `git clone` and open the folder in Claude — the coach ships inside the folder's `.claude/skills/`, so it's available immediately. Just say *"set up my system"*.
 
@@ -57,12 +57,13 @@ To be honest about the line: your **brain** (your text) *and* your **use-skills*
 
 - **`CLAUDE.md`** — your root file, a thin router read at the start of every session.
 - **`ESTADO.md`** — your dashboard: where you are, what's active (the thin one the assistant reads every session).
-- **`ESCALERA.md`** — your gamified growth tracker: levels 0→5, a checklist per level, what you've done and what's next. The coach keeps it updated; ask it "how am I doing?" anytime.
+- **`ESCALERA.md`** — your gamified growth tracker: levels 0→6, a checklist per level, what you've done and what's next. The coach keeps it updated; ask it "how am I doing?" anytime.
 - **`AGENTS.md`** — a 6-line pointer so non-Claude agents (Codex, etc.) find your `CLAUDE.md`.
 - **`0. Inbox/`** — capture without deciding: toss the murky stuff here, "cook" it later (`INBOX.md` holds the protocol).
 - **`sobre-mi.md` / `como-trabajo.md` / `mi-estilo.md`** — who you are, how you like to work, and a sample of your writing voice (fill-in templates, under `2. Áreas/yo/`).
-- **`soul.md` / `dev-prefs.md`** — what you're really about (fills in over time, in conversation) and, if you code, how you like to work the code. The coach adds these as you climb; they don't ship on install.
+- **`soul.md` / `dev-prefs.md`** — what you're really about (fills in over time, in conversation) and, if you code, how you like to work the code (`dev-prefs.md` ships with a block of universal engineering rules already baked in, so it's not an empty template). The coach adds these as you climb; they don't ship on install.
 - **`3. Recursos/arquitectura-skills.md`** — your reference for building good skills (rule of 3, DET/LAT, anatomy, common mistakes).
+- **`3. Recursos/anti-slop-writing.md`** — the full anti-slop doctrine (the 5 rules, with blacklists and before/after examples) that the `anti-slop` skill draws on.
 - **The method** lives globally (in `~/.claude/skills/`, like an installed app), not in your folder: the coach carries its doctrine (`reference.md`), templates, examples, and the **catalog** of use-skills bundled inside it. Nothing of the method clutters your brain — you only see your own content.
 - **The engine** (🔒 global, invisible, called by name — never clutters your folder):
   - **`second-brain-coach`** — walks you up the levels and teaches as you go (`/second-brain-coach`).
@@ -75,7 +76,8 @@ To be honest about the line: your **brain** (your text) *and* your **use-skills*
   - **`evaluar-skill`** — checks a skill against its own SKILL.md and proposes fixes (for when you have several to keep sharp).
   - **`auditar-sistema`** — a health check of your system (great as a routine).
   - **`triage`** — your morning brief and action items, pulled across your sources: mail, calendar (a meetings report) and your work chat/tasks (Slack, Jira, Linear, Trello, Notion comments, whatever you use). Each source needs its MCP; mail alone is enough to start.
-  - **`ppt-builder`** — builds a deck (or post, video, carousel, landing) in 5 stages; an **orchestrator example** (it coordinates `redactar` + `anti-slop` + your pptx skill). Shows up at Level 5.
+  - **`ppt-builder`** — builds a deck (or post, video, carousel, landing) in 5 stages; the **stateful orchestrator example** (it coordinates `redactar` + `anti-slop` + your pptx skill). Shows up at Level 5.
+  - **`council`** — runs a real decision through 5 advisors with different lenses, who peer-review each other and synthesize a verdict (based on Karpathy's LLM Council); the **multi-agent orchestrator example**. Shows up at Level 5, for decisions where being wrong is expensive.
 
 ## Philosophy
 

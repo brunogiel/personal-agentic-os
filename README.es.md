@@ -20,7 +20,7 @@ Casi nadie escribe esos archivos. Esto te da la semilla y un coach que te lleva 
 curl -fsSL https://raw.githubusercontent.com/brunogiel/secondbrain-claude/main/install.sh | bash
 ```
 
-Te crea, **en tu carpeta**, solo lo tuyo: las carpetas `0. Inbox/` + PARA y lo esencial (router `CLAUDE.md`, `ESTADO.md`, `ESCALERA.md`, `AGENTS.md`, tu identidad en `2. Áreas/yo/`). El **método se instala global**, como una app — el coach (que lleva su doctrina, plantillas, ejemplos y el catálogo de skills de uso adentro de su propia carpeta), más `actualizar`/`migrar` — invisible en `~/.claude/skills/`, así `/second-brain-coach` funciona sin ensuciar tu carpeta. Los **skills que realmente usás** (redactar, anti-slop, triage, auditar, crear-skill, evaluar-skill) NO te los tiran todos de una: el coach te va sumando cada uno a una carpeta `skills/` a secas y a la vista a medida que subís, así lo ves, lo abrís y aprendés cómo está hecho. Se disparan por la **tabla "Mis skills" de tu `CLAUDE.md`** (una frase → un skill) — por eso andan igual en **Claude Code, Cowork y Codex** (los tres leen tu `CLAUDE.md`; Codex vía `AGENTS.md`), sin carpetas específicas de Claude. Tu carpeta queda limpia: ves solo lo tuyo.
+Te crea, **en tu carpeta**, solo lo tuyo: las carpetas `0. Inbox/` + PARA y lo esencial (router `CLAUDE.md`, `ESTADO.md`, `ESCALERA.md`, `AGENTS.md`, tu identidad en `2. Áreas/yo/`). El **método se instala global**, como una app — el coach (que lleva su doctrina, plantillas, ejemplos y el catálogo de skills de uso adentro de su propia carpeta), más `actualizar`/`migrar` — invisible en `~/.claude/skills/`, así `/second-brain-coach` funciona sin ensuciar tu carpeta. Los **skills que realmente usás** (redactar, anti-slop, triage, auditar, crear-skill, evaluar-skill, ppt-builder, council) NO te los tiran todos de una: el coach te va sumando cada uno a una carpeta `skills/` a secas y a la vista a medida que subís, así lo ves, lo abrís y aprendés cómo está hecho. Se disparan por la **tabla "Mis skills" de tu `CLAUDE.md`** (una frase → un skill) — por eso andan igual en **Claude Code, Cowork y Codex** (los tres leen tu `CLAUDE.md`; Codex vía `AGENTS.md`), sin carpetas específicas de Claude. Tu carpeta queda limpia: ves solo lo tuyo.
 
 ¿No estás en la terminal (ej. Cowork desktop)? Bajá el zip o hacé `git clone` y abrí la carpeta en Claude: el coach viene adentro, en el `.claude/skills/` de la carpeta, así que está disponible al toque. Decile *"armame el sistema"*.
 
@@ -55,12 +55,13 @@ Siendo honestos con la línea: tu **cerebro** (tu texto) *y* tus **skills de uso
 
 - **`CLAUDE.md`**: tu archivo raíz, un router fino que se lee al arrancar cada sesión.
 - **`ESTADO.md`**: tu tablero fino (dónde estás, qué hay activo; lo lee el asistente cada sesión).
-- **`ESCALERA.md`**: tu tracker de progreso gamificado: niveles 0→5, un checklist por nivel, qué hiciste y qué falta. El coach lo mantiene; preguntale "¿cómo vengo?" cuando quieras.
+- **`ESCALERA.md`**: tu tracker de progreso gamificado: niveles 0→6, un checklist por nivel, qué hiciste y qué falta. El coach lo mantiene; preguntale "¿cómo vengo?" cuando quieras.
 - **`AGENTS.md`**: un puntero de 6 líneas para que un agente no-Claude (Codex, etc.) encuentre tu `CLAUDE.md`.
 - **`0. Inbox/`**: capturá sin decidir: tirá lo turbio acá y cocinalo después (el protocolo está en `INBOX.md`).
 - **`sobre-mi.md` / `como-trabajo.md` / `mi-estilo.md`**: quién sos, cómo te gusta trabajar y una muestra de tu voz para escribir (templates para llenar, en `2. Áreas/yo/`).
-- **`soul.md` / `dev-prefs.md`**: lo de fondo (se llena con el tiempo, hablando) y, si programás, cómo te gusta laburar el código. Los suma el coach a medida que subís; no vienen en la instalación.
+- **`soul.md` / `dev-prefs.md`**: lo de fondo (se llena con el tiempo, hablando) y, si programás, cómo te gusta laburar el código (`dev-prefs.md` ya viene con un bloque de reglas universales de ingeniería de fábrica, no es un template vacío). Los suma el coach a medida que subís; no vienen en la instalación.
 - **`3. Recursos/arquitectura-skills.md`**: tu referencia para armar buenos skills (regla de 3, DET/LAT, anatomía, errores típicos).
+- **`3. Recursos/anti-slop-writing.md`**: la doctrina completa de anti-slop (las 5 reglas, con listas negras y ejemplos antes/después) que el skill `anti-slop` usa de base.
 - **El método** vive global (en `~/.claude/skills/`, como una app instalada), no en tu carpeta: el coach lleva su doctrina (`reference.md`), plantillas, ejemplos y el **catálogo** de skills de uso adentro suyo. Nada del método ensucia tu brain — ves solo lo tuyo.
 - **El motor** (🔒 global, invisible, se llama por nombre — nunca ensucia tu carpeta):
   - **`second-brain-coach`**: te sube de nivel y te enseña mientras subís (`/second-brain-coach`).
@@ -73,7 +74,8 @@ Siendo honestos con la línea: tu **cerebro** (tu texto) *y* tus **skills de uso
   - **`evaluar-skill`**: mide un skill contra su propio SKILL.md y propone arreglos (para cuando tenés varios y querés mantenerlos afilados).
   - **`auditar-sistema`**: una revisión de salud de tu sistema (va bien como rutina).
   - **`triage`**: tu brief de la mañana y los accionables, cruzando tus fuentes: mail, calendario (reporte de citas) y tu chat/tareas de trabajo (Slack, Jira, Linear, Trello, Notion comments, lo que uses). Cada fuente necesita su MCP; con el mail solo ya arranca.
-  - **`ppt-builder`**: arma un deck (o post, video, carrusel, landing) en 5 etapas; un **ejemplo de orquestador** (coordina `redactar` + `anti-slop` + tu skill de pptx). Aparece en el Nivel 5.
+  - **`ppt-builder`**: arma un deck (o post, video, carrusel, landing) en 5 etapas; el **ejemplo de orquestador con estado** (coordina `redactar` + `anti-slop` + tu skill de pptx). Aparece en el Nivel 5.
+  - **`council`**: corre una decisión real por 5 asesores con lentes distintas, que se revisan entre ellos y sintetizan un veredicto (basado en el LLM Council de Karpathy); el **ejemplo de orquestador multi-agente**. Aparece en el Nivel 5, para decisiones donde equivocarse sale caro.
 
 ## Filosofía
 

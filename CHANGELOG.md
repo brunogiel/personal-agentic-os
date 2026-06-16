@@ -1,7 +1,16 @@
 # Changelog
 
+## 2.10.0
+- **Nuevo skill `council`** (orquestador multi-agente, basado en el LLM Council de Karpathy): corre una decisión por 5 asesores con lentes distintas, peer-review anónimo entre ellos y síntesis de un chairman. Es el **segundo ejemplo de orquestador del N5** (multi-agente, junto a `ppt-builder` que es el de estado), y de paso resuelve un ref colgado: `reference.md` y `arquitectura-skills.md` lo citaban pero no se enviaba. Catálogo de skills de uso → 8. Sumado al `install.sh`, al coach (N5 + "cuándo ofrecer") y a ambos READMEs.
+- **`dev-prefs.md` deja de ser un stub vacío:** ahora viene con un bloque de **reglas universales de ingeniería de fábrica** (tamaño de archivo, nombres, imports, secretos, logs, comentarios, código muerto, testing, performance), agnósticas al stack, más el andamiaje para completar lo tuyo. Así el escalón "si programás" arranca con baterías, no con `<...>`.
+- **Nuevo Recurso `3. Recursos/anti-slop-writing.md`:** la doctrina completa detrás del skill `anti-slop` (las 5 reglas con listas negras español+inglés, ejemplos antes/después, guía anti-overfitting y quick check). Hasta ahora el skill `anti-slop` venía en el kit pero su doctrina de fondo no viajaba; ahora se instala como Recurso (igual que `arquitectura-skills.md`) y el skill la lee si está. Sumado al `install.sh` y a ambos READMEs.
+- **Fixes de consistencia** (la lista de skills de uso quedó stale en varios lados tras sumar `ppt-builder` en 2.9.1 y ahora `council`): ahora figuran los **8** en los dos READMEs, en `reference.md` y en `ejemplos.md`.
+- **Fix:** ambos READMEs decían escalera "0→5"; la real es **0→6** desde 2.9.0.
+- **Fix:** el skill `anti-slop` titulaba "Las 4 reglas" y listaba 5 → "Las 5 reglas".
+- **Higiene:** sacadas menciones al autor por nombre en notas de dev del propio CHANGELOG.
+
 ## 2.9.1
-- **Nuevo skill `ppt-builder`** (despersonalizado del `building-blocks` del SB de Bruno): arma una pieza de comunicación —deck/ppt por default, también post/video/carrusel/landing— en 5 etapas (Brief → Historia → Estructura → Copy → Asset), una a la vez con tu OK. Es el **orquestador de ejemplo del Nivel 5**: no hace todo solo, coordina e invoca `redactar` + `anti-slop` (copy) y el skill de pptx (asset). Cierra el TODO que dejaba el N5 sin ejemplo concreto. Catálogo de skills de uso → 7. Sumado al `install.sh`, al coach (N5) y a los READMEs.
+- **Nuevo skill `ppt-builder`** (versión despersonalizada de un orquestador de comunicación de un SB en uso real): arma una pieza de comunicación —deck/ppt por default, también post/video/carrusel/landing— en 5 etapas (Brief → Historia → Estructura → Copy → Asset), una a la vez con tu OK. Es el **orquestador de ejemplo del Nivel 5**: no hace todo solo, coordina e invoca `redactar` + `anti-slop` (copy) y el skill de pptx (asset). Cierra el TODO que dejaba el N5 sin ejemplo concreto. Catálogo de skills de uso → 7. Sumado al `install.sh`, al coach (N5) y a los READMEs.
 
 ## 2.9.0
 - **Escalera ampliada a 0→6** (integra el trabajo de una sesión paralela, mergeado limpio sobre la topología global):
@@ -21,7 +30,7 @@
 - `install.sh`, coach, doctrina (`reference.md` §14), templates y READMEs reescritos al modelo de 2 baldes. `actualizar`/`check-update.sh` leen la `VERSION` instalada global (con `$HOME`, no `~` entre comillas).
 
 ## 2.7.1
-- **Sacados `abrir-sesion` y `cerrar-sesion`** del catálogo: el autor nunca los usó y su valor ya está cubierto por el coach + `ESTADO.md` + `ESCALERA.md`. El catálogo de skills de uso queda en **6** (redactar, anti-slop, triage, crear-skill, evaluar-skill, auditar-sistema). El "briefear al abrir" lo hace el coach; el "capturar al cerrar" pasa a ser un **hábito** (dejar `ESTADO.md` + "próximo paso" al día), no un skill ceremonial. Limpieza de referencias en coach, doctrina, templates y READMEs.
+- **Sacados `abrir-sesion` y `cerrar-sesion`** del catálogo: su valor ya está cubierto por el coach + `ESTADO.md` + `ESCALERA.md`. El catálogo de skills de uso queda en **6** (redactar, anti-slop, triage, crear-skill, evaluar-skill, auditar-sistema). El "briefear al abrir" lo hace el coach; el "capturar al cerrar" pasa a ser un **hábito** (dejar `ESTADO.md` + "próximo paso" al día), no un skill ceremonial. Limpieza de referencias en coach, doctrina, templates y READMEs.
 - **Mapa definitivo:** motor del método (3, oculto/global, el usuario solo toca `/coach`) = `second-brain-coach` + `actualizar` + `migrar`. Skills de uso (6, visibles en el SB) = lo que el usuario usa en su trabajo.
 
 ## 2.7.0
@@ -32,7 +41,7 @@
 
 ## 2.6.0
 - **Skills de uso movidos a `templates/skills/`** (no son del motor, son lo que se instala en el SB del usuario). En el repo, `.claude/skills/` queda SOLO con el motor (coach + actualizar + migrar); los skills de uso son el catálogo-fuente en `templates/skills/`. `install.sh` los fetchea de ahí.
-- **Nuevo skill `evaluar-skill`** (versión genérica del eval-skill de Bruno): mide un skill contra su propio `SKILL.md` (la rúbrica) en una corrida real y propone mejoras sin aplicarlas. Cierra el loop de calidad. El coach lo ofrece cuando ya tenés varios skills.
+- **Nuevo skill `evaluar-skill`** (versión genérica de un skill de evaluación de skills): mide un skill contra su propio `SKILL.md` (la rúbrica) en una corrida real y propone mejoras sin aplicarlas. Cierra el loop de calidad. El coach lo ofrece cuando ya tenés varios skills.
 - **Skills de uso enriquecidos** para cumplir su propia arquitectura (auditoría de subagente): sección "Qué lee y escribe" en los que la omitían; `anti-slop` suma output con tabla de cambios + modo "Limpio ✅" + 5ª regla (meta-señalización) + troubleshooting + señales binarias; `auditar-sistema` suma reglas duras + output con formato fijo ("✅ Sin cambios necesarios" obligatoria + cierre de aprobación); `crear-skill` suma checklist de los 5 criterios mínimos; `redactar` suma loop de perfil-que-aprende; `triage` suma modo degradado.
 - **soul.md vs proyecto — resuelto:** el bloque del proyecto pasa de "Cómo trabajar acá" a **"Rol acá"** (solo lo que cambia del soul). `soul.md` suma **"Qué manda cuando hay conflicto"** (precedencia explícita) + andamiaje de voz + "cómo evoluciona".
 - **Templates menos pelados:** `mi-estilo.md` suma apertura/cierre/firma, tabla de adaptación por canal y "prohibido duro".
@@ -43,7 +52,7 @@
 - Fix de coherencia: el coach (`second-brain-coach`, ladder N3) todavía decía que el primer skill propio va en `.claude/skills/` — resto del modelo viejo que se contradecía con el resto del kit. Ahora dice `skills/` + su fila en la tabla "Mis skills", alineado con la doctrina de routing por tabla (v2.5.0).
 
 ## 2.5.0
-- **Portabilidad real (Code + Cowork + Codex):** los skills de uso pasan a una **`skills/` a secas y visible** (sin `.claude/skills/`, sin symlink) y se disparan por la **tabla "Mis skills" del `CLAUDE.md`** (frase → skill). Como los tres harnesses leen el `CLAUDE.md` (Codex vía `AGENTS.md`), funcionan igual en todos. Antes el kit dependía de `.claude/skills/` (descubrimiento nativo de Claude), que **en Codex no dispara**. El patrón está tomado del SB real de Bruno, que ya corría así (skills pelada + tabla del router).
+- **Portabilidad real (Code + Cowork + Codex):** los skills de uso pasan a una **`skills/` a secas y visible** (sin `.claude/skills/`, sin symlink) y se disparan por la **tabla "Mis skills" del `CLAUDE.md`** (frase → skill). Como los tres harnesses leen el `CLAUDE.md` (Codex vía `AGENTS.md`), funcionan igual en todos. Antes el kit dependía de `.claude/skills/` (descubrimiento nativo de Claude), que **en Codex no dispara**. El patrón está tomado de un SB en uso real, que ya corría así (skills pelada + tabla del router).
 - **`install.sh`:** crea `skills/` a secas (saca el symlink y el `.claude/skills/` del SB del usuario). El motor (3) sigue global e invisible; el catálogo (7 skills de uso) sigue en `.secondbrain/skills-disponibles/`.
 - **Coach y `crear-skill`:** al sumar un skill, copian a `skills/<x>/` y **anotan la fila en la tabla "Mis skills"** — ese paso es ahora lo que lo hace disparar (no es cosmético; sin la fila, el skill no se activa).
 - **`AGENTS.md`:** ahora le explica a Codex cómo usar la tabla de skills (antes solo apuntaba al `CLAUDE.md`).
