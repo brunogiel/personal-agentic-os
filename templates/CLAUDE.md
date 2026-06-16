@@ -17,13 +17,13 @@
 1. Leé este archivo (es corto).
 2. Leé `ESTADO.md` para ubicarte rápido (dónde estás, qué hay activo). Si el estado ya lo dice, no escanees todo.
 3. Si el pedido es de un proyecto, leé SOLO `1. Proyectos/<ese proyecto>/CLAUDE.md`, no todo el árbol.
-4. Datos personales o de cómo trabajo: `sobre-mi.md` y `como-trabajo.md`.
+4. Datos personales o de cómo trabajo: `2. Áreas/yo/sobre-mi.md` y `2. Áreas/yo/como-trabajo.md`.
 5. La doctrina (cómo crece el sistema, skills, convenciones) vive en `.secondbrain/reference.md`. Leela solo cuando la necesites.
 
 ## Quién soy
 - **Nombre:** <...>
 - **En una línea, qué quiero del asistente:** <...>
-- Detalle: [sobre-mi.md](sobre-mi.md) · cómo trabajo: [como-trabajo.md](como-trabajo.md)
+- Detalle: `2. Áreas/yo/sobre-mi.md` · cómo trabajo: `2. Áreas/yo/como-trabajo.md`
 
 ## Mi sistema (PARA)
 Una pregunta para ordenar cualquier cosa: *¿esto qué es?*

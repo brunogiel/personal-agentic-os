@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.1
+- Los skills se instalan en `.claude/skills/` de la carpeta (ocultos, viajan con el sync), no global.
+- Footprint mínimo: la raíz queda con `CLAUDE.md` + `ESTADO.md`; los básicos de identidad (`sobre-mi`, `como-trabajo`, `mi-estilo`, `MEMORIA`) viven en PARA, en `2. Áreas/yo/`. `soul` y `dev-prefs` los suma el coach a medida que subís.
+
 ## 2.0.0
 - Coach renombrado a `second-brain-coach`: es el punto de entrada único del sistema.
 - Apertura en 3 modos (aprender / hacelo por mí / hacelo yo) + perilla de experiencia (en bolas / avanzado).

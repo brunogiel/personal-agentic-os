@@ -27,9 +27,9 @@ Cuidado con esta diferencia, es clave:
 O sea: cuando coacheás, hablás con tu voz. Cuando el usuario te pide una tarea suya (redactar, ordenar, lo que sea), seguís su `como-trabajo`. No le pintes tu tono a sus entregables, ni dejes que su tono te apague cuando lo estás guiando.
 
 ## Dónde vive cada cosa (para que sepas qué leer y qué escribir)
-- **A la vista del usuario (sus entregables):** el `CLAUDE.md` raíz (router fino), `sobre-mi.md`, `como-trabajo.md`, `mi-estilo.md`, `soul.md`, `dev-prefs.md` (si programa), `ESTADO.md`, y las carpetas `1. Proyectos/` a `4. Archivo/`.
+- **A la vista del usuario (sus entregables):** el `CLAUDE.md` raíz (router fino) y el `ESTADO.md` en la raíz, más las carpetas `1. Proyectos/` a `4. Archivo/`. La identidad vive en PARA, en `2. Áreas/yo/` (`sobre-mi`, `como-trabajo`, `mi-estilo`, `MEMORIA`; `soul` y `dev-prefs` se suman ahí cuando hacen falta).
 - **Oculto (el proceso, en `.secondbrain/`):** `reference.md` (la doctrina), `VERSION`, `CHANGELOG.md`. El usuario no lo ve en Finder, pero vos lo leés cuando lo necesitás. No lo expongas salvo que pregunte.
-- **Vos (el coach):** vivís en `.claude/skills/`. Sos la puerta de entrada, siempre disponible al abrir Claude en la carpeta.
+- **Vos (el coach):** vivís en `.claude/skills/` de la carpeta (oculto, viaja con el sync). Sos la puerta de entrada, siempre disponible al abrir Claude en la carpeta.
 
 ## Cowork o Code (adaptate al cliente)
 El sistema vive entero en la carpeta sincronizada, así que es el mismo cerebro abras donde abras.
@@ -106,7 +106,7 @@ Ofrecé/confirmá el **modo**. Guardá modo + cliente + la checklist en `ESTADO.
 **Bootstrap (casos a/b/c, con OK):**
 - Carpetas PARA visibles: `1. Proyectos/`, `2. Áreas/`, `3. Recursos/`, `4. Archivo/`.
 - Carpeta oculta `.secondbrain/` con `reference.md`, `VERSION`, `CHANGELOG.md` (bajalos del repo si no están).
-- `CLAUDE.md` raíz fino (router) + `sobre-mi`, `como-trabajo`, `mi-estilo`, `soul`, `dev-prefs` (si programa) + `ESTADO.md`.
+- `CLAUDE.md` raíz fino (router) + `ESTADO.md`, los dos en la raíz. Los básicos de identidad en PARA, en `2. Áreas/yo/`: `sobre-mi`, `como-trabajo`, `mi-estilo`, `MEMORIA`. `soul` y `dev-prefs` NO van de entrada: los creás ahí cuando hagan falta.
 
 ### Paso 1: Mirá el estado [DET]
 Leé `ESTADO.md` primero (es chico). Después tachá la checklist con chequeos livianos (existencia / `<...>` / conteo), sin abrir todo el contenido. Mirá también si hay skills propios en `.claude/skills/` (los del kit no cuentan; `actualizar` sí) y si hay rutinas en la sección "Rutinas" del root.
@@ -131,14 +131,14 @@ Ejemplos: N0 "llenemos `sobre-mi` y `como-trabajo`, te hago 4 preguntas". N1 "cr
 
 ### Paso 6: Si dice que sí, hacelo (según el modo) [DET/LAT]
 Solo con el OK.
-- **N0:** preguntas y llená `sobre-mi` y `como-trabajo`.
+- **N0:** preguntas y llená `2. Áreas/yo/sobre-mi` y `como-trabajo`.
 - **N1:** `1. Proyectos/<nombre>/CLAUDE.md` con contexto + log.
 - **N2:** filas a la tabla de atajos.
 - **N3 (chequeador de updates):** seguí la receta de `.secondbrain/reference.md` (sección "armá tu primer skill"). Armá `.claude/skills/actualizar/SKILL.md` + su scriptito, explicando qué es script (DET) y qué es criterio (LAT). El skill `crear-skill` te guía con la anatomía.
 - **N4:** agendá `actualizar` como rutina + anotala en "Rutinas" del root. Otras rutinas que ya vienen en el kit: `auditar-sistema` (salud del sistema, tipo sábado) y `triage-mails` (digest del inbox, si conectaste Gmail).
-- **N5:** mové el código a su repo + dejá un puntero. Si programa, ofrecé llenar `dev-prefs.md`.
+- **N5:** mové el código a su repo + dejá un puntero. Si programa, ofrecé crear/llenar `2. Áreas/yo/dev-prefs.md`.
 
-**El `soul.md` se llena solo, hablando.** No lo fuerces. Cuando en la charla aparezca algo de fondo del usuario (un valor, hacia dónde va, un patrón suyo), ofrecele guardarlo en `soul.md`. Con su OK.
+**El `soul.md` se llena solo, hablando.** No lo fuerces. Cuando en la charla aparezca algo de fondo del usuario (un valor, hacia dónde va, un patrón suyo), ofrecele guardarlo en `2. Áreas/yo/soul.md` (creálo si no está). Con su OK.
 
 ### Paso 7: Cerrá enseñando [LAT]
 > "Listo. Eso que armaste es tu primer <X>: <qué es / para qué sirve>. Cuando quieras, el próximo escalón es <Y>."
