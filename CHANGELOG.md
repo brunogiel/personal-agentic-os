@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.9.0
+- **Escalera ampliada a 0→6** (integra el trabajo de una sesión paralela, mergeado limpio sobre la topología global):
+  - **N4 "El sistema trabaja para vos":** rutina + **conectar una herramienta por MCP** (mail/calendario) para que `triage` arme el brief con datos reales. No requiere programar.
+  - **N5 "Orquestás":** qué es un orquestador (un skill que reparte a otros skills/subagentes y junta) — usás uno de ejemplo y armás el tuyo.
+  - **N6 "Mantenés el sistema":** `auditar-sistema` (salud) + `evaluar-skill` (afinar). "Un sistema que no se revisa se pudre callado."
+  - El **split código/contexto** pasa a ser una **rama opcional** ("si programás"), no un nivel que todos pasan.
+- **`ESCALERA.md`** refleja la escalera 0→6 + el tip "preguntame lo que necesites primero" (que te entreviste en vez de adivinar el prompt).
+- **Doctrina de skills más rica** (`arquitectura-skills.md`): "Si no se dispara" (debug: preguntá '¿cuándo usarías el skill X?'), "Cómo se arma un orquestador (N5)", "no hornees el tono adentro del skill". `crear-skill`: "arrancá de lo que ya hiciste (las 3 veces de la regla)" + paso de verificar el disparo.
+- README (ambos) y `reference.md` actualizados a la escalera 0→6.
+
 ## 2.8.0
 - **Todo el método a global; el SB queda con SOLO tu contenido (adiós `.secondbrain/`).** Dos baldes claros: el **método** se instala global (como una app) y tu **brain** (la carpeta) tiene solo lo tuyo.
   - El **coach lleva sus piezas adentro** de su carpeta global (`~/.claude/skills/second-brain-coach/`): `reference.md`, `plantilla-proyecto.md`, `ejemplos.md`, el catálogo `skills-disponibles/` y `VERSION`/`CHANGELOG`. Es el patrón de archivos bundled que el propio kit predica.

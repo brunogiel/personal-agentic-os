@@ -35,9 +35,11 @@ No armás todo el día uno. Subís. El coach te enseña la idea de cada escalón
 | **0** | Las 3 capas (modelo / harness / tus carpetas) + capturar: te conoce (`sobre-mi` + `como-trabajo`) y nada se pierde (`0. Inbox/`) | Deja de adivinar quién sos |
 | **1** | Tu primer proyecto (su propio cerebro + log de decisiones) | No volvés a explicar un proyecto dos veces |
 | **2** | Atajos (rutean al asistente al toque) | Decís "mis gastos" y ya sabe dónde mirar |
-| **3** | Tu primer skill (leés el `actualizar` que viene, después armás el tuyo) y qué es un script | Una frase dispara una receta entera |
-| **4** | Tu primera rutina (algo que corre solo, con log de corrida) | El sistema trabaja mientras dormís |
-| **5** | (si programás) el split código/contexto | Código en su repo, contexto acá, sin mezclar |
+| **3** | Tu primer skill (leés el que viene, después armás el tuyo) y qué es un script | Una frase dispara una receta entera |
+| **4** | El sistema trabaja *para* vos: una rutina que corre sola + conectás una herramienta por MCP para que tenga ojos (mail, calendario) | Trabaja mientras dormís, sobre tus datos reales |
+| **5** | Orquestás: varios skills laburando juntos en una tarea (usás un orquestador de ejemplo, después armás el tuyo) | Trabajo grande, repartido y recombinado |
+| **6** | Lo mantenés: una revisión de salud (`auditar-sistema`) + afinás un skill (`evaluar-skill`) | El sistema no se pudre callado |
+| *(si programás)* | Una rama opcional (no es un nivel): split código/contexto + subagentes en tu código | Código en su repo, contexto acá |
 
 ¿En bolas o avanzado? El coach se adapta: de a un escalón con todo explicado si arrancás, o un setup rápido de varios escalones más un track avanzado si ya la tenés clara. Pedile **`/second-brain-coach`** cuando quieras: te ubica y te propone el próximo paso. Propone, vos decidís.
 

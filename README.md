@@ -37,9 +37,11 @@ You don't build the whole system on day one. You climb. The coach teaches you th
 | **0** | The 3 layers (model / harness / your folders) + capture: it knows you (`sobre-mi` + `como-trabajo`) and nothing slips (`0. Inbox/`) | It stops guessing who you are |
 | **1** | Your first project (its own brain + decision log) | You never re-explain a project twice |
 | **2** | Shortcuts (route the assistant instantly) | Say "my expenses" and it knows where to look |
-| **3** | Your first skill (read the shipped `actualizar`, then build your own), and what a script is | A phrase triggers a whole recipe |
-| **4** | Your first routine (something that runs on its own, with a run-log) | The system works while you sleep |
-| **5** | (if you code) the code/context split | Code in its repo, context here, no mixing |
+| **3** | Your first skill (read the shipped one, then build your own), and what a script is | A phrase triggers a whole recipe |
+| **4** | The system works *for* you: a routine that runs on its own + connect a tool via MCP so it has eyes (mail, calendar) | It works while you sleep, on your real data |
+| **5** | You orchestrate: several skills working together on one task (use the example orchestrator, then build yours) | Big jobs, split and recombined |
+| **6** | You maintain it: a health check (`auditar-sistema`) + tune a skill (`evaluar-skill`) | The system doesn't rot silently |
+| *(if you code)* | An optional branch (not a level): code/context split + subagents in your own code | Code in its repo, context here |
 
 Beginner or advanced? The coach adapts: one rung at a time with full teaching for newcomers, or a fast multi-rung setup plus an advanced track for power users. Ask **`/second-brain-coach`** anytime: it tells you where you are and proposes the next step. It proposes, you decide.
 
