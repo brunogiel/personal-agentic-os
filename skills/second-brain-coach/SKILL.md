@@ -106,7 +106,7 @@ Si dice que sí, leé lo reciente que tengas accesible y devolvé **borradores**
 Ofrecé/confirmá el **modo**. Guardá modo + cliente + la checklist en `ESTADO.md`.
 
 **Bootstrap (casos a/b/c, con OK):**
-- Carpetas PARA visibles: `1. Proyectos/`, `2. Áreas/`, `3. Recursos/`, `4. Archivo/`.
+- Carpetas PARA visibles: `1. Proyectos/`, `2. Áreas/`, `3. Recursos/`, `4. Archivo/`. En `3. Recursos/` cae `arquitectura-skills.md` (la doctrina de skills, como Recurso visible).
 - Carpeta oculta `.secondbrain/` con `reference.md`, `VERSION`, `CHANGELOG.md` (bajalos del repo si no están).
 - `CLAUDE.md` raíz fino (router) + `ESTADO.md`, los dos en la raíz. Los básicos de identidad en PARA, en `2. Áreas/yo/`: `sobre-mi`, `como-trabajo`, `mi-estilo`, `MEMORIA`. `soul` y `dev-prefs` NO van de entrada: los creás ahí cuando hagan falta.
 
@@ -136,7 +136,7 @@ Solo con el OK.
 - **N0:** preguntas y llená `2. Áreas/yo/sobre-mi` y `como-trabajo`.
 - **N1:** `1. Proyectos/<nombre>/CLAUDE.md` con contexto + log.
 - **N2:** filas a la tabla de atajos.
-- **N3 (chequeador de updates):** seguí la receta de `.secondbrain/reference.md` (sección "armá tu primer skill"). Armá el skill en `.claude/skills/` de su carpeta (es suyo, viaja con su SB): `.claude/skills/actualizar/SKILL.md` + su scriptito, explicando qué es script (DET) y qué es criterio (LAT). El skill `crear-skill` te guía con la anatomía.
+- **N3 (chequeador de updates):** seguí tu Recurso `3. Recursos/arquitectura-skills.md` (y la receta de `.secondbrain/reference.md`, sección "armá tu primer skill"). Armá el skill en `.claude/skills/` de su carpeta (es suyo, viaja con su SB): `.claude/skills/actualizar/SKILL.md` + su scriptito, explicando qué es script (DET) y qué es criterio (LAT). El skill `crear-skill` te guía con la anatomía.
 - **N4:** agendá `actualizar` como rutina + anotala en "Rutinas" del root. Otras rutinas que ya vienen en el kit: `auditar-sistema` (salud del sistema, tipo sábado) y `triage-mails` (digest del inbox, si conectaste Gmail).
 - **N5:** mové el código a su repo + dejá un puntero. Si programa, ofrecé crear/llenar `2. Áreas/yo/dev-prefs.md`.
 

@@ -55,6 +55,8 @@ Guardá lo que **no** se deduce solo de tus archivos. No guardes lo que ya está
 
 ## 5. Skills: cuándo y cómo
 
+> La versión completa y a mano vive como Recurso en `3. Recursos/arquitectura-skills.md`. Acá va el resumen.
+
 Un **skill** es una receta guardada: instrucciones que el asistente sigue cuando una frase lo dispara. Mientras nadie lo llama, no hace nada. Por eso podés tener muchos sin que te molesten.
 
 **Cuándo crear uno: la regla de 3.** ¿Le pediste lo mismo 3 veces? Convertilo en skill. Antes de eso es prematuro.

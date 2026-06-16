@@ -51,6 +51,7 @@ Your whole system is just plain text in one synced folder, so it's the same brai
 - **`ESTADO.md`** — your dashboard: where you are, what's active.
 - **`sobre-mi.md` / `como-trabajo.md`** — who you are and how you like to work (fill-in templates).
 - **`soul.md` / `dev-prefs.md`** — what you're really about (fills in over time, in conversation) and, if you code, how you like to work the code.
+- **`3. Recursos/arquitectura-skills.md`** — your reference for building good skills (rule of 3, DET/LAT, anatomy, common mistakes).
 - **`.secondbrain/`** (hidden) — the process: `reference.md` (the manual) and version control. Out of sight, syncs anyway.
 - **Skills** (dormant until a phrase triggers them):
   - **`second-brain-coach`** — walks you up the levels and teaches as you go.

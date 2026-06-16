@@ -64,6 +64,14 @@ for f in "${YO_FILES[@]}"; do
   fi
 done
 
+# 3b. Resources that come filled (visible): the skill-building doctrine, as a Resource.
+if [ -e "3. Recursos/arquitectura-skills.md" ]; then
+  echo "  • 3. Recursos/arquitectura-skills.md ya existe, lo dejo como está"
+else
+  curl -fsSL "${RAW}/templates/arquitectura-skills.md" -o "3. Recursos/arquitectura-skills.md"
+  echo "  ✓ 3. Recursos/arquitectura-skills.md"
+fi
+
 # 4. Hidden process folder (.secondbrain/): doctrine + version. No se ve en Finder, sincroniza igual.
 mkdir -p "$SB_DIR"
 curl -fsSL "${RAW}/process/reference.md" -o "${SB_DIR}/reference.md"

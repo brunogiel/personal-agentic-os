@@ -49,6 +49,7 @@ Tu sistema entero son archivos de texto en una carpeta sincronizada, así que es
 - **`ESTADO.md`**: tu tablero (dónde estás, qué hay activo).
 - **`sobre-mi.md` / `como-trabajo.md`**: quién sos y cómo te gusta trabajar (templates para llenar).
 - **`soul.md` / `dev-prefs.md`**: lo de fondo (se llena con el tiempo, hablando) y, si programás, cómo te gusta laburar el código.
+- **`3. Recursos/arquitectura-skills.md`**: tu referencia para armar buenos skills (regla de 3, DET/LAT, anatomía, errores típicos).
 - **`.secondbrain/`** (oculto): el proceso, o sea `reference.md` (el manual) y el control de versión. Fuera de vista, sincroniza igual.
 - **Skills** (dormidos hasta que una frase los despierta):
   - **`second-brain-coach`**: te sube de nivel y te enseña mientras subís.

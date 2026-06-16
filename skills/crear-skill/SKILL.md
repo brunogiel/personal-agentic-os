@@ -9,7 +9,7 @@ description: >
 # crear-skill: armar una receta que funcione
 
 ## Qué es
-Convertís una tarea que repetís en un skill: un `SKILL.md` que se dispara con una frase. No lo armás de cualquier forma, seguís la anatomía y esquivás los errores típicos. La doctrina completa está en `.secondbrain/reference.md` (secciones 5 y 6).
+Convertís una tarea que repetís en un skill: un `SKILL.md` que se dispara con una frase. No lo armás de cualquier forma, seguís la anatomía y esquivás los errores típicos. La doctrina completa está en tu Recurso `3. Recursos/arquitectura-skills.md` (y resumida en `.secondbrain/reference.md` §5-6).
 
 ## Antes de empezar: la regla de 3
 Preguntá: ¿ya hiciste esta tarea 3 veces? Si no, avisá que es prematuro y ofrecé esperar. Un skill para algo que hacés una sola vez es laburo al pedo.
