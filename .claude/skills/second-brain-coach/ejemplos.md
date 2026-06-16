@@ -3,7 +3,7 @@
   coach (y el usuario) vean "cómo se vería" un SB ya armado según el tipo de persona.
   Al instalar va con el coach (~/.claude/skills/second-brain-coach/ejemplos.md). El coach lo usa cuando arranca con alguien nuevo.
   Skills citados: los reales del kit (redactar, anti-slop, triage, auditar-sistema,
-  crear-skill, evaluar-skill, ppt-builder, council). Los específicos del rubro los arma el usuario con crear-skill.
+  crear-skill, evaluar-skill, ppt-builder, panel). Los específicos del rubro los arma el usuario con crear-skill.
 -->
 
 # Ejemplos de referencia — cómo se ve un SB según tu perfil

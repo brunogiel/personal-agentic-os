@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.10.1
+- **`council` reemplazado por `panel`** (mejor encaje como ejemplo de orquestador multi-agente del N5). En vez de DECIDIR por vos (council sintetizaba un veredicto), `panel` trae 2-5 reviewers con lentes distintas sobre el MISMO artefacto (un PRD, mail, doc, copy, propuesta), te muestra los ángulos y dónde coinciden/se contradicen, y te devuelve la pelota: vos decidís qué cambiás. Trae catálogo de 9 lentes, dos modos (deliberado/directo) y guardrail de neutralidad (reporta coincidencias como cuenta cruda, sin lenguaje de recomendación). Swap en `install.sh`, coach (N5 + "cuándo ofrecer"), `reference.md`, `arquitectura-skills.md`, `ejemplos.md` y ambos READMEs. El catálogo de skills de uso sigue en 8.
+
 ## 2.10.0
 - **Nuevo skill `council`** (orquestador multi-agente, basado en el LLM Council de Karpathy): corre una decisión por 5 asesores con lentes distintas, peer-review anónimo entre ellos y síntesis de un chairman. Es el **segundo ejemplo de orquestador del N5** (multi-agente, junto a `ppt-builder` que es el de estado), y de paso resuelve un ref colgado: `reference.md` y `arquitectura-skills.md` lo citaban pero no se enviaba. Catálogo de skills de uso → 8. Sumado al `install.sh`, al coach (N5 + "cuándo ofrecer") y a ambos READMEs.
 - **`dev-prefs.md` deja de ser un stub vacío:** ahora viene con un bloque de **reglas universales de ingeniería de fábrica** (tamaño de archivo, nombres, imports, secretos, logs, comentarios, código muerto, testing, performance), agnósticas al stack, más el andamiaje para completar lo tuyo. Así el escalón "si programás" arranca con baterías, no con `<...>`.
