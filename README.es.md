@@ -54,6 +54,10 @@ Tu sistema entero vive en una carpeta sincronizada, así que es el mismo cerebro
   - **`second-brain-coach`**: te sube de nivel y te enseña mientras subís.
   - **`redactar`**: escribe en tu voz (la aprende de textos tuyos).
   - **`anti-slop`**: le saca el olor a IA a cualquier texto.
+  - **`crear-skill`**: te ayuda a armar un skill nuevo bien hecho.
+  - **`auditar-sistema`**: una revisión de salud de tu sistema (va bien como rutina).
+  - **`triage-mails`**: un digest del inbox a la mañana (necesita Gmail por MCP).
+  - **`migrar-de-claude-projects`**: trae tus Projects cerrados de Claude al sistema.
 
 ## Filosofía
 

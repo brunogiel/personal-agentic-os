@@ -9,6 +9,8 @@
 - Auto-update: tu primer skill es el chequeador de updates del kit (de paso aprendés qué es un script).
 - Liviano para correr: el `CLAUDE.md` raíz pasa a router fino + `ESTADO.md` como tablero.
 - Topología: el proceso vive oculto en `.secondbrain/`; a la vista quedan solo tus entregables.
+- Templates nuevos: `soul.md` (se llena hablando) + `dev-prefs.md`.
+- Skills-joya dormidos: `crear-skill`, `auditar-sistema`, `triage-mails`, `migrar-de-claude-projects`.
 - Sirve al principiante y al avanzado (track "más allá" opt-in); pensado para Cowork, migra a Code.
 
 ## 1.0.0

@@ -56,6 +56,10 @@ Your whole system lives in one synced folder, so it's the same brain wherever yo
   - **`second-brain-coach`** — walks you up the levels and teaches as you go.
   - **`redactar`** — writes in your voice (learns it from your own sample texts).
   - **`anti-slop`** — strips the "AI smell" out of any text.
+  - **`crear-skill`** — helps you build a new skill the right way.
+  - **`auditar-sistema`** — a health check of your system (great as a routine).
+  - **`triage-mails`** — a morning inbox digest (needs Gmail via MCP).
+  - **`migrar-de-claude-projects`** — brings your closed Claude Projects into the system.
 
 ## Philosophy
 

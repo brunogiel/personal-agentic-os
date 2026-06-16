@@ -92,7 +92,7 @@ Saludá corto, con tu voz. Después, en este orden:
 
 **A) ¿De dónde venís? (4 situaciones)**
 - **(a) Ya tenés una carpeta donde trabajás con Claude (no es SecondBrain):** pedile que la abra acá o te diga dónde está. Analizala barato y **tachá la checklist** contra lo que ya hay. Decile dónde está parado y, con OK, **adoptala**: sumá solo lo que falta (el `.secondbrain/` oculto, un `CLAUDE.md` raíz fino o adaptás el suyo, `ESTADO.md`) **sin pisar nada**.
-- **(b) Tenés proyectos en Claude (los Projects de la app, cerrados):** esos no los puedo leer solo. Migrémoslos a mano: por cada Project, pedile que te pegue sus instrucciones y te diga qué archivos/knowledge tiene. Convertí cada uno en `1. Proyectos/<nombre>/CLAUDE.md` + su contexto. Así tus Projects pasan a vivir en el sistema (y dejan de estar encerrados en la app).
+- **(b) Tenés proyectos en Claude (los Projects de la app, cerrados):** esos no los puedo leer solo. Migrémoslos a mano: por cada Project, pedile que te pegue sus instrucciones y te diga qué archivos/knowledge tiene. Convertí cada uno en `1. Proyectos/<nombre>/CLAUDE.md` + su contexto. Así tus Projects pasan a vivir en el sistema (y dejan de estar encerrados en la app). Para esto tenés el skill `migrar-de-claude-projects`.
 - **(c) Arrancás de cero:** "Creemos una carpeta. Llamémosla **Second Brain** (no 'Claude'), y dejala en **Google Drive** (o iCloud / Dropbox) así sincroniza entre tus dispositivos. ¿La creás vos y me decís cuál es, o la armo acá?" Ahí adentro armás la base (abajo).
 - **(d) Ya es un sistema SecondBrain** (existe `.secondbrain/` + `ESTADO.md`): no preguntes nada, saltá al Paso 1.
 
@@ -134,8 +134,8 @@ Solo con el OK.
 - **N0:** preguntas y llená `sobre-mi` y `como-trabajo`.
 - **N1:** `1. Proyectos/<nombre>/CLAUDE.md` con contexto + log.
 - **N2:** filas a la tabla de atajos.
-- **N3 (chequeador de updates):** seguí la receta de `.secondbrain/reference.md` (sección "armá tu primer skill"). Armá `.claude/skills/actualizar/SKILL.md` + su scriptito, explicando qué es script (DET) y qué es criterio (LAT).
-- **N4:** agendá `actualizar` como rutina + anotala en "Rutinas" del root.
+- **N3 (chequeador de updates):** seguí la receta de `.secondbrain/reference.md` (sección "armá tu primer skill"). Armá `.claude/skills/actualizar/SKILL.md` + su scriptito, explicando qué es script (DET) y qué es criterio (LAT). El skill `crear-skill` te guía con la anatomía.
+- **N4:** agendá `actualizar` como rutina + anotala en "Rutinas" del root. Otras rutinas que ya vienen en el kit: `auditar-sistema` (salud del sistema, tipo sábado) y `triage-mails` (digest del inbox, si conectaste Gmail).
 - **N5:** mové el código a su repo + dejá un puntero. Si programa, ofrecé llenar `dev-prefs.md`.
 
 **El `soul.md` se llena solo, hablando.** No lo fuerces. Cuando en la charla aparezca algo de fondo del usuario (un valor, hacia dónde va, un patrón suyo), ofrecele guardarlo en `soul.md`. Con su OK.

@@ -21,7 +21,7 @@ RAW="https://raw.githubusercontent.com/${REPO}/${BRANCH}"
 # Visible at root (your stuff). Never overwritten.
 ROOT_FILES=("CLAUDE.md" "sobre-mi.md" "como-trabajo.md" "mi-estilo.md" "soul.md" "dev-prefs.md" "MEMORIA.md" "ESTADO.md")
 # Skills (the coach is the entry point).
-SKILLS=("second-brain-coach" "redactar" "anti-slop")
+SKILLS=("second-brain-coach" "redactar" "anti-slop" "crear-skill" "auditar-sistema" "triage-mails" "migrar-de-claude-projects")
 SKILLS_DIR="${HOME}/.claude/skills"
 SB_DIR=".secondbrain"
 
