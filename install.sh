@@ -11,9 +11,9 @@
 #   /plugin install secondbrain@secondbrain-claude
 #
 # Dos baldes, claros:
-#   1. EL MÉTODO (global, ~/.claude/skills/): se instala como una app. El motor (coach +
-#      actualizar + migrar) más el kit que el coach usa (kit/brain + kit/skills) bundled adentro
-#      del coach. Invisible; se usa vía /second-brain-coach.
+#   1. EL MÉTODO (global, ~/.claude/skills/): se instala como una app. El motor (el coach, +
+#      el updater actualizar que es Code-only) más el kit que el coach usa (kit/brain + kit/skills)
+#      bundled adentro del coach. Invisible; se usa vía /second-brain-coach.
 #   2. TU BRAIN (esta carpeta): SOLO lo tuyo — CLAUDE.md (router) + ESTADO.md + ESCALERA.md +
 #      AGENTS.md, las carpetas PARA + 0. Inbox, tu identidad en "2. Áreas/yo/", y skills/ (los
 #      skills que usás, que el coach te va sumando). Nada del método ensucia tu carpeta.
@@ -25,13 +25,16 @@ BRANCH="main"
 RAW="https://raw.githubusercontent.com/${REPO}/${BRANCH}"
 
 # El mismo árbol del repo sirve al plugin (Cowork) y a este script (Code): una sola fuente.
-#   skills/  = el motor (coach + actualizar + migrar)
-#   kit/     = lo que el coach instala en tu brain (kit/brain = templates, kit/skills = catálogo)
+#   skills/     = el motor ACTIVO (solo el coach; lo escanea el plugin)
+#   motor-code/ = actualizar (Code-only: el plugin se autoactualiza, no va como skill del plugin)
+#   kit/        = lo que el coach instala en tu brain (kit/brain = templates, kit/skills = catálogo)
 
 # --- el método (global) ---
 SKILLS_DIR="${HOME}/.claude/skills"
 COACH_DIR="${SKILLS_DIR}/second-brain-coach"          # el coach + sus piezas + el kit, bundled
-SKILLS_MOTOR=("second-brain-coach" "actualizar" "migrar-de-claude-projects")
+SKILLS_MOTOR=("second-brain-coach")   # el único skill activo del motor (lo escanea el plugin)
+# actualizar es Code-only (en Cowork el plugin se autoactualiza): vive en motor-code/, no es skill del plugin,
+# pero este curl (para Code) lo instala global igual. migrar dejó de ser skill: es un doc del coach (migracion.md).
 SKILLS_USO=("redactar" "anti-slop" "crear-skill" "evaluar-skill" "auditar-sistema" "triage" "ppt-builder" "panel")  # kit/skills
 
 # --- el brain que se scaffoldea (desde kit/brain/) ---
@@ -73,12 +76,15 @@ fetch "kit/brain/inbox/INBOX.md" "kit/brain/inbox/INBOX.md"
 for s in "${SKILLS_USO[@]}"; do fetch "kit/skills/${s}/SKILL.md" "kit/skills/${s}/SKILL.md"; done
 # el motor
 for s in "${SKILLS_MOTOR[@]}"; do fetch "skills/${s}/SKILL.md" "motor/${s}/SKILL.md"; done
+# actualizar (Code-only): vive en motor-code/, lo bajamos para instalarlo global en Code
+fetch "motor-code/actualizar/SKILL.md" "motor/actualizar/SKILL.md"
 mkdir -p "${TMP}/motor/actualizar"
-curl -fsSL "${RAW}/skills/actualizar/check-update.sh" -o "${TMP}/motor/actualizar/check-update.sh" 2>/dev/null || true
-# las piezas del coach (hermanas de su SKILL.md)
+curl -fsSL "${RAW}/motor-code/actualizar/check-update.sh" -o "${TMP}/motor/actualizar/check-update.sh" 2>/dev/null || true
+# las piezas del coach (hermanas de su SKILL.md), incluida la guía de migración
 fetch "skills/second-brain-coach/reference.md"          "coach/reference.md"
 fetch "skills/second-brain-coach/plantilla-proyecto.md" "coach/plantilla-proyecto.md"
 fetch "skills/second-brain-coach/ejemplos.md"           "coach/ejemplos.md"
+fetch "skills/second-brain-coach/migracion.md"          "coach/migracion.md"
 fetch "VERSION"      "coach/VERSION"
 fetch "CHANGELOG.md" "coach/CHANGELOG.md"
 
@@ -92,11 +98,15 @@ for s in "${SKILLS_MOTOR[@]}"; do
   mkdir -p "${SKILLS_DIR}/${s}"
   cp "${TMP}/motor/${s}/SKILL.md" "${SKILLS_DIR}/${s}/SKILL.md"
 done
+# actualizar (Code-only) global, con su script
+mkdir -p "${SKILLS_DIR}/actualizar"
+cp "${TMP}/motor/actualizar/SKILL.md" "${SKILLS_DIR}/actualizar/SKILL.md"
 [ -f "${TMP}/motor/actualizar/check-update.sh" ] && cp "${TMP}/motor/actualizar/check-update.sh" "${SKILLS_DIR}/actualizar/check-update.sh"
-# las piezas del coach, adentro de su carpeta
+# las piezas del coach, adentro de su carpeta (incluida la guía de migración)
 cp "${TMP}/coach/reference.md"          "${COACH_DIR}/reference.md"
 cp "${TMP}/coach/plantilla-proyecto.md" "${COACH_DIR}/plantilla-proyecto.md"
 cp "${TMP}/coach/ejemplos.md"           "${COACH_DIR}/ejemplos.md"
+cp "${TMP}/coach/migracion.md"          "${COACH_DIR}/migracion.md"
 cp "${TMP}/coach/VERSION"               "${COACH_DIR}/VERSION"
 cp "${TMP}/coach/CHANGELOG.md"          "${COACH_DIR}/CHANGELOG.md"
 # el kit completo (brain + skills), bundled con el coach para que lo use después.

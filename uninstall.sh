@@ -14,7 +14,7 @@
 set -euo pipefail
 
 SKILLS_DIR="${HOME}/.claude/skills"
-METHOD_SKILLS=("second-brain-coach" "actualizar" "migrar-de-claude-projects")
+METHOD_SKILLS=("second-brain-coach" "actualizar")   # migrar ya no es skill (es doc del coach); actualizar es Code-only
 
 echo ""
 echo "🧠  SecondBrain: desinstalar el motor global"

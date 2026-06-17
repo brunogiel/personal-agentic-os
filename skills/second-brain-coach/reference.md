@@ -125,11 +125,11 @@ No te asustes con la palabra. Tu primer script va a ser de tres líneas (mirá l
 
 ## 8. Tu primer skill: leé el que ya viene, después armá el tuyo
 
-El kit ya trae un skill funcionando, **`actualizar`** (vive en `~/.claude/skills/actualizar/`): chequea si SecondBrain tiene mejoras y, con tu OK, las baja. No hace falta que lo armes: **ábrilo para ver cómo es un skill por dentro** (el frontmatter con las frases que lo disparan, los pasos `[DET]`/`[LAT]`, su scriptito `check-update.sh`). Ese es tu ejemplo de referencia.
+El catálogo del kit trae skills hechos: cuando la persona adopta el primero (ej. **`crear-skill`**), **ábranlo para ver cómo es un skill por dentro** (el frontmatter con las frases que lo disparan, los pasos `[DET]`/`[LAT]`, sus scripts si tiene). Ese es el ejemplo de referencia. (En Code también está el updater `actualizar`, con su `check-update.sh`, como muestra de un skill con script.)
 
 Después armá **el tuyo**: algo que repitas de verdad (regla de 3). Va en `skills/<nombre>/SKILL.md` (carpeta a la vista) + su fila en la tabla "Mis skills" del `CLAUDE.md` (esa fila es lo que lo dispara). El skill `crear-skill` te guía.
 
-Abajo, la anatomía del `actualizar` como modelo de lo que tiene que tener cualquier skill:
+Abajo, la anatomía de un skill como modelo de lo que tiene que tener cualquiera (tomamos `actualizar`, el updater de Code, como muestra):
 
 **Qué hace (el patrón a copiar):**
 1. **[DET]** Leer la versión publicada del kit (el archivo `VERSION` del repo) y compararla con la instalada (`~/.claude/skills/second-brain-coach/VERSION`).
@@ -166,7 +166,7 @@ description: >
 
 El "script" (el paso DET de comparar versiones) en Claude Code es el `check-update.sh` que viene con el skill. En Cowork, el asistente hace ese chequeo con sus herramientas. La receta es la misma.
 
-Cuando armás el tuyo siguiendo este molde, ese es tu Nivel 3. Y el próximo escalón sale solo: poner `actualizar` a correr automático (Nivel 4, sección 10).
+Cuando armás el tuyo siguiendo este molde, ese es tu Nivel 3. Y el próximo escalón sale solo: poner una rutina a correr automático (Nivel 4, sección 10).
 
 ---
 
@@ -181,7 +181,7 @@ Empezás con skills. Los agentes vienen después, cuando una tarea ya no necesit
 
 ## 10. Rutinas: poner algo a correr solo
 
-Una **rutina** es un skill (o una tarea) que corre en horario, sin que estés. La primera buena rutina es poner `actualizar` (que ya viene) a correr los lunes: que mire si el kit tiene mejoras.
+Una **rutina** es un skill (o una tarea) que corre en horario, sin que estés. Una buena primera rutina es `auditar-sistema` (el chequeo de salud) los sábados; en Code también podés agendar el updater `actualizar` para que mire si el kit tiene mejoras (en Cowork el plugin se actualiza solo).
 
 - **En Claude Code / Cowork:** se agenda con la función de tareas programadas del cliente (pedile al asistente "agendá esto para los lunes a las 9").
 - **Anotala** en la sección "Rutinas" de tu `CLAUDE.md` raíz, así sabés qué tenés corriendo (y el coach lo detecta).
@@ -236,7 +236,7 @@ La regla, en **2 baldes** (así tu carpeta se ve limpia y sabés qué es qué):
 
 1. **👁 TU BRAIN (esta carpeta) — solo lo tuyo.** Tu contexto: las carpetas PARA + `0. Inbox/`, tu identidad (`2. Áreas/yo/`), tu progreso (`ESTADO.md` + `ESCALERA.md`), el `CLAUDE.md` raíz (router) + `AGENTS.md`. Y **`skills/`: los skills que usás** (redactar, anti-slop, triage, auditar, crear-skill, evaluar-skill, ppt-builder, panel + los que armes vos). Los ves, los abrís, aprendés cómo están. No vienen todos de una: el coach te los va sumando a medida que avanzás. **Nada del método ensucia tu carpeta.**
 
-2. **🔒 EL MÉTODO — se instala como una app, fuera de tu carpeta.** En **Claude Code** vive global en `~/.claude/skills/`; en **Cowork** se instala como **plugin** (sin terminal). En los dos casos el coach lleva sus piezas (esta doctrina `reference.md`, la `plantilla-proyecto.md`, los `ejemplos.md`) como hermanas de su `SKILL.md`, y el **kit** (`kit/brain/` = archivos base, `kit/skills/` = catálogo de skills de uso) viaja con el método. Más `actualizar` y `migrar`. Se usa por nombre (`/second-brain-coach`); no vive en tu carpeta.
+2. **🔒 EL MÉTODO — se instala como una app, fuera de tu carpeta.** En **Claude Code** vive global en `~/.claude/skills/`; en **Cowork** se instala como **plugin** (sin terminal). En los dos casos el coach lleva sus piezas (esta doctrina `reference.md`, la `plantilla-proyecto.md`, los `ejemplos.md`) como hermanas de su `SKILL.md`, y el **kit** (`kit/brain/` = archivos base, `kit/skills/` = catálogo de skills de uso) viaja con el método. La migración de Projects es un doc del coach (`migracion.md`), no un skill aparte; en Code además está el updater `actualizar` (Code-only; en Cowork el plugin se actualiza solo). Se usa por nombre (`/second-brain-coach`); no vive en tu carpeta.
 
 El modelo es el de cualquier app: **instalás el método una vez por máquina (la "app"), y tu contenido (el brain) sincroniza por Drive.** Vos solo ves lo que usás; el método trabaja de fondo. (En Cowork la "app" es el plugin que instalás desde la UI, sin terminal; igual de afuera de tu carpeta.)
 
@@ -287,8 +287,8 @@ Las dos se combinan con lo de antes: una rutina (sección 10) que conecta una he
 - **Nivel 0:** el asistente te conoce (`sobre-mi` + `como-trabajo`) y capturás en `0. Inbox/` (sección 2b).
 - **Nivel 1:** tu primer proyecto con su `CLAUDE.md`.
 - **Nivel 2:** la tabla de atajos en tu `CLAUDE.md` raíz.
-- **Nivel 3:** tu primer skill propio (leyendo el `actualizar` de ejemplo, sección 8).
-- **Nivel 4:** el sistema trabaja para vos — tu primera rutina (poné `actualizar` a correr solo, con log, sección 10) + conectar una herramienta por MCP para que `triage` arme el brief del día (sección 17; no requiere programar).
+- **Nivel 3:** tu primer skill propio (leyendo un skill de ejemplo, ej. `crear-skill`, sección 8).
+- **Nivel 4:** el sistema trabaja para vos: tu primera rutina (poné una rutina a correr sola, ej. `auditar-sistema`, con log, sección 10) + conectar una herramienta por MCP para que `triage` arme el brief del día (sección 17; no requiere programar).
 - **Nivel 5:** orquestás — usás un orquestador de ejemplo (el de PPT) y después armás el tuyo, multiagente (sección 16).
 - **Nivel 6:** mantenés el sistema — tu primera revisión con `auditar-sistema` + afinás un skill con `evaluar-skill` (sección 16).
 - **Rama (si programás), fuera del conteo:** el split código / contexto + subagentes en tu código.

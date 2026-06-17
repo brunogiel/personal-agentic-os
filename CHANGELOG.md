@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.13.2
+- **Menú del plugin = solo el coach (Cowork más limpio).** Antes el plugin mostraba 3 ítems (`second-brain-coach`, `actualizar`, `migrar-de-claude-projects`); para un usuario nuevo, los otros dos son ruido. Ahora el motor ACTIVO es **un solo skill, el coach**:
+  - **`migrar` se metió adentro del coach:** dejó de ser un skill suelto y pasó a ser un doc del coach (`migracion.md`) que el coach sigue cuando traés tus Projects de Claude. El menú no lo muestra; el coach lo hace cuando se lo pedís.
+  - **`actualizar` salió del plugin:** vive en `motor-code/` (fuera del `skills/` que escanea el plugin). Es Code-only (en Cowork el plugin se autoactualiza); el curl lo sigue instalando global para Code.
+- Coach y `reference.md` ajustados: los ejemplos de "abrí un skill para ver su anatomía" (N3) y "agendá una rutina" (N4) ya no apuntan a `actualizar` (que en Cowork no existe), sino a `crear-skill` y `auditar-sistema`.
+- Tocados: estructura (`skills/migrar-de-claude-projects/SKILL.md` → `skills/second-brain-coach/migracion.md`; `skills/actualizar` → `motor-code/actualizar`), `install.sh`, `second-brain-coach/SKILL.md` + `reference.md`, `uninstall.sh`, ambos READMEs, `marketplace.json`.
+
 ## 2.13.1
 - **Consistencia Cowork ↔ Code: el coach arma tu brain en los dos, preguntando.** Antes el `install.sh` (curl) scaffoldeaba tu carpeta solo, sin preguntar, lo que chocaba con la regla "propone, vos decidís". Ahora el `install.sh` instala **solo el método** (motor + kit) y no toca tu carpeta; el brain lo arma el coach con tu OK, igual que en Cowork. Los dos caminos quedan idénticos: instalás el método → `/second-brain-coach` → el coach invita/pregunta por la carpeta y arma con vos, de a un escalón.
 - **Fix de sync del marketplace:** el `source` pasó de `"."` a `"./"`. Un source relativo tiene que arrancar con `./`; con `"."` Cowork tiraba "Error al sincronizar el marketplace" al validar el manifiesto.

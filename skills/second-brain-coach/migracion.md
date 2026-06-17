@@ -1,13 +1,11 @@
----
-name: migrar-de-claude-projects
-description: >
-  Trae los proyectos de Claude del usuario (los Projects de la app, cerrados) al sistema y los
-  convierte en la carpeta PARA correcta (Proyecto o Área) con su CLAUDE.md. Usalo cuando el usuario
-  diga "migrá mis proyectos de claude", "traé mis projects", "importá mis proyectos de la app",
-  "pasá mis proyectos de claude.ai acá", "tengo un montón de proyectos en claude para traer".
----
+<!--
+  MIGRACIÓN — la guía que seguís VOS (el coach) cuando la persona quiere traer sus Projects de Claude.
+  No es un skill aparte (no clutterea el menú): es un doc tuyo, hermano de tu SKILL.md, que leés cuando
+  aparece el caso (b) del Paso 0, o cuando la persona dice "migrá mis proyectos de claude", "traé mis
+  projects", "importá mis proyectos de la app", "tengo un montón de proyectos en claude para traer".
+-->
 
-# migrar-de-claude-projects: traer tus Projects al sistema
+# Migración: traer tus Projects de Claude al sistema
 
 ## Qué es
 Los Projects de la app de Claude están cerrados: no se leen desde acá. Los traemos y convertimos cada uno en la carpeta PARA que corresponde —Proyecto si tiene objetivo y termina, Área si es una responsabilidad que sigue— con su `CLAUDE.md`. Hay dos caminos según cuántos sean.
