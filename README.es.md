@@ -16,15 +16,32 @@ Casi nadie escribe esos archivos. Esto te da la semilla y un coach que te lleva 
 
 ## Instalación
 
+Dos caminos. Agarrá el tuyo.
+
+### 🖥️ Cowork (sin terminal) — el fácil
+
+Se instala como plugin, directo desde la UI de Cowork:
+
+1. Abrí el panel de **plugins** y agregá este marketplace: `brunogiel/secondbrain-claude`
+   (o escribí `/plugin marketplace add brunogiel/secondbrain-claude`).
+2. Instalá el plugin **secondbrain**
+   (o escribí `/plugin install secondbrain@secondbrain-claude`).
+3. Abrí (o creá) una carpeta donde quieras que viva tu cerebro, en algún lado que sincronice (Drive, iCloud, Dropbox), y abrila en Cowork.
+4. Decí **"armame el sistema"** (o `/second-brain-coach`).
+
+Sin terminal, sin zip, sin git. El coach te arma la carpeta del brain *con vos*, de a un paso, y **siempre pregunta antes de crear nada** (no te arma una carpeta por atrás). Y el plugin **se actualiza solo**.
+
+### ⌨️ Claude Code (terminal)
+
 ```bash
 curl -fsSL https://raw.githubusercontent.com/brunogiel/secondbrain-claude/main/install.sh | bash
 ```
 
-Te crea, **en tu carpeta**, solo lo tuyo: las carpetas `0. Inbox/` + PARA y lo esencial (router `CLAUDE.md`, `ESTADO.md`, `ESCALERA.md`, `AGENTS.md`, tu identidad en `2. Áreas/yo/`). El **método se instala global**, como una app — el coach (que lleva su doctrina, plantillas, ejemplos y el catálogo de skills de uso adentro de su propia carpeta), más `actualizar`/`migrar` — invisible en `~/.claude/skills/`, así `/second-brain-coach` funciona sin ensuciar tu carpeta. Los **skills que realmente usás** (redactar, anti-slop, triage, auditar, crear-skill, evaluar-skill, ppt-builder, panel) NO te los tiran todos de una: el coach te va sumando cada uno a una carpeta `skills/` a secas y a la vista a medida que subís, así lo ves, lo abrís y aprendés cómo está hecho. Se disparan por la **tabla "Mis skills" de tu `CLAUDE.md`** (una frase → un skill) — por eso andan igual en **Claude Code, Cowork y Codex** (los tres leen tu `CLAUDE.md`; Codex vía `AGENTS.md`), sin carpetas específicas de Claude. Tu carpeta queda limpia: ves solo lo tuyo.
+Después abrí la carpeta y escribí **`/second-brain-coach`**.
 
-¿No estás en la terminal (ej. Cowork desktop)? Bajá el zip o hacé `git clone` y abrí la carpeta en Claude: el coach viene adentro, en el `.claude/skills/` de la carpeta, así que está disponible al toque. Decile *"armame el sistema"*.
+---
 
-Después abrí Claude Code o Cowork en la carpeta y escribí **`/second-brain-coach`**.
+En los dos casos el reparto es el mismo. **El método se instala como una app, fuera de tu carpeta**: como plugin en Cowork, o global en `~/.claude/skills/` en Claude Code. Lleva el coach (con su doctrina, plantillas y ejemplos) más el **kit** que instala en tu brain (`kit/brain/` los archivos base, `kit/skills/` el catálogo de skills de uso), y `actualizar`/`migrar`. **Tu carpeta solo tiene lo tuyo**: las carpetas `0. Inbox/` + PARA y lo esencial (router `CLAUDE.md`, `ESTADO.md`, `ESCALERA.md`, `AGENTS.md`, tu identidad en `2. Áreas/yo/`). Los **skills que realmente usás** (redactar, anti-slop, triage, auditar, crear-skill, evaluar-skill, ppt-builder, panel) NO te los tiran todos de una: el coach te va sumando cada uno a una carpeta `skills/` a secas y a la vista a medida que subís, así lo ves, lo abrís y aprendés cómo está hecho. Se disparan por la **tabla "Mis skills" de tu `CLAUDE.md`** (una frase → un skill) — por eso andan igual en **Claude Code, Cowork y Codex** (los tres leen tu `CLAUDE.md`; Codex vía `AGENTS.md`), sin carpetas específicas de Claude.
 
 ## ¿Ya tenés un sistema?
 
@@ -36,10 +53,10 @@ No es destructivo y es reversible (ver *Qué toca* abajo), así que no hay una g
 
 Sin caja negra. El reparto exacto:
 
-- **Tu carpeta** recibe solo lo tuyo (tu `CLAUDE.md`, identidad, proyectos, inbox, los skills de uso que adoptás). El instalador **nunca pisa un archivo que ya tenés** (saltea lo que existe), así que no puede romper un sistema que ya armaste.
-- **El método** se instala global en `~/.claude/skills/` (el coach + `actualizar`/`migrar`), como una app. Nada de él vive en tu carpeta.
-- **Las actualizaciones** solo refrescan ese motor global. Nunca tocan tu carpeta, así que tus ediciones están a salvo.
-- **Desinstalar** saca solo el motor global; tu carpeta queda intacta:
+- **Tu carpeta** recibe solo lo tuyo (tu `CLAUDE.md`, identidad, proyectos, inbox, los skills de uso que adoptás). El coach (y el instalador) **nunca pisa un archivo que ya tenés** (saltea lo que existe), así que no puede romper un sistema que ya armaste.
+- **El método** se instala como una app, fuera de tu carpeta: un **plugin** en Cowork, o global en `~/.claude/skills/` en Claude Code (el coach + `actualizar`/`migrar`). Nada de él vive en tu carpeta.
+- **Las actualizaciones** solo refrescan ese motor. En Cowork el plugin se actualiza solo; en Claude Code lo hace `actualizar`. En los dos casos nunca tocan tu carpeta, así que tus ediciones están a salvo.
+- **Desinstalar** saca solo el motor; tu carpeta queda intacta. En Cowork, sacá el plugin desde la UI (o `/plugin uninstall secondbrain`). En Claude Code:
   ```bash
   curl -fsSL https://raw.githubusercontent.com/brunogiel/secondbrain-claude/main/uninstall.sh | SB_YES=1 bash
   ```
@@ -80,8 +97,8 @@ Siendo honestos con la línea: tu **cerebro** (tu texto) *y* tus **skills de uso
 - **`soul.md` / `dev-prefs.md`**: lo de fondo (se llena con el tiempo, hablando) y, si programás, cómo te gusta laburar el código (`dev-prefs.md` ya viene con un bloque de reglas universales de ingeniería de fábrica, no es un template vacío). Los suma el coach a medida que subís; no vienen en la instalación.
 - **`3. Recursos/arquitectura-skills.md`**: tu referencia para armar buenos skills (regla de 3, DET/LAT, anatomía, errores típicos).
 - **`3. Recursos/anti-slop-writing.md`**: la doctrina completa de anti-slop (las 5 reglas, con listas negras y ejemplos antes/después) que el skill `anti-slop` usa de base.
-- **El método** vive global (en `~/.claude/skills/`, como una app instalada), no en tu carpeta: el coach lleva su doctrina (`reference.md`), plantillas, ejemplos y el **catálogo** de skills de uso adentro suyo. Nada del método ensucia tu brain — ves solo lo tuyo.
-- **El motor** (🔒 global, invisible, se llama por nombre — nunca ensucia tu carpeta):
+- **El método** se instala como una app fuera de tu carpeta (plugin en Cowork, o global en `~/.claude/skills/` en Claude Code), no en tu brain: el coach lleva su doctrina (`reference.md`), plantillas y ejemplos, más el **kit** que instala en tu brain (`kit/brain/` archivos base, `kit/skills/` catálogo de skills de uso). Nada del método ensucia tu brain — ves solo lo tuyo.
+- **El motor** (🔒 fuera de tu carpeta, invisible, se llama por nombre — nunca ensucia tu brain):
   - **`second-brain-coach`**: te sube de nivel y te enseña mientras subís (`/second-brain-coach`).
   - **`actualizar`**: chequea si el kit tiene versión nueva y, con tu OK, la instala.
   - **`migrar-de-claude-projects`**: trae tus Projects cerrados de Claude al sistema.

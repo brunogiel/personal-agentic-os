@@ -1,7 +1,7 @@
 <!--
   REFERENCE — el manual que crece (SecondBrain).
   Plantilla en español. No se lee de corrido: es consulta, vas a una sección cuando la necesitás.
-  Al instalar, este archivo vive global con el coach (~/.claude/skills/second-brain-coach/reference.md). El usuario no lo ve; el coach lo lee cuando hace falta.
+  Al instalar, este archivo vive junto al coach, fuera de la carpeta del usuario (global en ~/.claude/skills/ en Code, o dentro del plugin en Cowork). El usuario no lo ve; el coach lo lee cuando hace falta.
 -->
 
 # reference.md: El manual
@@ -236,9 +236,9 @@ La regla, en **2 baldes** (así tu carpeta se ve limpia y sabés qué es qué):
 
 1. **👁 TU BRAIN (esta carpeta) — solo lo tuyo.** Tu contexto: las carpetas PARA + `0. Inbox/`, tu identidad (`2. Áreas/yo/`), tu progreso (`ESTADO.md` + `ESCALERA.md`), el `CLAUDE.md` raíz (router) + `AGENTS.md`. Y **`skills/`: los skills que usás** (redactar, anti-slop, triage, auditar, crear-skill, evaluar-skill, ppt-builder, panel + los que armes vos). Los ves, los abrís, aprendés cómo están. No vienen todos de una: el coach te los va sumando a medida que avanzás. **Nada del método ensucia tu carpeta.**
 
-2. **🔒 EL MÉTODO (global, `~/.claude/skills/`) — se instala como una app.** El coach lleva sus piezas adentro de su propia carpeta (`~/.claude/skills/second-brain-coach/`): esta doctrina (`reference.md`), la `plantilla-proyecto.md`, los `ejemplos.md`, el **catálogo** `skills-disponibles/` (las fuentes de los skills de uso), y el control de versión. Más `actualizar` y `migrar`. Se usa por nombre (`/second-brain-coach`); no vive en tu carpeta.
+2. **🔒 EL MÉTODO — se instala como una app, fuera de tu carpeta.** En **Claude Code** vive global en `~/.claude/skills/`; en **Cowork** se instala como **plugin** (sin terminal). En los dos casos el coach lleva sus piezas (esta doctrina `reference.md`, la `plantilla-proyecto.md`, los `ejemplos.md`) como hermanas de su `SKILL.md`, y el **kit** (`kit/brain/` = archivos base, `kit/skills/` = catálogo de skills de uso) viaja con el método. Más `actualizar` y `migrar`. Se usa por nombre (`/second-brain-coach`); no vive en tu carpeta.
 
-El modelo es el de cualquier app: **instalás el método una vez por máquina (la "app"), y tu contenido (el brain) sincroniza por Drive.** Vos solo ves lo que usás; el método trabaja de fondo. (En Cowork, sin global, el método viaja dentro de la carpeta del kit que abrís.)
+El modelo es el de cualquier app: **instalás el método una vez por máquina (la "app"), y tu contenido (el brain) sincroniza por Drive.** Vos solo ves lo que usás; el método trabaja de fondo. (En Cowork la "app" es el plugin que instalás desde la UI, sin terminal; igual de afuera de tu carpeta.)
 
 > **Cómo se disparan (y por qué es portable).** Tus skills de uso viven en `skills/` a secas — carpeta normal, a la vista, sin nada oculto. Lo que los dispara es **la tabla "Mis skills" de tu `CLAUDE.md`**: tu asistente lee el `CLAUDE.md` al arrancar cada sesión y, cuando decís una frase que matchea una fila (frase → skill), va y sigue ese `skills/<nombre>/SKILL.md`. Por eso funcionan **igual en Claude Code, Cowork y Codex**: los tres leen el `CLAUDE.md` (en Codex, vía `AGENTS.md` que apunta ahí). No dependen de una carpeta `.claude/skills/` específica de Claude. La regla práctica: **un skill sin su fila en la tabla no existe para el asistente** — siempre anotalo.
 

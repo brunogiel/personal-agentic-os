@@ -1,19 +1,22 @@
 #!/usr/bin/env bash
 #
-# SecondBrain installer
+# SecondBrain installer — vía Claude Code (terminal).
 # https://github.com/brunogiel/secondbrain-claude
 #
 # Usage:
 #   curl -fsSL https://raw.githubusercontent.com/brunogiel/secondbrain-claude/main/install.sh | bash
 #
+# ¿En Cowork (sin terminal)? NO uses esto: instalá el plugin desde la UI de plugins.
+#   /plugin marketplace add brunogiel/secondbrain-claude
+#   /plugin install secondbrain@secondbrain-claude
+#
 # Dos baldes, claros:
-#   1. EL MÉTODO (global, ~/.claude/skills/): se instala como una app. El coach lleva sus
-#      piezas adentro de su propia carpeta (reference.md, plantillas, ejemplos, el catálogo de
-#      skills de uso, la versión). Más actualizar y migrar. Invisible; se usa vía /second-brain-coach.
+#   1. EL MÉTODO (global, ~/.claude/skills/): se instala como una app. El motor (coach +
+#      actualizar + migrar) más el kit que el coach usa (kit/brain + kit/skills) bundled adentro
+#      del coach. Invisible; se usa vía /second-brain-coach.
 #   2. TU BRAIN (esta carpeta): SOLO lo tuyo — CLAUDE.md (router) + ESTADO.md + ESCALERA.md +
 #      AGENTS.md, las carpetas PARA + 0. Inbox, tu identidad en "2. Áreas/yo/", y skills/ (los
 #      skills que usás, que el coach te va sumando). Nada del método ensucia tu carpeta.
-# El coach copia los skills de uso de su catálogo (global) a tu skills/ (visible) cuando los adoptás.
 # Descarga atómica: si algo falla, no te deja a medias. Después: abrí Claude acá y escribí /second-brain-coach
 set -euo pipefail
 
@@ -21,16 +24,22 @@ REPO="brunogiel/secondbrain-claude"
 BRANCH="main"
 RAW="https://raw.githubusercontent.com/${REPO}/${BRANCH}"
 
-# --- tu brain (esta carpeta): solo tu contenido ---
+# El mismo árbol del repo sirve al plugin (Cowork) y a este script (Code): una sola fuente.
+#   skills/  = el motor (coach + actualizar + migrar)
+#   kit/     = lo que el coach instala en tu brain (kit/brain = templates, kit/skills = catálogo)
+
+# --- el método (global) ---
+SKILLS_DIR="${HOME}/.claude/skills"
+COACH_DIR="${SKILLS_DIR}/second-brain-coach"          # el coach + sus piezas + el kit, bundled
+SKILLS_MOTOR=("second-brain-coach" "actualizar" "migrar-de-claude-projects")
+SKILLS_USO=("redactar" "anti-slop" "crear-skill" "evaluar-skill" "auditar-sistema" "triage" "ppt-builder" "panel")  # kit/skills
+
+# --- el brain que se scaffoldea (desde kit/brain/) ---
 ROOT_FILES=("CLAUDE.md" "ESTADO.md" "ESCALERA.md" "AGENTS.md")
 YO_DIR="2. Áreas/yo"
 YO_FILES=("sobre-mi.md" "como-trabajo.md" "mi-estilo.md" "MEMORIA.md")
-
-# --- el método (global): el motor + las piezas que el coach lleva adentro ---
-SKILLS_DIR="${HOME}/.claude/skills"
-COACH_DIR="${SKILLS_DIR}/second-brain-coach"          # el coach + sus piezas bundled
-SKILLS_MOTOR=("second-brain-coach" "actualizar" "migrar-de-claude-projects")
-SKILLS_USO=("redactar" "anti-slop" "crear-skill" "evaluar-skill" "auditar-sistema" "triage" "ppt-builder" "panel")  # catálogo
+YO_EXTRA=("soul.md" "dev-prefs.md")   # NO se scaffoldean; el coach los suma después (van bundled en el kit)
+RECURSOS=("arquitectura-skills.md" "anti-slop-writing.md")
 
 echo ""
 echo "🧠  SecondBrain — armando tu sistema..."
@@ -55,24 +64,24 @@ fetch() {  # fetch <ruta-en-repo> <destino-en-tmp>
 }
 
 echo "  ↓ bajando archivos..."
-# tu brain
-for f in "${ROOT_FILES[@]}"; do fetch "templates/${f}" "root/${f}"; done
-for f in "${YO_FILES[@]}";   do fetch "templates/${f}" "yo/${f}";   done
-fetch "templates/arquitectura-skills.md" "recursos/arquitectura-skills.md"
-fetch "templates/anti-slop-writing.md"   "recursos/anti-slop-writing.md"
-fetch "templates/INBOX.md"               "inbox/INBOX.md"
-# el método: motor
-for s in "${SKILLS_MOTOR[@]}"; do fetch ".claude/skills/${s}/SKILL.md" "motor/${s}/SKILL.md"; done
+# kit/brain (templates): se scaffoldea Y se bundlea con el coach
+for f in "${ROOT_FILES[@]}"; do fetch "kit/brain/${f}" "kit/brain/${f}"; done
+for f in "${YO_FILES[@]}";  do fetch "kit/brain/identidad/${f}" "kit/brain/identidad/${f}"; done
+for f in "${YO_EXTRA[@]}";  do fetch "kit/brain/identidad/${f}" "kit/brain/identidad/${f}"; done
+for f in "${RECURSOS[@]}";  do fetch "kit/brain/recursos/${f}"  "kit/brain/recursos/${f}";  done
+fetch "kit/brain/inbox/INBOX.md" "kit/brain/inbox/INBOX.md"
+# kit/skills (catálogo de skills de uso): se bundlea con el coach
+for s in "${SKILLS_USO[@]}"; do fetch "kit/skills/${s}/SKILL.md" "kit/skills/${s}/SKILL.md"; done
+# el motor
+for s in "${SKILLS_MOTOR[@]}"; do fetch "skills/${s}/SKILL.md" "motor/${s}/SKILL.md"; done
 mkdir -p "${TMP}/motor/actualizar"
-curl -fsSL "${RAW}/.claude/skills/actualizar/check-update.sh" -o "${TMP}/motor/actualizar/check-update.sh" 2>/dev/null || true
-# el método: piezas que el coach lleva adentro
-fetch ".claude/skills/second-brain-coach/reference.md"          "bundle/reference.md"
-fetch ".claude/skills/second-brain-coach/plantilla-proyecto.md" "bundle/plantilla-proyecto.md"
-fetch ".claude/skills/second-brain-coach/ejemplos.md"           "bundle/ejemplos.md"
-fetch "VERSION"                       "bundle/VERSION"
-fetch "CHANGELOG.md"                  "bundle/CHANGELOG.md"
-# el método: catálogo de skills de uso (vive bundled con el coach)
-for s in "${SKILLS_USO[@]}"; do fetch ".claude/skills/second-brain-coach/skills-disponibles/${s}/SKILL.md" "uso/${s}/SKILL.md"; done
+curl -fsSL "${RAW}/skills/actualizar/check-update.sh" -o "${TMP}/motor/actualizar/check-update.sh" 2>/dev/null || true
+# las piezas del coach (hermanas de su SKILL.md)
+fetch "skills/second-brain-coach/reference.md"          "coach/reference.md"
+fetch "skills/second-brain-coach/plantilla-proyecto.md" "coach/plantilla-proyecto.md"
+fetch "skills/second-brain-coach/ejemplos.md"           "coach/ejemplos.md"
+fetch "VERSION"      "coach/VERSION"
+fetch "CHANGELOG.md" "coach/CHANGELOG.md"
 
 # ============ TU BRAIN (esta carpeta) ============
 for d in "0. Inbox" "1. Proyectos" "2. Áreas" "3. Recursos" "4. Archivo"; do mkdir -p "$d"; done
@@ -82,11 +91,10 @@ place() {  # place <archivo-en-tmp> <destino>  — no pisa si ya existe
   if [ -e "$2" ]; then echo "  • $2 ya existe, lo dejo como está"
   else mkdir -p "$(dirname "$2")"; cp "${TMP}/$1" "$2"; echo "  ✓ $2"; fi
 }
-for f in "${ROOT_FILES[@]}"; do place "root/${f}" "$f"; done
-for f in "${YO_FILES[@]}";   do place "yo/${f}" "${YO_DIR}/${f}"; done
-place "recursos/arquitectura-skills.md" "3. Recursos/arquitectura-skills.md"
-place "recursos/anti-slop-writing.md"   "3. Recursos/anti-slop-writing.md"
-place "inbox/INBOX.md"                  "0. Inbox/INBOX.md"
+for f in "${ROOT_FILES[@]}"; do place "kit/brain/${f}" "$f"; done
+for f in "${YO_FILES[@]}";   do place "kit/brain/identidad/${f}" "${YO_DIR}/${f}"; done
+for f in "${RECURSOS[@]}";    do place "kit/brain/recursos/${f}" "3. Recursos/${f}"; done
+place "kit/brain/inbox/INBOX.md" "0. Inbox/INBOX.md"
 mkdir -p "skills"   # tus skills de uso, a la vista (vacía; el coach la llena)
 echo "  ✓ carpeta visible skills/ (vacía; el coach te suma skills, ruteados por tu CLAUDE.md)"
 
@@ -98,25 +106,27 @@ for s in "${SKILLS_MOTOR[@]}"; do
 done
 [ -f "${TMP}/motor/actualizar/check-update.sh" ] && cp "${TMP}/motor/actualizar/check-update.sh" "${SKILLS_DIR}/actualizar/check-update.sh"
 # las piezas del coach, adentro de su carpeta
-cp "${TMP}/bundle/reference.md"          "${COACH_DIR}/reference.md"
-cp "${TMP}/bundle/plantilla-proyecto.md" "${COACH_DIR}/plantilla-proyecto.md"
-cp "${TMP}/bundle/ejemplos.md"           "${COACH_DIR}/ejemplos.md"
-cp "${TMP}/bundle/VERSION"               "${COACH_DIR}/VERSION"
-cp "${TMP}/bundle/CHANGELOG.md"          "${COACH_DIR}/CHANGELOG.md"
-# el catálogo de skills de uso, adentro del coach
-mkdir -p "${COACH_DIR}/skills-disponibles"
-for s in "${SKILLS_USO[@]}"; do
-  mkdir -p "${COACH_DIR}/skills-disponibles/${s}"
-  cp "${TMP}/uso/${s}/SKILL.md" "${COACH_DIR}/skills-disponibles/${s}/SKILL.md"
-done
-echo "  ✓ método instalado global (${#SKILLS_MOTOR[@]} skills + reference + catálogo de ${#SKILLS_USO[@]}) en ~/.claude/skills/"
+cp "${TMP}/coach/reference.md"          "${COACH_DIR}/reference.md"
+cp "${TMP}/coach/plantilla-proyecto.md" "${COACH_DIR}/plantilla-proyecto.md"
+cp "${TMP}/coach/ejemplos.md"           "${COACH_DIR}/ejemplos.md"
+cp "${TMP}/coach/VERSION"               "${COACH_DIR}/VERSION"
+cp "${TMP}/coach/CHANGELOG.md"          "${COACH_DIR}/CHANGELOG.md"
+# el kit completo (brain + skills), bundled con el coach para que lo use después.
+# Es contenido del MÉTODO (no de tu brain): refrescarlo en cada install/update es lo correcto;
+# tu carpeta del brain es aparte y no se toca acá. Reemplazo atómico: copio primero, swap después,
+# así nunca queda una ventana sin kit si algo falla a mitad de camino.
+rm -rf "${COACH_DIR}/kit.new"
+cp -R "${TMP}/kit" "${COACH_DIR}/kit.new"
+rm -rf "${COACH_DIR}/kit"
+mv "${COACH_DIR}/kit.new" "${COACH_DIR}/kit"
+echo "  ✓ método instalado global (motor + kit de ${#SKILLS_USO[@]} skills) en ~/.claude/skills/"
 
 cat <<EOF
 
 ✅  Listo. Dos baldes:
    👁  TU BRAIN (esta carpeta): CLAUDE.md + ESTADO.md + ESCALERA.md + AGENTS.md, carpetas PARA + 0. Inbox,
        tu identidad, y skills/ (vacía; el coach la llena). Solo lo tuyo.
-   🔒 EL MÉTODO (global, invisible): el coach y sus piezas en ~/.claude/skills/. Se usa por nombre.
+   🔒 EL MÉTODO (global, invisible): el motor + el kit en ~/.claude/skills/. Se usa por nombre.
 
 Próximo paso: abrí Claude Code (o Cowork) en esta carpeta y escribí:
 

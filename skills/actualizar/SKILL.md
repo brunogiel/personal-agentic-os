@@ -12,6 +12,8 @@ description: >
 Mira si el kit (SecondBrain) tiene una versión más nueva que la tuya y, con tu OK, la baja.
 Es infraestructura del kit: ya viene hecho (a diferencia de los skills que armás vos, este lo trae el motor).
 
+> **Es la vía de Claude Code (instalación por `install.sh`).** En **Cowork el método se instala como plugin y se actualiza solo** desde la UI de plugins, así que ahí no hace falta este skill. Lo de abajo aplica al motor global de Code, en `~/.claude/skills/`.
+
 ## Flujo
 1. **[DET]** Comparar versiones. En Claude Code corré el script `check-update.sh` de esta carpeta;
    en Cowork (sin terminal) hacé el mismo chequeo con tus herramientas: bajá el `VERSION` del repo

@@ -1,0 +1,32 @@
+{
+  "name": "secondbrain-claude",
+  "owner": {
+    "name": "brunogiel",
+    "url": "https://github.com/brunogiel"
+  },
+  "plugins": [
+    {
+      "name": "secondbrain",
+      "source": ".",
+      "description": "Un metodo instalable para que Claude (Code o Cowork) deje de adivinar quien sos: arranca con un coach que arma tu segundo cerebro y lo hace crecer, de a un escalon. Sin terminal en Cowork.",
+      "version": "2.13.0",
+      "author": {
+        "name": "Bruno Gielczynsky",
+        "url": "https://www.linkedin.com/in/brunogiel/"
+      },
+      "license": "MIT",
+      "keywords": [
+        "second-brain",
+        "productivity",
+        "coach",
+        "onboarding",
+        "cowork",
+        "claude-code",
+        "para-method",
+        "personal-knowledge",
+        "spanish",
+        "rioplatense"
+      ]
+    }
+  ]
+}
