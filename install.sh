@@ -36,7 +36,6 @@ SKILLS_USO=("redactar" "anti-slop" "crear-skill" "evaluar-skill" "auditar-sistem
 
 # --- el brain que se scaffoldea (desde kit/brain/) ---
 ROOT_FILES=("CLAUDE.md" "ESTADO.md" "ESCALERA.md" "AGENTS.md")
-YO_DIR="2. Áreas/yo"
 YO_FILES=("sobre-mi.md" "como-trabajo.md" "mi-estilo.md" "MEMORIA.md")
 YO_EXTRA=("soul.md" "dev-prefs.md")   # NO se scaffoldean; el coach los suma después (van bundled en el kit)
 RECURSOS=("arquitectura-skills.md" "anti-slop-writing.md")
@@ -83,20 +82,9 @@ fetch "skills/second-brain-coach/ejemplos.md"           "coach/ejemplos.md"
 fetch "VERSION"      "coach/VERSION"
 fetch "CHANGELOG.md" "coach/CHANGELOG.md"
 
-# ============ TU BRAIN (esta carpeta) ============
-for d in "0. Inbox" "1. Proyectos" "2. Áreas" "3. Recursos" "4. Archivo"; do mkdir -p "$d"; done
-echo "  ✓ carpetas PARA + 0. Inbox"
-
-place() {  # place <archivo-en-tmp> <destino>  — no pisa si ya existe
-  if [ -e "$2" ]; then echo "  • $2 ya existe, lo dejo como está"
-  else mkdir -p "$(dirname "$2")"; cp "${TMP}/$1" "$2"; echo "  ✓ $2"; fi
-}
-for f in "${ROOT_FILES[@]}"; do place "kit/brain/${f}" "$f"; done
-for f in "${YO_FILES[@]}";   do place "kit/brain/identidad/${f}" "${YO_DIR}/${f}"; done
-for f in "${RECURSOS[@]}";    do place "kit/brain/recursos/${f}" "3. Recursos/${f}"; done
-place "kit/brain/inbox/INBOX.md" "0. Inbox/INBOX.md"
-mkdir -p "skills"   # tus skills de uso, a la vista (vacía; el coach la llena)
-echo "  ✓ carpeta visible skills/ (vacía; el coach te suma skills, ruteados por tu CLAUDE.md)"
+# NOTA: este script NO arma tu carpeta del brain. Eso lo hace el coach, charlando y
+# preguntándote (igual que en Cowork): así nada se crea sin tu OK. Acá solo instalamos
+# el método (motor + kit) global. El brain lo armás vos con /second-brain-coach.
 
 # ============ EL MÉTODO (global, ~/.claude/skills/) ============
 mkdir -p "$SKILLS_DIR"
@@ -123,15 +111,14 @@ echo "  ✓ método instalado global (motor + kit de ${#SKILLS_USO[@]} skills) e
 
 cat <<EOF
 
-✅  Listo. Dos baldes:
-   👁  TU BRAIN (esta carpeta): CLAUDE.md + ESTADO.md + ESCALERA.md + AGENTS.md, carpetas PARA + 0. Inbox,
-       tu identidad, y skills/ (vacía; el coach la llena). Solo lo tuyo.
-   🔒 EL MÉTODO (global, invisible): el motor + el kit en ~/.claude/skills/. Se usa por nombre.
+✅  Listo. El MÉTODO quedó instalado (motor + kit), global e invisible, en ~/.claude/skills/.
+    Tu carpeta del brain NO se tocó: la armás vos con el coach, que te pregunta antes de crear nada
+    (igual que en Cowork). El método es la app; el cerebro es tuyo.
 
-Próximo paso: abrí Claude Code (o Cowork) en esta carpeta y escribí:
+Próximo paso: abrí Claude Code (o Cowork) en la carpeta donde quieras tu sistema y escribí:
 
    /second-brain-coach
 
-Te hace un par de preguntas y arranca, de a un escalón.
+Te hace un par de preguntas, te propone y arma con vos, de a un escalón.
 
 EOF

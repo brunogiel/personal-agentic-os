@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.13.1
+- **Consistencia Cowork ↔ Code: el coach arma tu brain en los dos, preguntando.** Antes el `install.sh` (curl) scaffoldeaba tu carpeta solo, sin preguntar, lo que chocaba con la regla "propone, vos decidís". Ahora el `install.sh` instala **solo el método** (motor + kit) y no toca tu carpeta; el brain lo arma el coach con tu OK, igual que en Cowork. Los dos caminos quedan idénticos: instalás el método → `/second-brain-coach` → el coach invita/pregunta por la carpeta y arma con vos, de a un escalón.
+- **Fix de sync del marketplace:** el `source` pasó de `"."` a `"./"`. Un source relativo tiene que arrancar con `./`; con `"."` Cowork tiraba "Error al sincronizar el marketplace" al validar el manifiesto.
+- Tocados: `install.sh` (saca el scaffolding del brain + ajusta el mensaje final; queda como "instalar el método" a secas), `second-brain-coach/SKILL.md` ("Cowork o Code" + Bootstrap: el coach arma en los dos, preguntando), ambos READMEs ("Qué toca"), `marketplace.json`.
+
 ## 2.13.0
 - **Instalación como plugin para Cowork (sin terminal), sin perder el curl.** El repo pasa a ser también un **plugin/marketplace**: en Cowork se instala desde la UI de plugins (agregar `brunogiel/secondbrain-claude` + Install), sin `curl`, sin zip, sin git. El **`curl` sigue igual para Claude Code** (probado end-to-end con el layout nuevo). Resuelve la fricción real: el `install.sh` necesitaba una terminal que el de Cowork no tiene. Bonus: el plugin se actualiza solo.
 - **Layout flat y a la vista (el repo ES el plugin, `source: "./"`).** Nada queda enterrado bajo un `plugins/secondbrain/...`: abrís el repo y ves todo. Reorganización en tres bloques claros, separando lo que antes estaba mezclado adentro del coach:

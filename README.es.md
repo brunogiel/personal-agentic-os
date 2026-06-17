@@ -53,7 +53,7 @@ No es destructivo y es reversible (ver *Qué toca* abajo), así que no hay una g
 
 Sin caja negra. El reparto exacto:
 
-- **Tu carpeta** recibe solo lo tuyo (tu `CLAUDE.md`, identidad, proyectos, inbox, los skills de uso que adoptás). El coach (y el instalador) **nunca pisa un archivo que ya tenés** (saltea lo que existe), así que no puede romper un sistema que ya armaste.
+- **Tu carpeta** recibe solo lo tuyo (tu `CLAUDE.md`, identidad, proyectos, inbox, los skills de uso que adoptás), y **la arma el coach con vos, preguntando** — nunca crea ni pisa nada sin tu OK (saltea lo que ya existe), así que no puede romper un sistema que ya armaste. El **curl no toca tu carpeta**; solo instala el método global.
 - **El método** se instala como una app, fuera de tu carpeta: un **plugin** en Cowork, o global en `~/.claude/skills/` en Claude Code (el coach + `actualizar`/`migrar`). Nada de él vive en tu carpeta.
 - **Las actualizaciones** solo refrescan ese motor. En Cowork el plugin se actualiza solo; en Claude Code lo hace `actualizar`. En los dos casos nunca tocan tu carpeta, así que tus ediciones están a salvo.
 - **Desinstalar** saca solo el motor; tu carpeta queda intacta. En Cowork, sacá el plugin desde la UI (o `/plugin uninstall secondbrain`). En Claude Code:

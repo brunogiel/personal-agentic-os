@@ -55,7 +55,7 @@ It's non-destructive and reversible (see *What it touches* below), so there's no
 
 No black box. The exact split:
 
-- **Your folder** gets only your own content (your `CLAUDE.md`, identity, projects, inbox, the use-skills you adopt). The coach (and the installer) **never overwrites a file you already have** (it skips anything that exists), so it can't clobber a system you already built.
+- **Your folder** gets only your own content (your `CLAUDE.md`, identity, projects, inbox, the use-skills you adopt), and **the coach builds it with you, asking** — it never creates or overwrites anything without your OK (it skips anything that exists), so it can't clobber a system you already built. The **curl installer doesn't touch your folder at all**; it only installs the method globally.
 - **The method** installs as an app, outside your folder: a **plugin** in Cowork, or globally in `~/.claude/skills/` in Claude Code (the coach + `actualizar`/`migrar`). None of it lives in your folder.
 - **Updates** only refresh that engine. In Cowork the plugin updates itself; in Claude Code, `actualizar` does it. Either way they never touch your folder, so your edits are safe.
 - **Uninstall** removes only the engine; your folder stays untouched. In Cowork, remove the plugin from the UI (or `/plugin uninstall secondbrain`). In Claude Code:
