@@ -1,123 +1,157 @@
 # SecondBrain
 
-**Claude arranca cada sesión adivinando quién sos.** Esto corta la adivinanza: unos archivos de texto que lee al arrancar lo convierten en _tu_ asistente, no en uno genérico. No es un segundo cerebro para que leas vos: es un segundo cerebro desde el que opera tu asistente.
+Claude arranca cada sesión sin saber quién sos, cómo trabajás ni dónde está lo importante. SecondBrain le da una carpeta de texto para leer al inicio, así deja de improvisar.
 
-Un método simple e instalable para ordenar cómo trabajás con **Claude Code** (o **Cowork**) y hacerlo crecer en el tiempo. Instalás una sola cosa, un coach, y él arma y hace crecer el resto con vos, de a un escalón.
+Es una carpeta desde la que opera tu asistente.
 
-Es para cualquiera: desde el que arranca de cero hasta el que ya la tiene clara. No hace falta que programes. Si programás, la división código/contexto ya viene contemplada.
+Instalás un coach y ese coach arma el sistema con vos, de a un escalón. Sirve en **Cowork** y **Claude Code**. También lo puede usar **Codex** o cualquier agente que lea `AGENTS.md`.
 
 ---
 
 ## Por qué funciona
 
-Claude es un cerebro que genera texto. El harness (Claude Code, Cowork) le da manos y memoria. **Tus carpetas son lo que lo convierte en _tu_ asistente.** Unos archivos de texto, que el asistente lee al arrancar cada sesión, lo hacen dejar de adivinar quién sos y cómo trabajás. Ese es todo el truco. El resto es ordenar.
+El modelo genera texto. El cliente (Cowork, Claude Code, Codex) le da manos para leer y escribir archivos. Tu carpeta le da contexto: quién sos, qué proyectos tenés, qué reglas seguir y dónde buscar.
 
-Casi nadie escribe esos archivos. Esto te da la semilla y un coach que te lleva de la mano para hacerla crecer. Lo vas a notar en la **segunda sesión**: vuelve sabiendo lo que le contaste en la primera.
+El cambio se nota en la segunda sesión: ya no tenés que volver a explicar lo mismo.
 
 ## Instalación
 
-Dos caminos. Agarrá el tuyo.
+### Cowork (sin terminal)
 
-### 🖥️ Cowork (sin terminal) — el fácil
-
-Se instala como plugin, directo desde la UI de Cowork:
-
-1. Abrí el panel de **plugins** y agregá este marketplace: `brunogiel/secondbrain-claude`
-   (o escribí `/plugin marketplace add brunogiel/secondbrain-claude`).
+1. En **Complementos personales** tocá el **+**, elegí **Crear plugin -> Agregar marketplace** y pegá: `brunogiel/secondbrain-claude`
+   (atajo si podés escribir: `/plugin marketplace add brunogiel/secondbrain-claude`).
 2. Instalá el plugin **secondbrain**
    (o escribí `/plugin install secondbrain@secondbrain-claude`).
-3. Abrí (o creá) una carpeta donde quieras que viva tu cerebro, en algún lado que sincronice (Drive, iCloud, Dropbox), y abrila en Cowork.
-4. Decí **"armame el sistema"** (o `/second-brain-coach`).
+3. Abrí o creá una carpeta donde quieras que viva tu brain. Mejor si sincroniza por Drive, iCloud o Dropbox.
+4. Decí **"armame el sistema"** o usá `/second-brain-coach`.
 
-Sin terminal, sin zip, sin git. El coach te arma la carpeta del brain *con vos*, de a un paso, y **siempre pregunta antes de crear nada** (no te arma una carpeta por atrás). Y el plugin **se actualiza solo**.
+El coach pregunta antes de crear archivos. No arma carpetas por atrás. En Cowork el plugin se actualiza solo.
 
-### ⌨️ Claude Code (terminal)
+### Claude Code
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/brunogiel/secondbrain-claude/main/install.sh | bash
 ```
 
-Después abrí la carpeta y escribí **`/second-brain-coach`**.
+Después abrí la carpeta donde querés trabajar y escribí:
 
----
+```text
+/second-brain-coach
+```
 
-En los dos casos el reparto es el mismo. **El método se instala como una app, fuera de tu carpeta**: como plugin en Cowork, o global en `~/.claude/skills/` en Claude Code. Lleva el coach (con su doctrina, plantillas y ejemplos) más el **kit** que instala en tu brain (`kit/brain/` los archivos base, `kit/skills/` el catálogo de skills de uso), más el updater `actualizar` en Claude Code. **Tu carpeta solo tiene lo tuyo**: las carpetas `0. Inbox/` + PARA y lo esencial (router `CLAUDE.md`, `ESTADO.md`, `ESCALERA.md`, `AGENTS.md`, tu identidad en `2. Áreas/yo/`). Los **skills que realmente usás** (redactar, anti-slop, triage, auditar, crear-skill, evaluar-skill, ppt-builder, panel) NO te los tiran todos de una: el coach te va sumando cada uno a una carpeta `skills/` a secas y a la vista a medida que subís, así lo ves, lo abrís y aprendés cómo está hecho. Se disparan por la **tabla "Mis skills" de tu `CLAUDE.md`** (una frase → un skill) — por eso andan igual en **Claude Code, Cowork y Codex** (los tres leen tu `CLAUDE.md`; Codex vía `AGENTS.md`), sin carpetas específicas de Claude.
+El script instala el método global. No toca tu carpeta del brain.
 
-## ¿Ya tenés un sistema?
+## Qué se instala
 
-No tenés que migrar. Instalalo y usalo como quieras. Si ya tenés una carpeta que funciona, el coach **lee tu estructura y la mantiene**: no te renombra carpetas ni te fuerza PARA. Mapea lo que tenés en tu router (el `CLAUDE.md` que el asistente lee al arrancar) para que deje de adivinar dónde vive cada cosa, y después te propone un par de mejoras *en tu propia estructura*, de a una. Tomás las ideas que te gustan y dejás el resto. PARA es solo el empaque default para el que arranca de cero, no un requisito. Lo único no-negociable es que el router conozca tu estructura; todo lo demás es opt-in.
+Hay dos partes:
 
-No es destructivo y es reversible (ver *Qué toca* abajo), así que no hay una gran decisión que tomar: instalalo, probalo y quedate con lo que te sirve.
+- **El método:** vive fuera de tu carpeta. En Cowork es un plugin. En Claude Code vive en `~/.claude/skills/`. Ahí están el coach, sus plantillas y el catálogo del kit.
+- **Tu brain:** vive en tu carpeta sincronizada. Ahí quedan tus archivos, tus proyectos, tu identidad y los skills que decidas usar.
 
-## Qué toca (y cómo deshacerlo)
+La carpeta final del usuario se ve así:
 
-Sin caja negra. El reparto exacto:
+```text
+CLAUDE.md
+ESTADO.md
+ESCALERA.md
+AGENTS.md
+0. Inbox/
+1. Proyectos/
+2. Areas/yo/
+3. Recursos/
+4. Archivo/
+skills/
+```
 
-- **Tu carpeta** recibe solo lo tuyo (tu `CLAUDE.md`, identidad, proyectos, inbox, los skills de uso que adoptás), y **la arma el coach con vos, preguntando** — nunca crea ni pisa nada sin tu OK (saltea lo que ya existe), así que no puede romper un sistema que ya armaste. El **curl no toca tu carpeta**; solo instala el método global.
-- **El método** se instala como una app, fuera de tu carpeta: un **plugin** en Cowork, o global en `~/.claude/skills/` en Claude Code (el coach, más el updater `actualizar` en Claude Code). Nada de él vive en tu carpeta.
-- **Las actualizaciones** solo refrescan ese motor. En Cowork el plugin se actualiza solo; en Claude Code lo hace `actualizar`. En los dos casos nunca tocan tu carpeta, así que tus ediciones están a salvo.
-- **Desinstalar** saca solo el motor; tu carpeta queda intacta. En Cowork, sacá el plugin desde la UI (o `/plugin uninstall secondbrain`). En Claude Code:
-  ```bash
-  curl -fsSL https://raw.githubusercontent.com/brunogiel/secondbrain-claude/main/uninstall.sh | SB_YES=1 bash
-  ```
+El directorio `kit/` pertenece al método, no a tu brain final. Dentro del repo se divide así:
 
-## La escalera (crecé de a un escalón)
+- `kit/brain/`: plantillas para crear la carpeta base.
+- `kit/skills/`: catálogo de skills que el coach puede activar de a uno.
 
-No armás todo el día uno. Subís. El coach te enseña la idea de cada escalón, no solo qué hacer.
+## Si ya tenés un sistema
 
-| Nivel | Qué aprendés + sumás | Qué ganás |
+No tenés que migrar. El coach mira tu estructura y la respeta.
+
+La regla es simple: tiene que existir un router claro (`CLAUDE.md` o `AGENTS.md`) que diga dónde vive cada cosa. Si tu estructura ya funciona, el coach no la renombra ni te fuerza PARA. Solo propone mejoras puntuales: inbox, atajos, logs de decisión, skills o estado de sesión.
+
+## Qué toca y cómo deshacerlo
+
+- El instalador de Claude Code solo instala el método global.
+- El coach crea archivos en tu brain solo si decís que sí.
+- Si un archivo ya existe, no lo pisa.
+- Las actualizaciones refrescan el método, no tu carpeta.
+- Desinstalar borra el motor, no tus datos.
+
+En Claude Code:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/brunogiel/secondbrain-claude/main/uninstall.sh | SB_YES=1 bash
+```
+
+En Cowork, desinstalá el plugin desde la UI o con:
+
+```text
+/plugin uninstall secondbrain
+```
+
+## La escalera
+
+No armás todo el primer día. Subís de a un paso.
+
+| Nivel | Qué armás | Para qué sirve |
 |---|---|---|
-| **0** | Las 3 capas (modelo / harness / tus carpetas) + capturar: te conoce (`sobre-mi` + `como-trabajo`) y nada se pierde (`0. Inbox/`) | Deja de adivinar quién sos |
-| **1** | Tu primer proyecto (su propio cerebro + log de decisiones) | No volvés a explicar un proyecto dos veces |
-| **2** | Atajos (rutean al asistente al toque) | Decís "mis gastos" y ya sabe dónde mirar |
-| **3** | Tu primer skill (leés el que viene, después armás el tuyo) y qué es un script | Una frase dispara una receta entera |
-| **4** | El sistema trabaja *para* vos: una rutina que corre sola + conectás una herramienta por MCP para que tenga ojos (mail, calendario) | Trabaja mientras dormís, sobre tus datos reales |
-| **5** | Orquestás: varios skills laburando juntos en una tarea (usás un orquestador de ejemplo, después armás el tuyo) | Trabajo grande, repartido y recombinado |
-| **6** | Lo mantenés: una revisión de salud (`auditar-sistema`) + afinás un skill (`evaluar-skill`) | El sistema no se pudre callado |
-| *(si programás)* | Una rama opcional (no es un nivel): split código/contexto + subagentes en tu código | Código en su repo, contexto acá |
+| **0** | Identidad + inbox | El asistente sabe quién sos y no se pierden ideas sueltas |
+| **1** | Primer proyecto con `CLAUDE.md` | No volvés a explicar contexto ni decisiones |
+| **2** | Atajos frase -> carpeta | Decís "mis gastos" y sabe dónde mirar |
+| **3** | Primer skill propio | Una frase dispara una receta que repetís |
+| **4** | Rutina + herramienta conectada | El sistema puede leer mail, calendario o tareas |
+| **5** | Orquestador | Varios skills trabajan juntos |
+| **6** | Auditoría y mejora | Revisás que el sistema no se degrade |
+| **Si programás** | Código separado del contexto | El repo tiene código; el brain guarda decisiones |
 
-¿En bolas o avanzado? El coach se adapta: de a un escalón con todo explicado si arrancás, o un setup rápido de varios escalones más un track avanzado si ya la tenés clara. Pedile **`/second-brain-coach`** cuando quieras: te ubica y te propone el próximo paso. Propone, vos decidís.
+El coach lee `ESTADO.md` y `ESCALERA.md`, te dice dónde estás y propone un solo próximo paso.
 
-## Cowork, Code o lo que sea
+## Portabilidad
 
-Tu **cerebro** son archivos de texto en una carpeta sincronizada, así que es el mismo abras donde abras. Arrancá en **Cowork** (sin terminal); crecé a **Claude Code** abriendo la misma carpeta, sin migración. Y el texto no está atado a Claude: tus carpetas, identidad y proyectos sirven con **Codex, Cursor o lo que venga** (un `AGENTS.md` que viene incluido apunta a los agentes no-Claude a tu `CLAUDE.md`).
+Tu brain son archivos de texto. Podés abrir la misma carpeta en Cowork, Claude Code, Codex o Cursor.
 
-Siendo honestos con la línea: tu **cerebro** (tu texto) *y* tus **skills de uso** son portables — los skills viven en una `skills/` a secas y se disparan por la tabla de tu `CLAUDE.md`, que leen Code, Cowork y Codex (Codex vía `AGENTS.md`). Lo único específico de Claude es el **motor** (el comando `/second-brain-coach` y los pocos skills de mantenimiento); en otro harness los manejás pidiéndolos con palabras. El harness es las manos; el cerebro es tuyo.
+Los skills de uso viven en `skills/` y se activan desde la tabla **Mis skills** de `CLAUDE.md`. Codex y Cursor llegan a esa tabla por `AGENTS.md`.
 
-> **Y si desarrollás software en serio** (con epics, PRDs, equipo), eso es otro deporte. Combiná SecondBrain con un método de desarrollo como [BMAD-METHOD](https://github.com/bmad-code-org/BMAD-METHOD): SecondBrain se queda con tu contexto y tus decisiones, el método de dev maneja la construcción. Conviven en el split código/contexto (Nivel 5).
+Lo único específico de Claude es el motor de armado: `/second-brain-coach` y, en Claude Code, `actualizar`. Si usás otro agente, `AGENTS.md` trae un fallback para operar el sistema a mano.
 
-## Qué trae adentro
+## Qué trae
 
-- **`CLAUDE.md`**: tu archivo raíz, un router fino que se lee al arrancar cada sesión.
-- **`ESTADO.md`**: tu tablero fino (dónde estás, qué hay activo; lo lee el asistente cada sesión).
-- **`ESCALERA.md`**: tu tracker de progreso gamificado: niveles 0→6, un checklist por nivel, qué hiciste y qué falta. Cierra con **"📦 Todo lo que trae el kit"**: el catálogo de lo que ves y manejás (archivos base + skills de uso) con un checkbox por cada uno, para ver en un solo lugar qué tenés y qué te falta. El coach lo mantiene; preguntale "¿cómo vengo?" o "¿qué skills tengo?" cuando quieras.
-- **`AGENTS.md`**: un puntero de 6 líneas para que un agente no-Claude (Codex, etc.) encuentre tu `CLAUDE.md`.
-- **`0. Inbox/`**: capturá sin decidir: tirá lo turbio acá y cocinalo después (el protocolo está en `INBOX.md`).
-- **`sobre-mi.md` / `como-trabajo.md` / `mi-estilo.md`**: quién sos, cómo te gusta trabajar y una muestra de tu voz para escribir (templates para llenar, en `2. Áreas/yo/`).
-- **`soul.md` / `dev-prefs.md`**: lo de fondo (se llena con el tiempo, hablando) y, si programás, cómo te gusta laburar el código (`dev-prefs.md` ya viene con un bloque de reglas universales de ingeniería de fábrica, no es un template vacío). Los suma el coach a medida que subís; no vienen en la instalación.
-- **`3. Recursos/arquitectura-skills.md`**: tu referencia para armar buenos skills (regla de 3, DET/LAT, anatomía, errores típicos).
-- **`3. Recursos/anti-slop-writing.md`**: la doctrina completa de anti-slop (las 5 reglas, con listas negras y ejemplos antes/después) que el skill `anti-slop` usa de base.
-- **El método** se instala como una app fuera de tu carpeta (plugin en Cowork, o global en `~/.claude/skills/` en Claude Code), no en tu brain: el coach lleva su doctrina (`reference.md`), plantillas y ejemplos, más el **kit** que instala en tu brain (`kit/brain/` archivos base, `kit/skills/` catálogo de skills de uso). Nada del método ensucia tu brain — ves solo lo tuyo.
-- **El motor** (🔒 fuera de tu carpeta, invisible, se llama por nombre, nunca ensucia tu brain):
-  - **`second-brain-coach`**: el único comando que usás; te sube de nivel y te enseña mientras subís (`/second-brain-coach`), y **trae tus Projects cerrados de Claude al sistema** cuando lo pedís (viene adentro del coach, no es un skill aparte).
-  - **`actualizar`** (solo Claude Code): chequea si el kit tiene versión nueva y la instala con tu OK. En Cowork el plugin se actualiza solo, así que no hace falta ni aparece.
-- **Los skills que usás** (👁 visibles en `skills/`, el coach te los va sumando a medida que subís — dormidos hasta que una frase los despierta):
-  - **`redactar`**: escribe en tu voz (la aprende de textos tuyos).
-  - **`anti-slop`**: le saca el olor a IA a cualquier texto.
-  - **`crear-skill`**: te ayuda a armar un skill nuevo bien hecho.
-  - **`evaluar-skill`**: mide un skill contra su propio SKILL.md y propone arreglos (para cuando tenés varios y querés mantenerlos afilados).
-  - **`auditar-sistema`**: una revisión de salud de tu sistema (va bien como rutina).
-  - **`triage`**: tu brief de la mañana y los accionables, cruzando tus fuentes: mail, calendario (reporte de citas) y tu chat/tareas de trabajo (Slack, Jira, Linear, Trello, Notion comments, lo que uses). Cada fuente necesita su MCP; con el mail solo ya arranca.
-  - **`ppt-builder`**: arma un deck (o post, video, carrusel, landing) en 5 etapas; el **ejemplo de orquestador con estado** (coordina `redactar` + `anti-slop` + tu skill de pptx). Aparece en el Nivel 5.
-  - **`panel`**: trae 2-5 reviewers con lentes distintas para mirar algo que estás haciendo (un doc, mail, propuesta, copy) desde varios ángulos antes de soltarlo, y te devuelve la pelota (muestra ángulos, no decide); el **ejemplo de orquestador multi-agente**. Aparece en el Nivel 5.
+- `CLAUDE.md`: router principal.
+- `ESTADO.md`: tablero corto para retomar rápido.
+- `ESCALERA.md`: tracker de progreso y catálogo del kit.
+- `AGENTS.md`: puntero para agentes no-Claude.
+- `0. Inbox/`: captura sin decidir.
+- `2. Areas/yo/sobre-mi.md`: quién sos.
+- `2. Areas/yo/como-trabajo.md`: cómo querés que trabaje el asistente.
+- `2. Areas/yo/mi-estilo.md`: tu voz para redactar.
+- `2. Areas/yo/MEMORIA.md`: hechos que valen para todo.
+- `3. Recursos/arquitectura-skills.md`: cómo armar skills.
+- `3. Recursos/anti-slop-writing.md`: reglas para limpiar textos con olor a IA.
+- `skills/`: skills activados por vos.
+
+Skills disponibles en el catálogo:
+
+- `redactar`: escribe en tu voz.
+- `anti-slop`: limpia textos.
+- `crear-skill`: arma un skill nuevo.
+- `evaluar-skill`: revisa un skill contra su propia rúbrica.
+- `auditar-sistema`: chequea la salud del brain.
+- `triage`: arma un brief del día con mail, agenda y tareas conectadas.
+- `ppt-builder`: coordina una pieza en etapas.
+- `panel`: trae varias miradas sobre un texto, propuesta o documento.
 
 ## Filosofía
 
-- **Propone, vos decidís.** Nada se crea sin tu OK.
-- **Un escalón por vez.** Sin listas que abruman.
-- **Enseña mientras subís.** Aprendés la idea, no solo la tarea.
-- **Liviano para correr.** Lee solo lo que necesita, así no te quema el plan de $20.
-- **Todo viaja dormido.** Un skill no hace nada hasta que una frase lo despierta.
+- Propone, vos decidís.
+- Un paso por vez.
+- Archivos chicos, leídos cuando hacen falta.
+- Los skills duermen hasta que una frase los activa.
+- Tu carpeta queda limpia: solo lo tuyo.
 
 ## Autor
 
