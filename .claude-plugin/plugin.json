@@ -1,16 +1,16 @@
 {
-  "name": "personal-agentic-os",
-  "description": "Claude arranca cada sesion adivinando quien sos. Esto lo corta: tu personal agentic OS, una carpeta de texto plano que tu asistente opera. Un coach te lo arma de a un escalon. Para Claude Code o Cowork. En Cowork se instala sin terminal.",
-  "version": "2.15.0",
+  "name": "agentic-second-brain",
+  "description": "Claude arranca cada sesion adivinando quien sos. Esto lo corta: tu Agentic Second Brain, una carpeta de texto plano que tu asistente opera. Un coach te lo arma de a un escalon. Para Claude Code o Cowork. En Cowork se instala sin terminal.",
+  "version": "2.16.0",
   "author": {
     "name": "Bruno Gielczynsky",
     "url": "https://www.linkedin.com/in/brunogiel/"
   },
-  "homepage": "https://github.com/brunogiel/personal-agentic-os",
-  "repository": "https://github.com/brunogiel/personal-agentic-os",
+  "homepage": "https://github.com/brunogiel/agentic-second-brain",
+  "repository": "https://github.com/brunogiel/agentic-second-brain",
   "license": "MIT",
   "keywords": [
-    "personal-agentic-os",
+    "agentic-second-brain",
     "agentic-os",
     "second-brain",
     "productivity",
