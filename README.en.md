@@ -109,6 +109,18 @@ curl -fsSL https://raw.githubusercontent.com/brunogiel/sabe/main/uninstall.sh | 
 
 In Cowork, uninstall the plugin from the UI or type `/plugin uninstall sabe`.
 
+## Coming from "Agentic Second Brain"?
+
+SABE is the same method, now with its own name. If you installed it earlier (the `/asb-*` commands), reinstall to move to `/sabe-*` and remove the old artifacts by hand. Your brain folder is left untouched.
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/brunogiel/sabe/main/install.sh | bash
+rm -rf ~/.claude/skills/agentic-second-brain-coach
+rm -f  ~/.claude/commands/asb*.md
+```
+
+In Cowork: uninstall the old plugin from the UI and reinstall with `/setup-cowork install sabe@sabe`.
+
 ## The ladder
 
 You do not build everything on day one. You climb one step at a time.
