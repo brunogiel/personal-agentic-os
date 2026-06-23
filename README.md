@@ -1,59 +1,59 @@
 # Agentic Second Brain
 
-Claude starts every session not knowing who you are, how you work, or where things live. Agentic Second Brain fixes that: a plain-text folder it reads at startup, so it stops guessing.
+Claude arranca cada sesión sin saber quién sos, cómo trabajás ni dónde está lo importante. Agentic Second Brain lo corta: una carpeta de texto plano que lee al inicio, así deja de improvisar.
 
-Unlike notes you keep for yourself, this folder is shared: you and your assistant both read and edit it, but the agent is the one working from it, loading what each task needs to act.
+A diferencia de las notas que guardás para vos, esta carpeta es compartida: vos y tu asistente la leen y editan, pero el que trabaja desde ella es el agente, cargando lo que cada tarea necesita para actuar.
 
-You install one coach, and it builds the rest with you, one step at a time. Works with **Cowork** and **Claude Code**; **Codex** and other agents use the same folder through `AGENTS.md`.
+Instalás un coach y arma el resto con vos, de a un escalón. Sirve en **Cowork** y **Claude Code**; **Codex** y otros agentes usan la misma carpeta vía `AGENTS.md`.
 
-> Spanish version: [README.es.md](README.es.md).
+> English version: [README.en.md](README.en.md).
 
 ---
 
-## The difference shows up in session two
+## La diferencia se nota en la segunda sesión
 
-You feel it the second time you open Claude: you do not explain the same context again.
+La sentís la segunda vez que abrís Claude: ya no volvés a explicar el mismo contexto.
 
 ```text
-Session 1, no brain:
-  You: I'm a freelance designer, my stack is X, I'm on the Acme rebrand,
-       keep the tone casual... (every session, from scratch)
+Sesión 1, sin brain:
+  Vos: soy diseñador freelance, mi stack es X, estoy con el rebrand de Acme,
+       el tono va relajado... (cada sesión, de cero)
 
-Session 2, with the brain:
-  You:    draft the Acme update email
-  Claude: (already knows who you are, the project, your tone) Here's a draft...
+Sesión 2, con el brain:
+  Vos:    redactá el mail de novedades de Acme
+  Claude: (ya sabe quién sos, el proyecto, tu tono) Acá va un borrador...
 ```
 
-That gap is the whole point.
+Ese salto es todo el punto.
 
-## The toolkit, ready on day one
+## El toolkit, listo el día uno
 
-You do not have to build these. The plugin ships slash commands that work the moment you install it, before you set anything up:
+Estos no los armás vos. El plugin trae slash commands que funcionan apenas lo instalás, antes de configurar nada:
 
-| Command | What it does |
+| Comando | Qué hace |
 |---|---|
-| `/asb` | Front desk: lists your tools and points you to the coach |
-| `/asb-slop` | Strips the AI smell from a text in one pass |
-| `/asb-write` | Writes or rewrites in your voice |
-| `/asb-prompt` | Turns a rough ask into a paste-ready prompt for any AI chat |
-| `/asb-panel` | 2 to 5 reviewers, different lenses, on something before you send it |
-| `/asb-council` | A council of 5 advisors for a decision with real stakes |
-| `/asb-deck` | Builds a presentation in stages, rough to final |
-| `/asb-audit` | Health check of your second brain |
-| `/asb-doc` | Closes a session: routes everything durable to its place |
-| `/asb-simple` | Lost the thread? Plain-language recap: where we are, your move, mine |
+| `/asb` | El conserje: te lista las herramientas y te manda al coach |
+| `/asb-slop` | Saca el olor a IA de un texto en una pasada |
+| `/asb-write` | Redacta o reescribe en tu voz |
+| `/asb-prompt` | Convierte un pedido crudo en un prompt listo para pegar en cualquier chat de IA |
+| `/asb-panel` | 2 a 5 revisores con miradas distintas sobre algo antes de mandarlo |
+| `/asb-council` | Un concilio de 5 asesores para una decisión con peso |
+| `/asb-deck` | Arma una presentación por etapas, de bruto a final |
+| `/asb-audit` | Chequeo de salud de tu segundo cerebro |
+| `/asb-doc` | Cierra la sesión: rutea todo lo durable a su lugar |
+| `/asb-simple` | ¿Perdiste el hilo? Estado en simple: dónde estamos, qué hacés vos, qué sigo yo |
 
-These are stock tools that work the same for everyone. The coach (`/asb-coach`) builds the part that is yours: your projects, identity, and your own skills. (A *skill* is a saved recipe a phrase triggers. Using these is the fastest way to see what one is before you write your own.)
+Son herramientas de fábrica, sirven igual para todos. El coach (`/asb-coach`) arma la parte que es tuya: tus proyectos, tu identidad y tus propias skills. (Un *skill* es una receta guardada que dispara una frase. Usar estas es la forma más rápida de ver qué es uno antes de armar el tuyo.)
 
-They run as slash commands in both Cowork and Claude Code, with no setup. In Cowork you can also trigger them by describing what you want.
+Corren como slash commands en Cowork y en Claude Code, sin configurar nada. En Cowork además las podés disparar describiendo lo que querés.
 
-## Install
+## Instalación
 
-### Cowork (no terminal)
+### Cowork (sin terminal)
 
-1. Type `/setup-cowork install agentic-second-brain@agentic-second-brain` (the name repeats because it is `plugin@marketplace`).
-2. Open or create the folder where your brain should live. A synced folder is best: Drive, iCloud, or Dropbox.
-3. Type `/asb` to start. It asks before creating anything, never builds folders behind your back, and in Cowork the plugin updates itself.
+1. Escribí `/setup-cowork install agentic-second-brain@agentic-second-brain` (el nombre se repite porque es `plugin@marketplace`).
+2. Abrí o creá la carpeta donde quieras que viva tu brain. Mejor una sincronizada: Drive, iCloud o Dropbox.
+3. Escribí `/asb` para arrancar. Pregunta antes de crear nada, nunca arma carpetas por atrás, y en Cowork el plugin se actualiza solo.
 
 ### Claude Code
 
@@ -61,88 +61,88 @@ They run as slash commands in both Cowork and Claude Code, with no setup. In Cow
 curl -fsSL https://raw.githubusercontent.com/brunogiel/agentic-second-brain/main/install.sh | bash
 ```
 
-It installs the method and commands globally and does not touch your brain folder. Then open the folder where you want to work and type `/asb` to start.
+Instala el método y los comandos de forma global y no toca tu carpeta del brain. Después abrí la carpeta donde querés trabajar y escribí `/asb` para arrancar.
 
-## How it works
+## Por qué funciona
 
-The model writes text. The client (Cowork, Claude Code, Codex) gives it hands to read and edit files. Your folder gives it the context. The payoff: your context window stays cheap and uncluttered, because instead of loading everything, the agent fetches the one or two files a task needs.
+El modelo genera texto. El cliente (Cowork, Claude Code, Codex) le da manos para leer y escribir archivos. Tu carpeta le da el contexto. El beneficio: tu ventana de contexto queda barata y despejada, porque en vez de cargar todo, el agente trae el archivo o dos que la tarea necesita.
 
-That works because of the layout. It is PARA (projects, areas, resources, archive) plus an inbox, with a small router (`CLAUDE.md`) on top that maps where everything lives. Files stay small and single-purpose, so the router points and the agent fetches, and you can open or edit any piece by hand without anything breaking.
+Eso funciona por el layout. Es PARA (proyectos, áreas, recursos, archivo) más un inbox, con un router chico (`CLAUDE.md`) arriba que mapea dónde vive cada cosa. Los archivos son chicos y de un solo tema, así el router apunta y el agente trae, y vos podés abrir o editar cualquier pieza a mano sin romper nada.
 
-Two parts stay separate. **The method** lives outside your folder (a plugin in Cowork, `~/.claude/skills/` in Claude Code) and holds the coach, templates, and kit catalog. **Your brain** is your synced folder, and holds only your stuff. It ends up looking like this (starter names, rename to taste):
+Dos partes quedan separadas. **El método** vive fuera de tu carpeta (un plugin en Cowork, `~/.claude/skills/` en Claude Code) y trae el coach, las plantillas y el catálogo del kit. **Tu brain** es tu carpeta sincronizada, y guarda solo lo tuyo. Termina viéndose así (nombres base, renombrá a gusto):
 
 ```text
-CLAUDE.md        # the router your assistant reads first
-ESTADO.md        # short status, to resume fast
-ESCALERA.md      # your progress + the kit catalog
-AGENTS.md        # pointer for non-Claude agents
-0. Inbox/        # capture without deciding
-1. Proyectos/    # projects, one folder each
-2. Áreas/yo/     # who you are, how you work, your voice
-3. Recursos/     # reusable references
-4. Archivo/      # done or dormant
-skills/          # the skills you have activated
+CLAUDE.md        # el router que tu asistente lee primero
+ESTADO.md        # tablero corto, para retomar rápido
+ESCALERA.md      # tu progreso + el catálogo del kit
+AGENTS.md        # puntero para agentes no-Claude
+0. Inbox/        # captura sin decidir
+1. Proyectos/    # proyectos, una carpeta cada uno
+2. Áreas/yo/     # quién sos, cómo trabajás, tu voz
+3. Recursos/     # referencias reusables
+4. Archivo/      # terminado o dormido
+skills/          # los skills que activaste
 ```
 
-## Already have a system?
+## Si ya tenés un sistema
 
-You do not have to migrate. The coach reads your structure and keeps it.
+No tenés que migrar. El coach mira tu estructura y la respeta.
 
-The rule is simple: there must be a clear router (`CLAUDE.md` or `AGENTS.md`) that says where things live. If your structure already works, the coach does not rename it or force PARA. It only proposes small improvements: inbox, shortcuts, decision logs, skills, or session state.
+La regla es simple: tiene que existir un router claro (`CLAUDE.md` o `AGENTS.md`) que diga dónde vive cada cosa. Si tu estructura ya funciona, el coach no la renombra ni te fuerza PARA. Solo propone mejoras puntuales: inbox, atajos, logs de decisión, skills o estado de sesión.
 
-## What it touches
+## Qué toca y cómo deshacerlo
 
-- The Claude Code installer only installs the global method.
-- The coach creates files in your brain only after you approve.
-- Existing files are not overwritten.
-- Updates refresh the method, not your folder.
-- Uninstall removes the engine, not your data.
+- El instalador de Claude Code solo instala el método global.
+- El coach crea archivos en tu brain solo si decís que sí.
+- Si un archivo ya existe, no lo pisa.
+- Las actualizaciones refrescan el método, no tu carpeta.
+- Desinstalar borra el motor, no tus datos.
 
-To uninstall in Claude Code:
+Para desinstalar en Claude Code:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/brunogiel/agentic-second-brain/main/uninstall.sh | SB_YES=1 bash
 ```
 
-In Cowork, uninstall the plugin from the UI or type `/plugin uninstall agentic-second-brain`.
+En Cowork, desinstalá el plugin desde la UI o escribí `/plugin uninstall agentic-second-brain`.
 
-## The ladder
+## La escalera
 
-You do not build everything on day one. You climb one step at a time.
+No armás todo el primer día. Subís de a un paso.
 
-| Level | What you build | What it gives you |
+| Nivel | Qué armás | Para qué sirve |
 |---|---|---|
-| **0** | Identity + inbox | The assistant knows who you are and loose ideas are not lost |
-| **1** | First project with `CLAUDE.md` | You stop re-explaining context and decisions |
-| **2** | Phrase -> folder shortcuts | Say "my expenses" and it knows where to look |
-| **3** | First custom skill | One phrase triggers a repeated recipe |
-| **4** | Routine + connected tool | The system can read mail, calendar, or tasks |
-| **5** | Orchestrator | Several skills work together on one task |
-| **6** | Audit and tuning | You keep the system from degrading |
-| **If you code** | Code separated from context | The repo keeps code; the brain keeps decisions |
+| **0** | Identidad + inbox | El asistente sabe quién sos y no se pierden ideas sueltas |
+| **1** | Primer proyecto con `CLAUDE.md` | No volvés a explicar contexto ni decisiones |
+| **2** | Atajos frase -> carpeta | Decís "mis gastos" y sabe dónde mirar |
+| **3** | Primer skill propio | Una frase dispara una receta que repetís |
+| **4** | Rutina + herramienta conectada | El sistema puede leer mail, calendario o tareas |
+| **5** | Orquestador | Varios skills trabajan juntos en una tarea |
+| **6** | Auditoría y mejora | Revisás que el sistema no se degrade |
+| **Si programás** | Código separado del contexto | El repo tiene código; el brain guarda decisiones |
 
-The coach reads `ESTADO.md` and `ESCALERA.md`, tells you where you are, and proposes one next step.
+El coach lee `ESTADO.md` y `ESCALERA.md`, te dice dónde estás y propone un solo próximo paso.
 
-## Portability
+## Portabilidad
 
-Your brain is plain text. You can open the same folder in Cowork, Claude Code, Codex, or Cursor. Use-skills live in `skills/` and are triggered through the **Mis skills** table in `CLAUDE.md`, which Codex and Cursor reach through `AGENTS.md`. The only Claude-specific piece is the setup engine (`/asb-coach`, and in Claude Code the `actualizar` updater); for other agents, `AGENTS.md` has a fallback workflow.
+Tu brain son archivos de texto. Podés abrir la misma carpeta en Cowork, Claude Code, Codex o Cursor. Los skills de uso viven en `skills/` y se disparan desde la tabla **Mis skills** de `CLAUDE.md`, que Codex y Cursor alcanzan por `AGENTS.md`. Lo único específico de Claude es el motor de armado (`/asb-coach`, y en Claude Code el updater `actualizar`); para otros agentes, `AGENTS.md` trae un fallback.
 
 ## Skills
 
-Most of the kit is the toolkit above. Three skills have no command, and the coach adds them as you climb: `crear-skill` (build your own), `triage` (a daily brief from connected mail, calendar, and tasks), and `evaluar-skill` (grade a skill against its rubric).
+La mayoría del kit es el toolkit de arriba. Tres skills no tienen comando, y el coach las suma a medida que subís: `crear-skill` (armá el tuyo), `triage` (un brief del día con mail, agenda y tareas conectadas) y `evaluar-skill` (medí un skill contra su rúbrica).
 
-## Philosophy
+## Filosofía
 
-- Propose, you decide.
-- One step at a time.
-- Small files, read only when needed.
-- Skills stay dormant until a phrase activates them.
-- Your folder stays clean: only your stuff.
+- Propone, vos decidís.
+- Un paso por vez.
+- Archivos chicos, leídos cuando hacen falta.
+- Los skills duermen hasta que una frase los activa.
+- Tu carpeta queda limpia: solo lo tuyo.
 
-## Credit
+## Autor
 
-Made by [Bruno Gielczynsky](https://www.linkedin.com/in/brunogiel/). Part of a family of installable AI methods alongside [Empat.ia](https://github.com/brunogiel/Empat.ia).
+Hecho por [Bruno Gielczynsky](https://www.linkedin.com/in/brunogiel/). Parte de una familia de métodos de AI instalables junto con [Empat.ia](https://github.com/brunogiel/Empat.ia).
 
-## License
+## Licencia
 
-MIT. Use it, fork it, make it yours.
+MIT. Usalo, forkealo, hacelo tuyo.

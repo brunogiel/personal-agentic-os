@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.24.0 (2026-06-23)
+- **El README oficial pasa a ser el español.** El método está escrito en rioplatense, así que el README por defecto del repo (`README.md`) ahora es el español; el inglés se movió a `README.en.md` como traducción secundaria. Resuelve la rareza de un README en inglés describiendo un método en español. (La migración english-first del método sigue pendiente, aparte.)
+- Tocados: `README.md` (ahora español), `README.en.md` (nuevo), `README.es.md` (eliminado), `VERSION`, `.claude-plugin/*`, `CHANGELOG.md`.
+
 ## 2.23.0 (2026-06-23)
 - **Fix día-cero: el toolkit ya no intenta escribir en el kit read-only del plugin.** Un usuario corrió `/asb-write` sin brain armado; `redactar` confundió el `kit/brain/` del plugin (plantilla, read-only) con el brain del usuario, chocó con "Read-only file system" y se trabó pidiendo conectar carpeta. Regla nueva para todo el toolkit con estado: el `kit/brain/` del método NUNCA es destino de guardado, y lo que persiste, persiste solo si hay brain escribible.
   - **`redactar` (`/asb-write`):** sin brain escribible, modo un solo tiro (aprende la voz de los ejemplos para ESE texto, escribe ahora, no persiste) y ofrece armar el brain con `/asb-coach` para acordarse. Con brain, guarda `mi-estilo.md` en `2. Áreas/yo/` como siempre.
